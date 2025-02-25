@@ -1,0 +1,257 @@
+% DOCUMENTO PRINCIPAL
+
+% Este es el fichero principal de este repositorio. No se recomienda editarlo.
+% Modifica las plantillas incluidas en los directorios:
+% - secciones
+% - tablas
+% - algoritmos
+
+\documentclass[final,a4paper,11pt,twoside]{class_diss}
+
+\usepackage[full]{textcomp}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amssymb}
+\usepackage{mathpazo}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{setspace}
+\usepackage[margin=3cm]{geometry}
+\usepackage[titles]{tocloft}
+\usepackage{latexsym}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage[svgnames,dvipsnames,usenames,table,xcdraw]{xcolor}
+\usepackage{tikz}
+\usepackage[toc,acronym,nonumberlist,xindy={language=spanish-traditional},sanitize=none]{glossaries}
+\usepackage[scaled]{helvet}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[explicit]{titlesec}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{float}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{placeins}
+\usepackage{flafter}
+%%%%%%%
+\usepackage[a4paper, margin=1in]{geometry} % Márgenes
+\usepackage{graphicx}
+\usepackage{eso-pic} % Para imágenes de fondo
+\usepackage{xcolor} % Para cambiar el color del texto
+\usepackage{array} % Para tablas
+\usepackage{tabularx} % Para ajuste automático del ancho
+\usepackage{setspace} % Para control de interlineado
+\usepackage{ragged2e} % Para justificación de texto a la izquierda
+\usepackage{lmodern} % Para fuentes mejoradas
+%%%%%%
+\usepackage{tabularx} % Para definir proporciones de columnas
+\usepackage{framed}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{multicol}
+%%%%%%% bibliografía
+\usepackage{apacite}
+%%%%%%% backlog
+\usepackage{chancery}
+\usepackage{calligra}
+\usepackage{aurical}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+%%%%%%% casos uso
+\usepackage{svg}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Teorema}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\definecolor{VIU}{RGB}{240, 90, 15}
+\definecolor{DESTACADO}{RGB}{130, 34, 145}
+\definecolor{CITA}{RGB}{0, 123, 194}
+
+\renewcommand{\algorithmcfname}{Algoritmo}
+\renewcommand{\acronymname}{Lista de Acr\'onimos}
+\addto\captionsspanish{
+    \renewcommand*{\acronymname}{Lista de Acr\'onimos}
+}
+\newcommand{\inhib}{\relbar\mapsfromchar}
+\newcommand{\destacado}[1]{\color{DESTACADO}\textbf{#1}\color{black}\xspace}
+
+\usetikzlibrary{shapes}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=diamond,fill=black!90,inner sep=1pt,minimum size=1cm] (char) {\textcolor{white}{\small\textbf{#1}}};}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{}
+\fancyhead[RE]{}
+\fancyfoot[C]{}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\circled{\thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\colorlet{chapnumcolor}{VIU}
+
+\newcommand*{\chapnumfont}{%
+  \usefont{T1}{jkp}{b}{n}%
+  \fontsize{70}{90}%
+  \selectfont%
+}
+
+\newcommand*{\chaptitlefont}{%
+  \usefont{T1}{qhv}{b}{n}%
+  \fontsize{22}{26}%
+  \selectfont%
+}
+
+\titleformat{name=\chapter}
+{\normalfont\huge\bfseries}
+{\rlap{\parbox{\textwidth}{\filleft\chapnumfont\color{chapnumcolor}\thechapter}}}
+{0pt}
+{\rlap{\parbox{0.7\textwidth}{\filright\chaptitlefont #1}}}
+
+\makeglossaries
+\input{secciones/glosario.tex}
+
+\bibliographystyle{apa}
+
+\usepackage[authoryear,sort&compress]{natbib}
+\usepackage{hypernat}
+\setcitestyle{authoryear}
+
+\usepackage[pdftex,plainpages=false,pdfpagelabels]{hyperref}
+
+\hypersetup{
+    linktocpage=true,
+    colorlinks=true,
+    bookmarks=true,
+    citecolor=CITA,
+    urlcolor=CITA,
+    linkcolor=CITA,
+    citebordercolor={1 0 0},
+    urlbordercolor={1 0 0},
+    linkbordercolor={.7 .8 .8},
+    breaklinks=true,
+    pdfpagelabels=true,
+    }
+
+\setcounter{secnumdepth}{3}
+\onehalfspacing
+\renewcommand\familydefault{\sfdefault}
+
+% Función para colocar la imagen de fondo
+\newcommand\BackgroundPic{
+    \put(0,0){%
+        \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill
+            \centering
+            \includegraphics[width=\paperwidth,height=\paperheight]{images/image4.png}
+            \vfill
+        }
+    }
+}
+
+
+
+\begin{document}
+
+\input{secciones/portada.tex}
+%\input{secciones/frase-favorita.tex}
+
+\pagenumbering{gobble}
+%\input{secciones/agradecimientos.tex}
+\cleardoublepage
+
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\rightmark}
+\fancyfoot[C]{\circled{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\pdfbookmark[0]{\contentsname}{contents}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftchapfont}{\mdseries}
+\renewcommand{\cftchappagefont}{\mdseries}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+%\renewcommand{\listalgorithmcfname}{Índice de algoritmos}
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{Índice de algoritmos}
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+%\input{secciones/resumen.tex}
+%\input{secciones/introduccion.tex}
+%\input{secciones/objetivos.tex}
+%\input{secciones/metodologia.tex}
+%\input{secciones/resultados-y-discusion.tex}
+%\input{secciones/conclusiones.tex}
+%\input{secciones/limitaciones-y-futuro.tex}
+
+\input{capitulos/capitulo-1.tex}
+\input{capitulos/capitulo-2.tex}
+\input{capitulos/capitulo-3.tex}
+\input{capitulos/capitulo-4.tex}
+
+\cleardoublepage
+\phantomsection
+
+\printglossary[type=\acronymtype]
+\printglossary
+
+\appendix
+\input{apendices/apendice-a-analisis}
+\input{apendices/apendice-b-especificacion-modelo-de-clases}
+\input{apendices/apendice-c-diagramas-de-secuencia}
+\input{apendices/apendice-d-especificacion-requisitos-interfaz}
+\input{apendices/apendice-e-diseño-de-clases}
+\input{apendices/apendice-f-diagrama-de-paquetes}
+
+%\input{secciones/apendizes.tex}
+
+\begin{singlespace}
+\begin{footnotesize}
+\begin{twocolumn}
+\nocite{*}
+\bibdata{bibliografia}
+\bibliographystyle{apa}
+\bibliography{bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografía}
+\end{twocolumn}
+\end{footnotesize}
+\end{singlespace}
+
+\end{document}

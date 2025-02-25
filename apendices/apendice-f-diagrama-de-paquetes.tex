@@ -1,0 +1,26 @@
+
+\chapter{Diagrama de Paquetes}
+
+La complejidad y tamaño de un diagrama de clases de un sistema puede llevar que la aprehensión del mismo sea compleja y difusa.
+
+En la programación estructurada, la manera de crear un nivel más alto de abstracción es la creación de las funciones. Pero en la programación orientada a objetos, donde los datos y el procesamiento no se presentan por separado, la única manera de realizar un diagrama más inteligible y abordable, así como más sencillo de entender es el diagrama de paquetes.
+
+Un paquete es una estructura superior, mediante la cual se agrupan varias clases, atendiendo a un criterio de empaquetamiento. El criterio usado para crear el diagrama de paquetes de este proyecto es el desempeño. Así, todas las clases utilizadas para un misma finalidad estarán agrupadas bajo un mismo paquete.
+
+Los paquetes que se pueden extraer apéndice ``Diseño de clases''\ref{diseño-clases} son los siguientes:
+
+\begin{itemize}
+    \item Aplicación.
+    \item CargadorDataset.
+    \item ModelosIA.
+\end{itemize}
+
+No existirá jerarquía entre paquetes, por lo tanto, ningún paquete contendrá a uno o varios otros.
+
+\section{Diagrama general de paquetes}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{images/diagrama-paquetes.svg}
+  \caption{Diagrama general de paquetes.}
+\end{figure}

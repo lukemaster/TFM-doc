@@ -1,0 +1,226 @@
+\chapter{Apéndice A: Análisis del sistema}
+\label{apendice-a}
+
+%Como ya se ha comentado en el capítulo 4...
+Se ha elegido UML como método de diseño del software fruto de este proyecto.
+
+UML es un lenguaje de modelado de software que tiene sus propios mecanismos para llevar a cabo las tareas, desde la definición de lo
+que serán los ``requisitos funcionales'': lo que se pretende que sea capaz de proporcionar el programa al usuario; hasta la definición de las clases que intervendrán en la codificación de la aplicación, así como cada flujo de información contemplado en el programa final.
+
+\section{Formalización de la especificación de requisitos}
+
+Los requisitos funcionales representan un manifiesto de todos los servicios que el programa proporcionará al usuario y cómo se comporta el sistema en cada una de las acciones llevadas a cabo para rendir esos servicios.
+
+Los requisitos funcionales están denotados por la letra F, seguida de un guión y un número de requisito que lo clasificar� como único en el sistema. Los requisitos funcionales de la aplicación son los siguientes:
+
+\begin{itemize}
+
+    \item F-1: el sistema debería dar la oportunidad al usuario de descargar una pieza musical según un género concreto:
+    \begin{itemize}
+        \item F-1.1: el sistema debería mostrar una lista de géneros musicales y dar la oportunidad al usuario de seleccionar uno de ellos.
+        \item F-1.2: el sistema debería dar la oportunidad al usuario de instar la generación de una pieza musical que concuerde con el género seleccionado.
+        \item F-1.3: el sistema debería dar la oportunidad de descargar la pieza musical generada
+    \end{itemize}
+    
+    \item F-2: el sistema debería proporcionar la oportunidad de evaluar la pieza musical generada.
+    \begin{itemize}
+        \item F-2.1: el sistema debería proporcionar una manera de almacenar datos de cada evaluación.
+    \end{itemize}
+       
+    \item F-3: el sistema debería dar la oportunidad al usuario de consultar una ayuda sobre el uso y comportamiento del programa.
+
+\end{itemize}
+
+\section{Diagramas de Casos de Uso del Sistema}
+
+El siguiente paso a seguir en el proceso definido por UML es el diseño de casos de uso.
+
+Los casos de uso representan todas las acciones que pueden realizar uno o más usuarios en cada momento con la aplicación que se modela. A continuación se definen cuáles son los diagramas de casos de uso del sistema.
+
+Los casos de uso que se van describir son los siguientes:
+
+
+\begin{itemize}
+
+    \item PresentaciónDelSistema. Diagrama 1.
+
+    \item GenerarPiezaMusical. Diagrama 2
+
+    \item EvaluarPiezaMusicalGenerada. Diagrama 3.
+
+\end{itemize}
+
+\subsection{Diagrama de Casos de Uso: PresentaciónDelSistema}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.55\textwidth]{images/caso-uso-presentaciondelsistema.svg}
+  \caption{Diagrama de caso de uso principal del sistema.}
+  \label{fig:caso-uso-presentaciondelsistema}
+\end{figure}
+
+\begin{longtable}{|>{\columncolor[rgb]{0.75,0.75,0.75}}p{3cm}|p{11cm}|}
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Nombre}}} & {\small Presentación del sistema.}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Descripción}}} & {\small Establecimiento de las relaciones entre los elementos internos del sistema y la interacción con los elementos externos, describiéndose la presentación principal del mismo.}
+\\
+\hline
+\centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Actores}}}
+&
+{\small Usuario.}
+\\
+\hline
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Casos de uso}}
+\end{center}
+\begin{center}
+
+\end{center}
+&
+
+{\small \emph{GenerarPiezaMusical:} Permite al usuario solicitar la generación de una pieza musical.}
+
+{\small \emph{ConsultarAyuda:} Permite al usuario consultar la ayuda
+sobre el funcionamiento del programa.}
+\\
+\hline
+\begin{center}
+\end{center}
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Flujo de eventos
+principal}}
+\end{center}
+&
+{\small Pasos de ejecución del camino básico del caso de uso:}
+
+{\small
+\begin{enumerate}
+    \item El usuario accede al sistema.
+
+    \item El sistema muestra las opciones que se pueden llevar a cabo.
+
+    \item El usuario elige una de las opciones.
+\end{enumerate}
+}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Flujo de eventos}}}
+\centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+excepcional}}} & {\small No se contempla.}
+\\
+\hline
+\end{longtable}
+
+\subsection{Diagrama de Casos de Uso: GenerarPiezaMusical}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/caso-uso-generarpiezamusical.svg}
+  \caption{Diagrama de caso de uso de generación de una pieza musical.}
+  \label{fig:caso-uso-generarpiezamusical}
+\end{figure}
+
+\begin{longtable}{|>{\columncolor[rgb]{0.75,0.75,0.75}}p{3cm}|p{11cm}|}
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Nombre}}} & {\small GenerarPiezaMusical.}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Descripción}}} & {\small Representación de todas las acciones necesarias para generar una pieza musical.}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Actores}}} & {\small Usuario.}
+\\
+\hline
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Casos de uso}}
+\end{center}
+\begin{center}
+
+\end{center}
+& {\small \emph{SolicitarPiezaMusical:} permite al usuario solicitar la generación de una
+pieza musical.}
+
+{\small \emph{SeleccionarGénero:} brinda al usuario la posibilidad de seleccionar el género de la pieza musical a generar.}
+
+\\
+\hline
+\begin{center}
+\end{center}
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Flujo de eventos
+principal}}
+\end{center}
+& {\small Pasos de ejecuci�n del camino b�sico del caso de uso:}
+
+{\small
+\begin{enumerate}
+    \item El usuario accede al sistema.
+
+    \begin{enumerate}
+        \item[] 1.1 El usuario selecciona un género musical de una lista dada.
+        \item[] 1.2 El usuario solicita una muestra de música generada, asociada al género musical seleccionado.
+        \item[] 1.3 El sistema devuelve la pieza musical generada.
+    \end{enumerate}
+\end{enumerate}
+}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Flujo de eventos}}}
+\centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small excepcional}}} & {\small No se contempla.}
+\\
+\hline
+\end{longtable}
+
+\subsection{Diagrama de Casos de Uso: EvaluarPiezaMusicalGenerada}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.58\textwidth]{images/caso-uso-evaluarpiezamusicalgenerada.svg}
+  \caption{Diagrama de caso de uso de evaluación de una pieza musical.}
+  \label{fig:caso-uso-evaluarpiezamusicalgenerada}
+\end{figure}
+
+\begin{longtable}{|>{\columncolor[rgb]{0.75,0.75,0.75}}p{3cm}|p{11cm}|}
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Nombre}}} & {\small EvaluarPiezaMusicalGenerada.}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Descripci�n}}} & {\small Representación de las acciones necesarias para evaluar la pieza musical generada.}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Actores}}} & {\small Usuario.}
+\\
+\hline
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Casos de uso}}
+\end{center}
+\begin{center}
+
+\end{center}
+& {\small \emph{PuntuarPiezaMusical:} permite al usuario puntuar la pieza musical generada en base a su percepción subjetiva de pertenencia al género solicitado.}
+
+{\small \emph{GenerarPiezaMusical:} permite al usuario solicitar la genearción de una pieza musical, dado un género concreto y descargarla.}
+
+\\
+\hline
+\begin{center}
+\end{center}
+\begin{center}
+\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small Flujo de eventos
+principal}}
+\end{center}
+& {\small Pasos de ejecución del camino básico del caso de uso:}
+
+{\small
+\begin{enumerate}
+    \item  El usuario solicita la creación de una pieza musical de un género concreto.
+
+    \item  Una vez obtenida, el usuario puede emitir una valoración sobre la pertenencia de la pieza al género solicitado.
+\end{enumerate}
+}
+\\
+\hline \centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+Flujo de eventos}}}
+\centerline{\textcolor[rgb]{1.00,1.00,1.00}{\textbf{\small
+excepcional}}} & {\small El paso número 2 es opcional.}
+\\
+\hline
+\end{longtable}

@@ -1,0 +1,354 @@
+
+\chapter{Diseño de clases}
+\label{diseño-clases}
+\section{Diseño de clases}
+
+Este apéndice hace una visión más profunda y detallada del modelo de clases presentado en el apéndice B: Especificación del modelo de clases\ref{apendice-b}.
+
+El diseño de clases da una visión más refinada de las mismas clases que se extrajeron en el análisis. En este modelo se pueden ver no sólo los métodos que utilizan las clases para comunicarse entre ellas, sino también qué estructuras de datos se usan, y cómo se guarda la información dentro de cada clase.
+
+Las clases que conforman el sistema son las siguientes:
+
+\begin{itemize}
+    \item Diagrama del sistema general.
+    \begin{itemize}
+        \item Sistema.
+        \item Ayuda.
+        \item EvaluadorPiezaGenerada.
+        \item SelectorGéneroMusical.
+        \item PiezaMusical.
+        \item PiezaMusicalEtiquetada.
+        \item ScriptEntrenamiento.
+        \item CargadorMP3.
+        \item ModeloGeneradorIA.
+        \item VAE.
+        \item GAN.
+        \item Transformer.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Clase Sistema}
+
+La clase ``Sistema'' representa el conjunto general del sistema, es decir, la clase principal de la aplicación.
+
+Los métodos de la clase son:
+
+\begin{itemize}
+    \item init: inicia la aplicación informática.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.2\textwidth]{images/clase-sistema.svg}
+  \caption{Clase Sistema.}
+\end{figure}
+
+
+\subsection{Clase Ayuda}
+
+La clase ``Ayuda'' representa a la ayuda sobre el uso de la aplicación.
+
+Esta clase cuenta con el siguiente método:
+
+\begin{itemize}
+    \item motrarAyuda: muestra la ayuda de la aplicación.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.3\textwidth]{images/clase-ayuda.svg}
+  \caption{Clase Ayuda.}
+\end{figure}
+
+\subsection{Clase SelectorGeneroMusical}
+
+La clase ``SelectorGeneroMusical'' representa el selector de géneros musicales disponibles.
+
+Esta clase tiene el siguiente método:
+
+\begin{itemize}
+    \item devolverGeneroMusicalSeleccionado: devuelve el género musical que el usuario ha seleccionado. Recibe la opción marcada por el usuario y devuelve la etiqueta necesaria para el modelo de Inteligencia Artificial.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{images/diseño-clase-selector-genero-musical.svg}
+  \caption{Clase SelectorGeneroMusicalSeleccionado.}
+\end{figure}
+
+
+\subsection{Clase EvaluadorPiezaGenerada}
+
+La clase ``EvaluadorPiezaGenerada'' representa el lugar donde el usuario emitirá una evaluación sobre la pertenencia de la pieza generada, al género demandado.
+
+Esta clase cuenta con el siguiente método:
+
+\begin{itemize}
+    \item guardarEvaluación: recoge la evaluación emitida por el usuario. Este método recibe dos parámetros:
+    \begin{itemize}
+        \item etiquetaGeneroRequerido: etiqueta de género que se pasará al modelo de Inteligencia Artificial.
+        \item ruidoAleatorio: ruido aleatorio usado para generar dicha muestra musical.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{images/diseño-clase-evaluador-pieza-generada.svg}
+  \caption{Clase EvaluadorPiezaGenerada.}
+\end{figure}
+
+\subsection{Clase PiezaMusical}
+
+La clase ``PiezaMusical'' representa una pieza musical. Esta clase será la abstracción de un fichero MP3 en el sistema.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.2\textwidth]{images/clase-pieza-musical.svg}
+  \caption{Clase PiezaMusical.}
+\end{figure}
+
+\subsection{Clase PiezaMusicalEtiquetada}
+
+La clase ``PiezaMusicalEtiquetada'' representa una pieza musical, junto a su etiqueta de género asociada. Esta clase será la abstracción de un fichero MP3 en el sistema, utilizado para entrenar el modelo de Inteligencia Artificial. Esta clase hereda todos los comportamientos de su clase padre ``PiezaMusical''.
+
+La clase ``PiezaMusicalEtiquetada'' cuenta con el siguiente atributo:
+
+\begin{itemize}
+    \item genero: etiqueta de género.
+\end{itemize}
+
+La clase tiene el siguiente método:
+
+\begin{itemize}
+    \item devolverGénero: devuelve el valor de la etiqueta de género.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.4\textwidth]{images/clase-pieza-musical-etiquetada.svg}
+  \caption{Clase PiezaMusicalEtiquetada.}
+\end{figure}
+
+\subsection{Clase CargadorMP3}
+
+La clase ``CargadorMP3'' representa un \textbf{generador} bajo demanda de la representación numérica de una pieza musical, con una etiqueta de género asociada.
+La clase ``CargadorMP3'' cuenta con el siguiente método:
+
+\begin{itemize}
+    \item generarPiezaMusical: devuelve una pieza musical etiquetada, generada bajo demanda.
+    \item cargarDataset: cargar un dataset de música en MP3. Recibe un parámetro con la localización en el sistema de dicho conjunto de datos.
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{images/diseño-clase-cargadormp3.svg}
+  \caption{Clase CargadorMP3.}
+\end{figure}
+
+\subsection{Clase ModeloGeneradorIA}
+
+La clase ``ModeloGeneradorIA'' conforma la clase padre que abstrae el comportamiento del modelo de Inteligencia Artificial dentro del sistema.
+
+La clase tiene los siguientes métodos:
+
+\begin{itemize}
+    \item devolverPiezaMusical: devuelve una pieza musical del género demandado. Recibe dos parámetros:
+    \begin{itemize}
+        \item etiquetaGeneroRequerido: etiqueta de género que se pasará al modelo de Inteligencia Artificial.
+        \item ruidoAleatorio: ruido aleatorio usado para generar dicha muestra musical.
+    \end{itemize}
+    Este método devuelve una pieza musical generada.
+    \item devolverError: devuelve el error cometido entre la pieza generada y la pieza musical a comparar. Recibe dos parámetros:
+    \begin{itemize}
+        \item muestraComparación: muestra de género a comparar.
+        \item ruidoAleatorio: ruido aleatorio usado para generar dicha muestra musical.
+    \end{itemize}
+    \item entrenarModelo: inicia el entrenamiento del modelo de Inteligencia Artificial. Devuelve una lista de cadenas de texto con información sobre el entrenamiento (o errores). Recibe un parámetro compuesto:
+    \begin{itemize}
+        \item l-hyperparámetros: lista de hyperparámetros del entrenamiento.
+    \end{itemize}
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.7\textwidth]{images/diseño-clase-modelo-generador-ia.svg}
+  \caption{Clase ModeloGeneradorIA.}
+\end{figure}
+
+
+\subsection{Clase VAE}
+
+La clase ``VAE'' representa el modelo de \emph{Variational AutoEncocder} de Inteligencia Artificial.
+
+Esta clase servirá para establecer una comparativa entre lo generado por el modelo \emph{GAN} y por el modelo \emph{VAE}.
+
+Hereda todos los comportamientos de la clase padre ``ModeloGeneradorIA''.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.07\textwidth]{images/clase-vae.svg}
+  \caption{Clase VAE.}
+\end{figure}
+
+\subsection{Clase GAN}
+
+La clase ``GAN'' representa el modelo de \emph{Generative Adversarial Network} de Inteligencia Artificial.
+
+Esta clase servirá para generar muestras musicales basjo demanda, de un género musical concreto.
+
+Hereda todos los comportamientos de la clase padre ``ModeloGeneradorIA''.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.07\textwidth]{images/clase-gan.svg}
+  \caption{Clase GAN.}
+\end{figure}
+
+\subsection{ScriptEntrenamiento}
+
+Esta clase representa el ``script'' que se usará para entrenar los modelos de Inteligencia Artificial, que serán usados por el sistema de generación de música.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.4\textwidth]{images/diseño-clase-script-entrenamiento.svg}
+  \caption{Clase ScriptEntrenamiento.}
+\end{figure}
+
+
+\section{Análisis de relaciones}
+
+En esta sección se describen las relaciones que cada clase tiene con las demás. El análisis se efectuará en primera instancia orientado a cada relación y después se mostrará un diagrama de relaciones completo de todas las clases.
+
+\subsection{Sistema - Ayuda}
+
+Representa la relación unidireccional entre la clase Ayuda y la
+clase Sistema, en la cual la clase Sistema consulta a la clase
+Ayuda.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.4\textwidth]{images/relacion-ayuda-sistema.svg}
+  \caption{Relación Sistema - Ayuda.}
+\end{figure}
+
+\subsection{SelectorGeneroMusical - Sistema}
+
+Representa la relación unidireccional existente entre las clases SelectorGeneroMusical y Sistema, en la que el sistema solicita el género de música de la pieza que se quiere generar.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/relacion-selector-genero-musical-sistema.svg}
+  \caption{Relación SelectorGeneroMusical - Sistema.}
+\end{figure}
+
+\subsection{EvaluadorPiezaGenerada - Sistema}
+
+Representa la relación unidireccional existente entre las clases EvaluadorPiezaGenerada y Sistema, que permitirá emitir una valoración de pertenencia de la pieza musical generada con respecto al género solicitado.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/relacion-sistema-evaluador-pieza-musical.svg}
+  \caption{Relación EvaluadorPiezaGenerada - Sistema.}
+\end{figure}
+
+\subsection{GAN - Sistema}
+
+Representa la relación unidireccional existente entre las clases GAN y Sistema, que permitirá al sistema generar música bajo demanda.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/diseño-relacion-gan-sistema.svg}
+  \caption{Relación GAN - Sistema.}
+\end{figure}
+
+\subsection{PiezaMusical - GAN}
+
+Representa la relación unidireccional existente entre las clases PiezaMusical y GAN. Esta relación representa la generación de varias piezas musicales por parte del Sistema.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/diseño-relacion-pieza-musical-gan.svg}
+  \caption{Relación PiezaMusical- GAN.}
+\end{figure}
+
+Las siguiente relaciones se dan dentro de la abstracción contenida en la clase GAN, la cual explica la arquitectura interna del modelo de Inteligencia Artificial.
+
+\subsection{VAE - ModeloGeneradorIA}
+
+De manera análoga a la relación anterior, ésta representa la relación de herencia entre las clases VAE y ModeloGeneradorIA. La clase VAE hereda todos los comportamientos de la clase ModeloGeneradorIA.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/relacion-modelo-generador-ia-vae.svg}
+  \caption{Relación VAE - ModeloGeneradorIA.}
+\end{figure}
+
+\subsection{GAN - ModeloGeneradorIA}
+
+Representa la relación de herencia entre las clases GAN y ModeloGeneradorIA. La clase GAN hereda todos los comportamientos de la clase ModeloGeneradorIA.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/relacion-modelo-generador-ia-gan.svg}
+  \caption{Relación GAN - ModeloGeneradorIA.}
+\end{figure}
+
+\subsection{Transformer - GAN}
+
+El elemento Transformer pertenece a un único elemento GAN. Un modelo GAN contiene uno y sólo un elemento Transformer, que será su elemento generador.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.6\textwidth]{images/relacion-gan-transformer.svg}
+  \caption{Relación Transformer - GAN.}
+\end{figure}
+
+\subsection{PiezaMusicalEtiquetada - PiezaMusical}
+
+Representa la relación de herencia entre las clases PiezaMusicalEtiquetada y PiezaMusical. La clase PiezaMusicalEtiquetada hereda todos los comportamientos de la clase PiezaMusical.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.3\textwidth]{images/relacion-pieza-musical-etiquetada-pieza-musical.svg}
+  \caption{Relación PiezaMusicalEtiquetada - PiezaMusical.}
+\end{figure}
+
+\subsection{PiezaMusicalEtiquetada - CargadorMP3}
+
+Todo elemento PiezaMusicalEtiquetada pertenece a un único elemento CargadorMP3. El elemento cargador de piezas musicales de entrenamiento MP3 contiene una o más representaciones de dichas piezas, que están en un único elemento cargador.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.58\textwidth]{images/relacion-cargadormp3-pieza-musical-etiquetada.svg}
+  \caption{Relación PiezaMusicalEtiquetada - CargadorMP3.}
+\end{figure}
+
+\subsection{ScriptEntrenamiento - CargadorMP3}
+
+Representa la relación unidireccional existente entre las clases ScriptEntrenamiento y CargadorMP3, que permitirá acceder a las representaciones numéricas de los ficheros MP3, para el entrenamiento, durante esta fase
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.7\textwidth]{images/diseño-relacion-script-entrenamiento-cargadormp3.svg}
+  \caption{Relación ScriptEntrenamiento - CargadorMP3.}
+\end{figure}
+
+\subsection{ScriptEntrenamiento - ModeloGneradorIA}
+
+Representa la relación unidireccional entre las clases ScriptEntrenamiento y ModeloGeneradorIA. De esta manera, durante el entrenamiento, se podrán instanciar cuantos modelos de Inteligencia Artificial se necesiten.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.7\textwidth]{images/diseño-relacion-script-entrenamiento-modelo-generador-ia.svg}
+  \caption{Relación ScriptEntrenamiento - ModeloGneradorIA.}
+\end{figure}
+
+\section{Diagrama de clases del sistema}
+
+\subsection{Diagrama de clases completo}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/diseño-diagrama-clases.png}
+  \caption{Diagrama general de clases.}
+\end{figure}

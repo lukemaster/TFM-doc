@@ -1,0 +1,118 @@
+% ESTADO DEL ARTE
+
+\cleardoublepage
+
+\chapter{Estado del Arte}
+
+Deténgase un momento antes de continuar. Piense en el concepto de Inteligencia Artificial en el más amplio espectro posible. Desde la más frívola de las presentaciones (por ejemplo: la inteligencia capaz de dominar el mundo en el universo de la saga de \emph{Terminator} o la Inteligencia Artificial capaz de generar recuerdos tan reales en tu cerebro de \emph{Desafío Total}), hasta la más estricta y formal de las definiciones, proporcionada en la asignatura \textbf{04-MIAR: Razonamiento Aproximado}:
+\emph{``Sistema diseñado para funcionar con un cierto nivel de autonomía y que, basándose en datos de entradas proporcionadas por máquinas o por personas, infiere cómo lograr un conjunto de objetivos establecidos utilizando estrategias de aprendizaje automático o basadas en la lógica y el conocimiento, y genera información de salida, como contenidos Sistemas de inteligencia artificial generativos), predicciones, recomendaciones o decisiones, que influyan en los entornos con los que interactúa.''}
+
+Ahora, vuelva a mirar a su alrededor, coja su teléfono móvil y haga cualquier consulta, regule las luces con el uso de su voz o pregunte a uno de los asistentes de voz que tenga a mano qué hora es y sea consciente de la tecnología que le rodea. El momento histórico que acontece ha permitido que anhelos del cine de los años 80 y 90, se basen en modelos matemáticos de la década de los 50 para que, con la potencia computacional de la segunda década de los 2000, sea capaz de empezar a vivirse en el día a día lo que antes era una utopía literaria.
+
+Siguiendo la línea histórica, en el marco de las redes neuronales, en los años 80 empieza a aflorar el concepto \emph{Deep Learning}, sustentado en los algoritmos de retroprogragación de los pesos para la modulación y aprendizaje de una red neuronal.
+
+Aún así, no son más potentes hoy en día las redes neuronales, de lo que lo eran entre las décadas de los 50 a 80, simplemente se ha propiciado el marco computacional, de cálculo y memoria, para ser manejadas de manera más precisa y con un tamaño creciente.
+
+Y como si de un ecosistema vivo se tratara, el software que sustenta y ``da vida'' a los modelos matemáticos de \emph{Redes Neuronales}, han inferido en la creación, expansión y venta de hardware específico, como son los procesadores orientados a Inteligencia Artificial o la expansión de los procesadores gráficos, que por su arquitectura interna, son capaces de computar operaciones con matrices cada vez de mayor tamaño y cada vez más rápido.
+
+Existe un completamente nuevo (no tiene más de 20 años) que no se puede pasar por alto: el concepto de \textbf{Big Data}. Con la explosión de las Bases de Datos en las décadas de los 70 y 80 del siglo pasado y la posterior consolidación de los Sistemas Gestores de Base de Datos, es en 2004 cuando Google presenta el concepto \emph{MapReduce}, como paradigma del manejo de información de manera paralela y distribuida. Esto, junto con el concepto \emph{IOT: Internet de las cosas} y la creación de sensores y captadores cada vez más livianos y parcos en consumo, ha provocado que la cantidad de datos, algunos de ellos etiquetados, agrupados en \emph{Datasets}, sea cada vez mayor y cuente con una diversidad temática nunca antes vista.
+
+Así pues, un volumen y diversidad de datos cada vez mayor y una potencia de cálculo en consonancia, han dado lugar a mayores y mejores sistemas predictivos en muchos ámbitos, análisis de características en imágenes (Redes Neuronales Convolucionales), modelos de procesamiento del lenguaje natural (Transformers y LLMs), detección de anomalías en series temporales (modelos ARIMA, LSTMs), optimización de procesos industriales mediante mantenimiento predictivo, análisis de sentimientos en redes sociales, generación de contenido multimedia con IA generativa, mejora en la personalización de recomendaciones en plataformas digitales y simulaciones avanzadas en ciencias computacionales y biológicas.
+
+Entre estos nuevos sistemas, están los incipientes modelos generativos, aparecidos a finales de la década de los años 90 del siglo pasado y principios de los 2000. Estos modelos son capaces de generar nuevo contenido, desarrollando cada vez un comportamiento más cercano al humano.
+
+Aunque no sería hasta 2013 cuando apareciera el concepto \emph{VAE: Autoencoder Variacional} y 2014, cuando surgiera el concepto \emph{GAN: Red Generativa Adversarial}. Estos modelos, basados en \emph{Deep Learning}, proponen dos maneras de captar conocimiento a través del procesamiento de datos etiquetados.
+
+\section{VAE: Variational Auto Encoders. Autoencode Variacional}
+
+Según viene regocido en el artículo ``Autoencoding variational bayes''\citep{kingma2013vae}, los \emph{Autoencoders Variacionales} (VAE) han recorrido un largo camino desde su concepción hasta convertirse en una de las herramientas fundamentales en la generación de datos mediante inteligencia artificial. Desde su aparición, han sido una alternativa sólida a otros modelos generativos debido a su capacidad para estructurar representaciones latentes de manera probabilística, lo que ha permitido una mayor estabilidad en la generación y una mayor coherencia en la producción de datos sintéticos. Diseñados como una extensión de los autoencoder en su origen, los VAE cuentan con la diferencia clave de que en lugar de mapear cada entrada a un único punto en el espacio latente, lo hacen a una distribución probabilística. Esto permite una generación más controlada y variada. Esta innovación fue fundamental en áreas como la generación de imágenes y la modelización de secuencias temporales, donde la capacidad de interpolación y extrapolación de datos era esencial.
+
+Conforme la investigación avanzó, los VAE comenzaron a adaptarse a nuevas aplicaciones, encontrando en la música un campo fértil para su desarrollo. La estructura musical, caracterizada por la interdependencia entre notas, acordes y estructuras melódicas, representó un desafío único para los modelos generativos. A diferencia de la generación de imágenes, donde la relación espacial entre píxeles es clave, en la música la relación entre eventos a lo largo del tiempo es lo que define la coherencia de una composición. Esto llevó a la combinación de VAE con otros enfoques como redes recurrentes y transformers, logrando modelos capaces de generar secuencias musicales con un sentido de continuidad más refinado. Uno de los avances más notables en este ámbito, fue publicado en el artículo científico ``A Hierarchical Latent Vector Model for Learning Long-Term Structure in Music''\citep{roberts2018musicvae}, desarrollado por \emph{Google Brain}, que introdujo un enfoque basado en aprendizaje latente para la interpolación y transformación de melodías.
+
+La evolución de los VAE en la generación musical no se ha limitado únicamente a la síntesis de melodías, sino que también ha explorado la transformación estilística y la personalización de la música. Modelos recientes han incorporado mecanismos que permiten a los usuarios modificar atributos específicos de una pieza, como el tempo, la armonía o la instrumentación, generando variaciones a partir de un conjunto de datos inicial. Uno de los modelos más innovadores en este sentido es \emph{Jukebox}, desarrollado por OpenAI, que combina VAE con transformers para generar música con una calidad cercana a la de una composición humana.
+
+A pesar de estos avances, los VAE aún presentan desafíos en la generación musical. Uno de los principales problemas ha sido la calidad del audio generado, ya que muchos modelos basados en VAE tienden a producir sonidos menos nítidos en comparación con otros enfoques como las Redes Generativas Adversariales (GANs). Sin embargo, investigaciones recientes han abordado este problema mediante la incorporación de técnicas híbridas que combinan la estabilidad de los VAE con la capacidad de refinamiento de las GANs, permitiendo una síntesis de audio más realista y detallada.
+
+%En conclusión, los Autoencoders Variacionales han pasado de ser una curiosidad teórica a convertirse en una de las tecnologías más influyentes en el campo de la generación musical asistida por inteligencia artificial.%  ---> one of final conclusions
+
+\section {GANS: Generative Adversarial Networks. Redes Generativas Adversariales.}
+
+Según la famosa publicación de Ian GoodFellow: ``Generative adversarial networks''\citep{goodfellow2014gan} allá por 2014, hace poco más de 10 años, las \emph{Redes Generativas Adversariales} o \emph{GANs}, han revolucionado la generación de contenido en múltiples ámbitos, incluyendo la música. Estos modelos han demostrado que a veces, la rivalidad puede ser muy beneficiosa, si hace crecer a los contrincantes. Mientras que el generador intenta crear muestras cada vez más semejantes a los datos reales, el discriminador intentará distinguir entre las muestras generadas (falsas) y las reales. El generador tomará apunte de cuál es la distancia que el discriminador estableció entre sendas muestras, para intentar hacerlo mejor la próxima vez, lo que llevará a una mejora progresiva de la calidad del contenido generado. Esta dinámica ha permitido que las GANs sean aplicadas en la generación de imágenes, texto y, más recientemente, en la creación de música.
+
+Inicialmente, la aplicación de las GANs en la música se encontró con desafíos significativos debido a la naturaleza estructurada y secuencial de la música. Para abordar esto, se desarrollaron variantes como \emph{MuseGAN}, introducida en 2018, que permitió la generación de música polifónica con múltiples instrumentos utilizando una arquitectura basada en redes convolucionales y recurrentes. MuseGAN fue un avance clave, ya que mostró que las GANs podían modelar estructuras musicales más complejas y generar composiciones que mantenían la cohesión armónica y rítmica.
+
+Posteriormente, el campo avanzó con la introducción de \emph{C-RNN-GAN}, que combinaba redes recurrentes con GANs para generar secuencias musicales con coherencia temporal mejorada. Esta arquitectura permitió capturar mejor las dependencias a largo plazo en la música. Con el tiempo, se han desarrollado más modelos, como \emph{MidiNet}, que utilizó redes convolucionales para mejorar la calidad de las secuencias generadas en el dominio simbólico.
+
+Uno de los enfoques más recientes en la generación musical mediante GANs ha sido la integración con \emph{Transformers}, lo que ha dado lugar a modelos como \emph{A Transformer Generative Adversarial Network for Multi-Track Music Generation}. Este modelo, basado en la estructura de atención de los Transformers, permite capturar relaciones a largo plazo entre diferentes pistas musicales, mejorando la calidad y la coherencia de la música generada.
+
+Las GANs han transformado la forma en que se genera música mediante inteligencia artificial, permitiendo la síntesis de composiciones originales con una calidad cada vez mayor. Aunque aún existen desafíos técnicos, los avances en arquitectura y entrenamiento están allanando el camino para un futuro donde la IA pueda desempeñar un papel fundamental en la creatividad musical.
+
+\section{Coherencia musical y memoria neuronal}
+
+En el artículo ``Niveles de coherencia musical: la aportación de la música a la construcción de mundos''\citep{sibetrans2025coherencia} se hace mención a varios tipos de coherencia musical. En concreto, se expresa una de ellas como la \emph{\textbf{coherencia contextual}}: ``se refiere a la consideración de la pieza musical como unidad de sentido, como un universo en sí mismo.''
+
+Es decir, estableciendo una analogía mundana, si cada pieza musical fuera un edificio en construcción, el cual se fuera construyendo mientras se escucha dicha pieza, \emphj{no se podría poner el techo antes que los cimientos}. Es decir, imagínese una escala creciente de notas en una pieza musical en la que, de repente, los saltos entre notas sean diferentes y cuya progresión sea hacia arriba y hacia abajo. Esto daría lugar a incoherencia en lo que se esperaba en la pieza musical. De ahí que saber y recordar cuál fue la nota anterior (anteriores) es importante a la hora de componer y de almacenar información sobre música existente.
+
+Así pues, las composiciones generadas por inteligencia artificial deben evitar la pérdida de estructura melódica y armónica, garantizando que la música no se perciba como una simple sucesión de notas sin conexión. Para abordar este problema, se ha trabajado en la integración de mecanismos que permitan capturar relaciones de largo plazo dentro de la música, asegurando que las redes neuronales generativas no solo reproduzcan patrones locales, sino que comprendan el contexto global de una pieza. 
+
+El modelo que se propone en el artículo \textbf{``A Transformer Generative Adversarial Network for Multi-Track Music Generation''}\citep{jin2022transformer}, es una solución basada en el uso de \emph{self-attention}, una técnica que permite modelar dependencias a largo plazo dentro de la música polifónica. Este enfoque posibilita que el sistema aprenda la relación entre distintas voces o instrumentos, facilitando la sincronización entre líneas melódicas y estructuras rítmicas complejas. La integración de Transformers con GANs ha resultado ser una estrategia eficaz para reforzar la coherencia estructural, dado que los Transformers pueden procesar grandes secuencias de información de manera paralela, permitiendo que las decisiones de generación no estén limitadas a ventanas de tiempo cortas, como sucede en las arquitecturas recurrentes. 
+
+Desde otra perspectiva, en la publicación \textbf{``Estado del Arte - M72.1.09 Gestión y análisis de datos no estructurados''}\citep{state_of_the_art2023} se enfatiza la importancia de los mecanismos de memoria en los modelos de generación musical. Tradicionalmente, las Redes Neuronales Recurrentes (RNN) y sus variantes como LSTM han sido utilizadas para modelar secuencias musicales, dado que son capaces de retener información de eventos pasados para influenciar la generación futura. Sin embargo, estas arquitecturas presentan problemas cuando se requiere mantener coherencia a lo largo de pasajes extensos. Los Transformers han emergido como una alternativa más robusta, al permitir que las relaciones entre eventos distantes sean capturadas de manera más eficiente, sin la necesidad de un procesamiento secuencial que limite la capacidad de memoria del modelo.
+
+Uno de los retos en la generación musical es garantizar que los cambios en la melodía o armonía no sean abruptos ni carezcan de lógica interna. En este sentido, la combinación de GANs con Transformers introduce una mejora significativa en la modelización de estructuras globales. Mientras que las GANs se encargan de generar datos con alta fidelidad perceptual, los Transformers refuerzan la coherencia musical, asegurando que las transiciones entre secciones sean naturales y que la progresión armónica se mantenga fluida. Esta integración ha demostrado ser particularmente útil en la generación de música multicanal, donde la interacción entre instrumentos debe ser consistente y reflejar principios musicales bien establecidos.
+
+Las investigaciones revisadas resaltan que la memoria neuronal y la coherencia musical son dos aspectos fundamentales en la evolución de los modelos generativos para la música. La capacidad de retener información a largo plazo y aplicar estos conocimientos en la generación de nuevas secuencias es lo que diferencia un modelo efectivo de uno que produce música carente de estructura. La aplicación de Transformers junto con GANs abre nuevas posibilidades en la generación de composiciones musicales que respeten la lógica interna de una obra, proporcionando un avance significativo en la inteligencia artificial aplicada a la creatividad musical.
+
+
+\section{Explorando los ejemplos del estado del arte}
+
+Las razones más relevantes a la hora de seleccionar los ejemplos de GANs y VAE del estado del arte, son su capacidad para modelar la generación de música con un alto nivel de coherencia estructural y estilística. Mientras que los VAE permiten la interpolación entre estilos musicales y la manipulación controlada de características latentes, las GANs han demostrado ser efectivas en la producción de música polifónica de calidad superior. La evolución de los modelos generativos en la música ha seguido un patrón de avance progresivo, impulsado por la necesidad de generar contenido coherente, expresivo y personalizado. A lo largo de los últimos años, se ha observado una convergencia entre distintas arquitecturas, desde modelos basados en representaciones probabilísticas como los \textbf{Autoencoders Variacionales (VAE)} hasta enfoques más sofisticados que emplean \textbf{Redes Generativas Adversariales (GANs) con Transformers}. Esta convergencia ha permitido superar limitaciones previas y expandir las posibilidades creativas en la composición automatizada.
+
+La aplicación de los VAE en la generación musical ha sido ampliamente explorada, dado que estos modelos permiten interpolaciones estilísticas y modificaciones controladas de las piezas generadas. Su capacidad para capturar distribuciones latentes ha facilitado la transformación de obras musicales preexistentes, ajustando atributos específicos como el ritmo, la instrumentación y el timbre. En este sentido, la documentación revisada sobre el uso de los VAE en la generación musical ha sido clave para comprender cómo sistemas como \textbf{MusicVAE} han logrado avances en la manipulación de secuencias melódicas y en la exploración de nuevas combinaciones armónicas. La incorporación de documentos específicos ha permitido profundizar en la integración de técnicas probabilísticas para modelar atributos musicales, facilitando el diseño de estructuras latentes adaptadas a la composición automatizada.
+
+El desarrollo de las \textbf{GANs} ha representado un hito en la generación de música con mayor realismo. La estructura competitiva entre generador y discriminador ha permitido alcanzar niveles superiores de fidelidad en la síntesis de melodías, armonías y ritmos, lo que se evidencia en trabajos como \textbf{``MuseGAN: Multi-track Sequential Generative Adversarial Networks for Symbolic Music Generation and Accompaniment''}\citep{dong2018musegan}, que han mostrado la capacidad de estas redes para producir música polifónica coherente, incorporando múltiples instrumentos en una misma composición. En este aspecto, la documentación revisada ha sido clave para entender el papel de las GANs en la generación de música, destacándose fuentes que describen la evolución de estas redes en su aplicación a la música multicanal. La información contenida en estos documentos ha sido esencial para comprender cómo la integración de mecanismos de autoatención en las GANs ha mejorado la coherencia armónica y la estructura rítmica, permitiendo la generación de piezas musicales más complejas y expresivas.
+
+El impacto de los \textbf{Transformers en la generación musical} ha sido otro factor determinante en la evolución de los modelos generativos. Su capacidad para manejar relaciones de largo alcance en las secuencias ha permitido generar composiciones con una cohesión superior. La combinación de Transformers con GANs ha dado lugar a arquitecturas avanzadas que integran mecanismos de autoatención para modelar de manera efectiva la interacción entre distintos elementos musicales.
+
+\newpage
+A continuación, se enumeran los documentos utilizados y su justificación en el contexto del desarrollo del trabajo:
+
+\begin{enumerate}
+    \item \textbf{Estado del arte - M72.1.09 Gestión y análisis de datos no estructurados} \\ 
+    Se ha utilizado para comprender las tendencias actuales en modelos generativos, especialmente en la evolución de arquitecturas basadas en \textbf{Transformers} y su impacto en la generación de contenido musical.
+
+    \item \textbf{AI of Things (VI) - Inteligencia Artificial Generativa, creando música a ritmo de perceptrón} \\ 
+    Documento clave para profundizar en la aplicación de \textbf{GANs y VAE en la síntesis musical}, detallando cómo estos modelos pueden ser utilizados para generar piezas de alta calidad y personalización.
+
+    \item \textbf{A Transformer Generative Adversarial Network for Multi-Track Music Generation} \\ 
+    Se ha empleado para comprender los enfoques más recientes que combinan \textbf{Transformers con GANs}, mostrando cómo la autoatención mejora la coherencia armónica y la estructura de la música generada.
+
+    \item \textbf{TFG Antonio Carpintero Castilla} \\ 
+    Aporta un caso de estudio relevante sobre la generación de música en un ámbito específico, como el género \textbf{Lo-Fi}, permitiendo analizar la adaptación de modelos generativos a estilos concretos.
+
+    \item \textbf{Attributes-Aware Deep Music Transformation} \\ 
+    Se ha utilizado para entender la transformación musical basada en modelos generativos, explorando cómo las técnicas de modelado latente pueden modificar atributos específicos sin alterar la estructura de una composición.
+\end{enumerate}
+
+Estos documentos han permitido construir una visión integral sobre el estado actual de la generación de música mediante inteligencia artificial, aportando conocimientos clave sobre las arquitecturas más avanzadas y sus aplicaciones en la composición automatizada.
+
+\renewcommand{\arraystretch}{1.3} % Espaciado vertical en filas
+
+\input{tablas/tabla1.tex}
+
+Como se puede contemplar en la tabla \ref{tab1} los requerimientos establecidos en este TFM (última fila con celdas en color azul) no se llegan a satisfacer por completo por ningún trabajo previo. Si bien, hay que remarcar dos de entre todos ellos.
+
+En este trabajo se intentará establecer una comparativa entre soluciones basadas en los dos tipos de arquitectura: VAE y GANs. Por lo que, cogidos de uno en uno:
+
+\input{tablas/tabla2.tex}
+
+Si se trata de hacer un modelo basado en redes VAE, \textbf{IA en la creatividad: Explorando la generación de arte y música} es un buen ejemplo del que partir y en el que apoyarse, como se ve en el fragmento de tabla \ref{tab2}.
+
+\input{tablas/tabla3.tex}
+
+Por el contrario, si se trata de mezclar redes GAN con el uso de Transformers para mantener la coherencia, el ejemplo más representativo puede ser \textbf{A Transformer Generative Adversarial Network for Multi-Track Music Generation}, representado en el fragmento de tabla \ref{tab3}.
+
+Si bien no se enfocó al uso de generación de música audible, dada la minuciosidad de la explicación, la extensión y el uso de imágenes como refuerzo de las explicaciones. Didácticamente hablando, es un documento ejemplar.
+
+
+

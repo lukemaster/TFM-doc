@@ -1,0 +1,55 @@
+
+\chapter{Diagramas de Secuencia}
+
+Tras la especificación del modelo de clases, el siguiente paso es crear un nuevo diagrama, en el que los dos hasta ahora mostrados, el diagrama de caso de uso y la especificación de modelo de clases, se unan y muestren una nueva visión de la información, en la que se aprecie el flujo de información entre las clases, recreando las funciones de los casos de uso, y mostrando todo esto bajo una progresión temporal. A esto se le llama Diagrama de Secuencia o Diagrama de Caso de Uso Dinámico.
+
+En estos diagramas, la progresión temporal se despliega en el eje vertical hacia abajo, y el intercambio de datos entre clases se representa con líneas horizontales que van desde un usuario a una clase, o de una clase a otra.
+
+Los diagramas de secuencia diseñados son los siguientes:
+
+\begin{itemize}
+    \item Creación de pieza musical.
+    \item Evaluación de pieza musical.
+    \item Ayuda.
+\end{itemize}
+
+Estos diagramas de secuencia dejan entrever que, en todo momento, la instanciación de objetos de clase ya se ha producido. Es decir, el sistema será un software latente e instanciable bajo demanda, que carecerá de necesidad de ser inicializado de cualquier modo.
+
+\newpage
+\section{Creación de pieza musical}
+
+Este diagrama de secuencia representa el flujo de eventos que ocurren cuando se solicita la creación de una pieza musical.
+
+El usuario insta al sistema, ya iniciado previamente y este le da la oportunidad de selecionar el género musical.
+
+Tras esta selección, se produce la llamada al objeto ModeloGeneroMúsica, que devolverá una pieza musical del género requerido.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.9\textwidth]{images/diagrama-secuencia-generar.svg}
+  \caption{Diagrama de secuencia \emph{Creación de pieza musical}.}
+\end{figure}
+
+\section{Evaluación de pieza musical}
+
+Este diagrama de secuencia representa el flujo de eventos que ocurren cuando se emite una evaluación sobre una pieza musical generada.
+
+El usuario insta al sistema y recorre todos los pasos a seguir para la generación de una pieza musical de un género concreto. Una vez generada, ya puede emitir su valoración. El sistema albergará dicha evaluación.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.9\textwidth]{images/diagrama-secuencia-eval.svg}
+  \caption{Diagrama de secuencia \emph{Evaluación de pieza musical}.}
+\end{figure}
+
+\section{Consultar ayuda}
+
+Este diagrama de secuencia representa el flujo de eventos que ocurren cuando se consulta la ayuda sobre el uso del programa.
+
+El usuario, en cualquier momento, puede solicitar ayuda sobre el uso y funcionamiento del sistema al mismo. El sistema muestra la ayuda del programa por pantalla.
+
+\begin{figure}[H]
+  \centering
+  \includesvg[width=0.5\textwidth]{images/diagrama-secuencia-ayuda.svg}
+  \caption{Diagrama de secuencia \emph{Consultar ayuda}.}
+\end{figure}
