@@ -47,14 +47,26 @@ La figura \ref{fig:pantalla-descarga} muestra el diseño del panel que aparecer�
 Al igual que en el panel anterior, el botón de ayuda estará visible e interactuable.
 
 \begin{figure}[H]
-    \begin{center}
-      \subfigure[Pantalla de selección de género musical.]{
-        \includegraphics[width=0.35\textwidth]{images/panel_seleccion.png}
-          \label{fig:pantalla-seleccion}}
-      \subfigure[Pantalla de descarga y valoración.]{
-        \includegraphics[width=0.35\textwidth]{images/panel-descarga-valoracion.png}
-          \label{fig:pantalla-descarga}}
-      \caption{Diseño de paneles de pantalla.}
-      \label{fig:diseno-panales}
-    \end{center}
-  \end{figure}
+  \centering
+  \resizebox{0.7\textwidth}{!}{
+    \begin{minipage}{\textwidth}
+      \centering
+      \begin{subfigure}[t]{0.4\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{images/panel_seleccion.png}
+          \caption{Pantalla de selección de género musical.}
+          \label{fig:pantalla-seleccion}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{0.4\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{images/panel-descarga-valoracion.png}
+          \caption{Pantalla de descarga y valoración.}
+          \label{fig:pantalla-descarga}
+      \end{subfigure}
+    \end{minipage}
+  }
+  \caption{Diseño de paneles de pantalla.}
+  \label{fig:diseno-paneles}
+\end{figure}
+
