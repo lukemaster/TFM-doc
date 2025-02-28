@@ -17,10 +17,52 @@ Los paquetes que se pueden extraer apéndice ``Diseño de clases''\ref{diseño-c
 
 No existirá jerarquía entre paquetes, por lo tanto, ningún paquete contendrá a uno o varios otros.
 
+\section{Paquete Aplicación}
+Este paquete contiene las clases encargadas de conformar una aplicación informática de cara al usuario. 
+
+Las clases contenidas son:
+
+\begin{itemize}
+  \item Sistema.
+  \item SelectorGéneroMusical.
+  \item EvaluadorPiezaGenerada.
+  \item Ayuda.
+\end{itemize}
+
+La clase \emph{Sistema} y por ende, este paquete, verán al modelo de Inteligencia Artificial ya compilado como recurso.
+
+\section{Paquete ModelosIA}
+
+Este otro paquete es el encargado de contener todas las clases que intervienen en la conformación de un modelo de Inteligencia Artificial y que darán lugar a los objetos de sendos modelos utilizados en este trabajo.
+
+La lista de clases que se pueden encontrar en este paquete son:
+\begin{itemize}
+  \item modeloGeneradorIA.
+  \item VAE.
+  \item GAN.
+  \item Transformer.
+\end{itemize}
+
+
+\section{Paquete CargadorDataset}
+
+Las clases que están contenidas en este paquete van orientadas al manejo del \emph{Dataset} y la abstracción de las piezas musicales en él contenidas.
+
+Las clases que conforman este paquete son:
+\begin{itemize}
+  \item PiezaMusical.
+  \item PiezaMusicalEtiquetada.
+  \item CargadorMP3.
+  \item ScriptEntrenamiento.
+\end{itemize}
+
+Se hace un especial hincapié en la clase \emph{ScriptEntrenamiento}, que si bien no está colocada en este paquete de manera trivial, pues sirve para manejar el \emph{Dataset}, también controla y gestiona todo el proceso de entrenamiento de los modelos y es la pieza central de todo el proceso previa puesta en producción, que se hace para generarlos.
+
+
 \section{Diagrama general de paquetes}
 
 \begin{figure}[H]
   \centering
-  \includesvg[width=0.5\textwidth]{images/diagrama-paquetes.svg}
+  \includesvg[width=0.4\textwidth]{images/diagrama-paquetes.svg}
   \caption{Diagrama general de paquetes.}
 \end{figure}

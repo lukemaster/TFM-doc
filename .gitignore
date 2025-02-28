@@ -1,7 +1,10 @@
 svg-inkscape
-.pdf
-.gz
 .DS_Store
-.toc
-.lot
-.out
+*.pdf
+*.gz
+*.toc
+*.lot
+*.log
+*.lof
+*.aux
+*.out
