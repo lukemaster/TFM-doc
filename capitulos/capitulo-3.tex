@@ -308,102 +308,22 @@ Para ello, es necesario tratarlos, guardarlos, manejarlos correctamente, transfo
 
 
 \subsection{Tratamiento de los datos}
+\label{tratamiento-datos}
 
 Para el entrenamiento de los modelos basados en Inteligencia Artificial que se plantearán para cumplir los objetivos, se van a utilizar 3 extensos datasets, cuyo tamaño y diversidad de géneros musicales contenidos abran posibilidad de poder obtener una herramienta que tenga un desempeño a la altura de lo que se podría esperar.
 
 Asi pues, los 3 datasets propuestos son:
 
-\subsubsection{FMA (Free Music Archive) Dataset}
-
-Con un tamaño de más de 100,000 pistas y 160 géneros, se trata de un \emph{dataset} enorme, que cuenta con piezas representativas de cada género. Está respaldado por un repositorio \href{https://github.com/mdeff/fma}{GitHub} que además provee unos \emph{scripts} con ejemplos y algoritmos en \emph{Python}, que extraen información sobre estructura, contenido, organización, etc., del conjunto de datos.
-
-Todas las pistas se encuentran en formato \emph{MP3} (44.1 kHz, 128-320 kbps). Existen tres variantes en cuanto al tamaño del conjunto de datos:
-
 \begin{itemize}
-    \item \textbf{FMA Small:} 8,000 pistas, 8 géneros, aproximadamente 1GB.
-    \item \textbf{FMA Medium:} 25,000 pistas, 16 géneros, aproximadamente 10GB.
-    \item \textbf{FMA Large:} 106,000 pistas, 161 géneros, aproximadamente 100GB. \textbf{(Esta ha sido la variante utilizada).}
+    \item \textbf{FMA (Free Music Archive) Dataset}
+        Las pistas se encuentran en formato \emph{MP3}, existiendo hasta tres variantes de tamaño del conjunto de datos.
+        Se incluyen metadatos como título, artista, álbum, y etiquetas de género.
+    \item \textbf{Million Song Dataset}
+        Contiene 1500 ficheros en formato \emph{MP3}, distribuidos en 15 categorías de género. Es un dataset que se puede nutrir de servicios como Spotify y Last.fm.
+    \item \textbf{MTG-Jamendo Dataset}
+       Cuenta con más de 50,000 pistas y 190 géneros, distribuidos en ficheros \emph{MP3}. Los metaadatos están descritos en etiquetas de géneros musicales, instrumentos, emociones y temas.
 \end{itemize}
-
-Se incluyen metadatos como título, artista, álbum, y etiquetas de género. Los géneros musicales están repartidos en niveles de manera jerárquica, siendo los géneros \emph{parent} de primer orden los siguientes:
-
-\begin{multicols}{4}
-\begin{itemize}
-    \item Blues
-    \item Classical
-    \item Country
-    \item Disco
-    \item Hip-Hop
-    \item Jazz
-    \item Metal
-    \item Pop
-    \item Reggae
-    \item Rock
-\end{itemize}
-\end{multicols}
-
-\subsubsection{Million Song Dataset}
-
-Se trata de un \emph{dataset vivo}. De base, cuenta con 1500 ficheros en formato \emph{MP3}, distribuidos en 15 categorías de género. Sin embargo, \href{https://www.kaggle.com/datasets/undefinenull/million-song-dataset-spotify-lastfm}{este conjunto de datos} puede hacerse tan grande como se necesite, pues viene acompado de unos ficheros \emph{Python} que realizan una integración con servicios como Spotify y Last.fm. Además de eso, la sincronización con estos dos servicios brinda acceso a metadatos sobre popularidad, características del sonido y etiquetas de géneros.
-
-Así pues, se podría decir que este \emph{dataset} brinda la posibilidad de tener ``toda'' la música de la red disponible para trabajar con ella.
-
-Los géneros de los que se dispone son:
-\begin{multicols}{4}
-\begin{itemize}
-    \item Electronic
-    \item Rock
-    \item Pop
-    \item Folk
-    \item Jazz
-    \item Blues
-    \item Country
-    \item Reggae
-    \item Latin
-    \item R\&B
-    \item World
-    \item Rap
-    \item Punk
-    \item New Age
-    \item Metal
-\end{itemize}
-\end{multicols}
-
-\subsubsection{MTG-Jamendo Dataset}
-
-Este \emph{dataset} cuenta con más de 50,000 pistas y 190 géneros, en ficheros \emph{MP3} de 320 kbps . Enorme donde los haya, esta librería fue desarrollada para tareas de etiquetado automático de música. Contiene un conjunto de etiquetas entre las que se encuentran: géneros musicales, instrumentos, emociones y temas. Viene respaldado por un repositorio \href{https://github.com/MTG/mtg-jamendo-dataset}{GitHub} que provee de scripts para su descarga y manejo, así como información sobre su contenido e información estadística.
-
-Los géneros que se pueden encontrar, entre otros, son:
-\begin{multicols}{4}
-\begin{itemize}
-    \item Electronic
-    \item Rock
-    \item Pop
-    \item Folk
-    \item Jazz
-    \item Hip-Hop
-    \item Classical
-    \item Reggae
-    \item Ska
-    \item Swing
-    \item Fusion
-    \item Easy Listening
-    \item Opera
-    \item Gospel
-    \item Holiday
-    \item Comedy
-    \item Spoken Word
-    \item Podcast
-    \item Sound Effects
-\end{itemize}
-\end{multicols}
-
-Dentro de las modalidades de \emph{dataset} que provee este repositorio, se ha elegido \emph{autotagging\_moodtheme}, que provee ficheros de 30 segundos de duración con etiqueta de género, entre otras.
-
-%python3 scripts/download/download.py --dataset autotagging_moodtheme --type audio  /media/luke/32B841C3B8418677/VIU\ dataset\ mtg/ --unpack
-
-%\subsubsection{Tabla comparativa de tramos entre datasets}
-%\input{tablas/table5}
+En la sección \textbf{Materiales - Datos}\ref{materiales-datos} del siguiente capítulo, se puede consultar información mucho más detallada de cada una de estas tres fuentes de datos que se van a utilizar.
 
 \subsection{Aprendiendo sobre géneros musicales}
 

@@ -1,13 +1,12 @@
-\chapter{Apéndice A: Análisis del sistema}
-\label{apendice-a}
+\subsection{Análisis del sistema}
+\label{analisis-del-sistema}
 
-%Como ya se ha comentado en el capítulo 4...
-Se ha elegido UML como método de diseño del software fruto de este proyecto.
+Se ha elegido UML como método de diseño del software fruto de este Trabajo de Fin de Máster.
 
 UML es un lenguaje de modelado de software que tiene sus propios mecanismos para llevar a cabo las tareas, desde la definición de lo
 que serán los ``requisitos funcionales'': lo que se pretende que sea capaz de proporcionar el programa al usuario; hasta la definición de las clases que intervendrán en la codificación de la aplicación, así como cada flujo de información contemplado en el programa final.
 
-\section{Formalización de la especificación de requisitos}
+\subsubsection{Formalización de la especificación de requisitos}
 
 Los requisitos funcionales representan un manifiesto de todos los servicios que el programa proporcionará al usuario y cómo se comporta el sistema en cada una de las acciones llevadas a cabo para rendir esos servicios.
 
@@ -31,7 +30,7 @@ Los requisitos funcionales están denotados por la letra F, seguida de un guión
 
 \end{itemize}
 
-\section{Diagramas de Casos de Uso del Sistema}
+\subsubsection{Diagramas de Casos de Uso del Sistema}
 
 El siguiente paso a seguir en el proceso definido por UML es el diseño de casos de uso.
 
@@ -50,7 +49,9 @@ Los casos de uso que se van describir son los siguientes:
 
 \end{itemize}
 
-\subsection{Diagrama de Casos de Uso: PresentaciónDelSistema}
+\begin{enumerate}
+
+\item{\textbf{Diagrama de Casos de Uso: PresentaciónDelSistema}}
 
 \begin{figure}[H]
   \centering
@@ -113,7 +114,7 @@ excepcional}}} & {\small No se contempla.}
 \hline
 \end{longtable}
 
-\subsection{Diagrama de Casos de Uso: GenerarPiezaMusical}
+\item{\textbf{Diagrama de Casos de Uso: GenerarPiezaMusical}}
 
 \begin{figure}[H]
   \centering
@@ -169,7 +170,7 @@ principal}}
 \hline
 \end{longtable}
 
-\subsection{Diagrama de Casos de Uso: EvaluarPiezaMusicalGenerada}
+\item{\textbf{Diagrama de Casos de Uso: EvaluarPiezaMusicalGenerada}}
 
 \begin{figure}[H]
   \centering
@@ -224,3 +225,4 @@ excepcional}}} & {\small El paso número 2 es opcional.}
 \\
 \hline
 \end{longtable}
+\end{enumerate}

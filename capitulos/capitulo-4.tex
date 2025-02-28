@@ -5,6 +5,168 @@
 \chapter{Materiales y métodos}
 
 \section{Materiales}
+Seguidamente se enumera todo el material que se ha utilizado para la realización de este trabajo.
+
+\subsection{Datos}
+\label{materiales-datos}
+
+En la sección \textbf{Tratamiento de datos}\ref{tratamiento-datos} del capítulo anterior se puede consultar una mención a los dataset que se van a utilizar y que seguidamente se pasan a describir más en profundidad.
+
+\subsubsection{FMA (Free Music Archive) Dataset}
+
+Con un tamaño de más de 100,000 pistas y 160 géneros, se trata de un \emph{dataset} enorme, que cuenta con piezas representativas de cada género. Está respaldado por un repositorio \href{https://github.com/mdeff/fma}{GitHub} que además provee unos \emph{scripts} con ejemplos y algoritmos en \emph{Python}, que extraen información sobre estructura, contenido, organización, etc., del conjunto de datos.
+
+Todas las pistas se encuentran en formato \emph{MP3} (44.1 kHz, 128-320 kbps). Existen tres variantes en cuanto al tamaño del conjunto de datos:
+
+\begin{itemize}
+    \item \textbf{FMA Small:} 8,000 pistas, 8 géneros, aproximadamente 1GB.
+    \item \textbf{FMA Medium:} 25,000 pistas, 16 géneros, aproximadamente 10GB.
+    \item \textbf{FMA Large:} 106,000 pistas, 161 géneros, aproximadamente 100GB. \textbf{(Esta ha sido la variante utilizada).}
+\end{itemize}
+
+Se incluyen metadatos como título, artista, álbum, y etiquetas de género. Los géneros musicales están repartidos en niveles de manera jerárquica, siendo los géneros \emph{parent} de primer orden los siguientes:
+
+\begin{multicols}{4}
+\begin{itemize}
+    \item Blues
+    \item Classical
+    \item Country
+    \item Disco
+    \item Hip-Hop
+    \item Jazz
+    \item Metal
+    \item Pop
+    \item Reggae
+    \item Rock
+\end{itemize}
+\end{multicols}
+
+\subsubsection{Million Song Dataset}
+
+Se trata de un \emph{dataset vivo}. De base, cuenta con 1500 ficheros en formato \emph{MP3}, distribuidos en 15 categorías de género. Sin embargo, \href{https://www.kaggle.com/datasets/undefinenull/million-song-dataset-spotify-lastfm}{este conjunto de datos} puede hacerse tan grande como se necesite, pues viene acompado de unos ficheros \emph{Python} que realizan una integración con servicios como Spotify y Last.fm. Además de eso, la sincronización con estos dos servicios brinda acceso a metadatos sobre popularidad, características del sonido y etiquetas de géneros.
+
+Así pues, se podría decir que este \emph{dataset} brinda la posibilidad de tener ``toda'' la música de la red disponible para trabajar con ella.
+
+Los géneros de los que se dispone son:
+\begin{multicols}{4}
+\begin{itemize}
+    \item Electronic
+    \item Rock
+    \item Pop
+    \item Folk
+    \item Jazz
+    \item Blues
+    \item Country
+    \item Reggae
+    \item Latin
+    \item R\&B
+    \item World
+    \item Rap
+    \item Punk
+    \item New Age
+    \item Metal
+\end{itemize}
+\end{multicols}
+
+\subsubsection{MTG-Jamendo Dataset}
+
+Este \emph{dataset} cuenta con más de 50,000 pistas y 190 géneros, en ficheros \emph{MP3} de 320 kbps . Enorme donde los haya, esta librería fue desarrollada para tareas de etiquetado automático de música. Contiene un conjunto de etiquetas entre las que se encuentran: géneros musicales, instrumentos, emociones y temas. Viene respaldado por un repositorio \href{https://github.com/MTG/mtg-jamendo-dataset}{GitHub} que provee de scripts para su descarga y manejo, así como información sobre su contenido e información estadística.
+
+Los géneros que se pueden encontrar, entre otros, son:
+\begin{multicols}{4}
+\begin{itemize}
+    \item Electronic
+    \item Rock
+    \item Pop
+    \item Folk
+    \item Jazz
+    \item Hip-Hop
+    \item Classical
+    \item Reggae
+    \item Ska
+    \item Swing
+    \item Fusion
+    \item Easy Listening
+    \item Opera
+    \item Gospel
+    \item Holiday
+    \item Comedy
+    \item Spoken Word
+    \item Podcast
+    \item Sound Effects
+\end{itemize}
+\end{multicols}
+
+Dentro de las modalidades de \emph{dataset} que provee este repositorio, se ha elegido \emph{autotagging\_moodtheme}, que provee ficheros de 30 segundos de duración con etiqueta de género, entre otras.
+
+%python3 scripts/download/download.py --dataset autotagging_moodtheme --type audio  /media/luke/32B841C3B8418677/VIU\ dataset\ mtg/ --unpack
+
+%\subsubsection{Tabla comparativa de tramos entre datasets}
+%\input{tablas/table5}
+
+
+\subsection{Software}
+
+Para el desarrollo de este trabajo se han utilizado múltiples y diversos programas, desde el momento en que se inició este mismo documento que ustéd está leyendo, hasta que se produzca la ``puesta en producción'' de la aplicación de usuario que permita el uso del modelo de Inteligencia Artificial.
+
+Los recursos de tipo \emph{Software} utilizados son:
+
+\begin{itemize}
+    \item VisualStudio Code. Versión 1.97.2. Entorno de desarrollo de este mismo manual y manejo de datasets y scripts de \emph{Python}.
+    \item TextShop. Version 5.49 (5.49). Compilador \LaTeX.
+    \item Git. Versión 2.39.3 (Apple Git-145). Gestor de versiones de código fuente para los ficheros de código de este mismo manual y del software desarrollado.
+    \item GitHub. Repositorio ``en la nube'' de código fuente.
+    \item reMarkable for MacOS. Versión 3.17.0 (906). Software de sincronización del dispositivo reMarkable 2.
+    \item Mozilla Firefox. Versión 135.0.1 (64-bit). Explorador de Internet utilizado para el acceso a Jupyter Lab.
+    \item TODO: ubuntu
+    \item TODO: JUPITER LAB DEL WINDOWS
+    \item TODO: python, vesión y Pytorch
+    \item TODO: CUDA Y VERSIONES DE CUDA, ETC.
+\end{itemize}
+
+\subsection{Hardware}
+
+El hardware usado para el desarrollo de este TFM ha sido:
+
+\begin{itemize}
+    \item Ordenador \textbf{MacBook Pro 15 pulgadas, 2017.}
+    \begin{itemize}
+        \item Intel Core i7 2.8 GHz Quad-Core.
+        \item 16 GB LPDDR3 2133 MHz.
+        \item Intel HD Graphics 630 - Radeon PRO 555 2 GB PCIe.
+        \item HD SSD 500 GB.
+    \end{itemize}
+    \item Ordenador \textbf{Asus ROG Strix G16 G614JIR-N4004 - Gaming 16 pulgadas, 2024.}
+    \label{ASUS}
+    \begin{itemize}
+        \item Intel Core i9-14900HX.
+        \item 32 GB LPDDR3 2133 MHz.
+        \item NVIDIA RTX 4070 8GB Mobile.
+        \item HD SSD 1 TB.
+    \end{itemize}
+    \item Paper tablet \textbf{reMarkable 2.}
+\end{itemize}
+
+Dada la filia y el vicio de uso con el sistema operativo de Apple, se ha utilizado un Apple MacBook Pro para todo el proceso de escritura de documentación y como terminal de programación, siendo usado como interfaz con el otro ordenador ASUS, usado como nodo de procesamiento para el entrenamiento de los modelos de Inteligencia Artificial.
+
+En las referencias \cite{geeksforgeeks2025jupyter} y \cite{vscode2025jupyter} se puede consultar cómo se ha configurado el ``servidor de procesamiento'' basado en \emph{Jupyter Lab}, instalado en la máquina ASUS\ref{ASUS}, en un Sistema Operativo Ubuntu 24.04.1 LTS.
+
+En la imagen \cite{fig:jupyter-diagram} se pude ver un diagrama de cuáles son los accesos posible que brinda el servidor Jupyter para poder ejecutar el código Python de un situado en un ordenador, desde otro; o para poder directamente ejecutar el código Python situado en un ordenador (MacBook), en otra máquina distinta (ASUS), instanciando el entorno Python de esta otra máquina, a través del puerto configurado.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/jupyter-diagram.png}
+\caption{Diagrama de conexión hardware.}
+\label{fig:jupyter-diagram}
+\end{figure}
+
+Jupyter Lab estará esperando detrás del puerto 8888 de la máquina ASUS, la cual podrá ser instanciada por VistualStudio Code como Jupyter kernel o ser accesible vía explorador de Internet, pudiendo usar el entorno de edición y ejecución web que el servicio provee.
+
+De esta manera se consigue usar toda la potencia de una máquina, desde la comodidad de uso y cercanía que brinda la otra.
+
+\subsection{Modelos}
+
+
 
 \section{Metodología}
 
@@ -37,7 +199,7 @@ Cada una de estas tres herramientas aporta valor a cada uno de los pasos que se 
   \label{fig:crispml-q-diagram}
 \end{figure}
 
-En la imagen\cite{crispml-q-diagram} se puede ver cómo será el diagrama de flujo del desarrollo a seguir con este método.
+En la imagen\ref{crispml-q-diagram} se puede ver cómo será el diagrama de flujo del desarrollo a seguir con este método.
 
 \subsection{Scrum}
 
@@ -147,3 +309,13 @@ El modelo final se despliega en una interfaz interactiva donde los usuarios pued
 \end{itemize}
 
 Se establece un sistema de monitoreo que recopila datos sobre el uso del modelo y permite la mejora continua mediante aprendizaje activo. Se documenta todo el proceso para garantizar la reproducibilidad y facilitar futuras mejoras en la arquitectura del modelo.
+
+\section{UML}
+
+\input{UML/analisis}
+\input{UML/especificacion-modelo-de-clases}
+\input{UML/diagramas-de-secuencia}
+\input{UML/especificacion-requisitos-interfaz}
+\input{UML/diseño-de-clases}
+\input{UML/diagrama-de-paquetes}
+\input{UML/diseño-de-la-interfaz}
