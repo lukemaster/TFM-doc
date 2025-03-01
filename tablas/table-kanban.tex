@@ -1,126 +1,143 @@
 \begin{tcolorbox}[colback=black!85!white, colframe=orange!60!black, fontupper=\color{white},
-title=\textbf{\huge Kanban}, fonttitle=\color{white}]
-{\huge \emph{Sprint 3}}
-    \begin{center}
-    \resizebox{0.8\textwidth}{!}{\begin{tabular}{m{4cm} m{4cm} m{4cm}}
+    title=\textbf{\huge Kanban}, fonttitle=\color{white}]
+    {\huge \emph{Sprint 3}}
         \begin{center}
-        {\Fontauri \huge \emph{to do}}
-        \end{center}
-        & \begin{center}
-        {\Fontauri \huge \emph{in progress}} 
-        \end{center} & 
-        \begin{center}{\Fontauri \huge \emph{done}} 
-        \end{center} \\
-        
-        \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black,
-            title={\textbf{PD-2}}, 
-            fonttitle=\color{black}
-        ]
-        Normalización y codificación de variables.
-        \end{tcolorbox} & \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white,
-            title={\textbf{CD-3}}, 
-            fonttitle=\color{black}
-        ]
-        Identificar valores nulos y outliers.
-        \end{tcolorbox} 
-        &
-        \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white,
-            title={\textbf{CN-1}}, 
-            fonttitle=\color{black}
-        ]
-        \vspace{0.3cm}
-        Definir problema del TFM.
-        \end{tcolorbox}
-        \\
-        \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black,
-            title={\textbf{PD-3}}, 
-            fonttitle=\color{black}
-        ]
-        Dividir dataset en train/val/test.
-        \end{tcolorbox} & \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black,
-            title={\textbf{PD-1}}, 
-            fonttitle=\color{black}
-        ]
-        Limpieza y preprocesamiento de datos.
-        \end{tcolorbox} &
-        \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white,
-            title={\textbf{CN-2}}, 
-            fonttitle=\color{black}
-        ]
-        Revisar al menos 10 artículos.
-        \end{tcolorbox} 
-        \\
-        \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red,
-            title={\textbf{M-1}}, 
-            fonttitle=\color{black}
-        ]
-        Implementar modelo base (benchmark).
-        \end{tcolorbox} & &
-        \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white,
-            title={\textbf{CN-3}}, 
-            fonttitle=\color{black}
-        ]
-        Definir métricas clave (KPIs).
-        \end{tcolorbox} 
-        \\
-        
-        \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red,
-            title={\textbf{M-2}}, 
-            fonttitle=\color{black}
-        ]
-        Probar al menos 2-3 modelos.
-        \end{tcolorbox} & &
-        \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white,
-            title={\textbf{CD-1}}, 
-            fonttitle=\color{black}
-        ]
-        \vspace{0.3cm}
-        Recopilar datasets disponibles.
-        \end{tcolorbox} 
-        \\
-        \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red,
-            title={\textbf{M-3}}, 
-            fonttitle=\color{black}
-        ]
-        Ajustar hiperparámetros con GridSearch/Optuna.
-        \end{tcolorbox} & &
-        \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white,
-            title={\textbf{CD-2}}, 
-            fonttitle=\color{black}
-        ]
-        Realizar análisis exploratorio (EDA).
-        \end{tcolorbox} 
-        \\
-        \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white,
-            title={\textbf{Ev-1}}, 
-            fonttitle=\color{black}
-        ]
-        Comparar métricas de rendimiento.
-        \end{tcolorbox} & &
-        \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white,
-            title={\textbf{CD-4}}, 
-            fonttitle=\color{black}
-        ]
-        Generar visualización de datos.
-        \end{tcolorbox}
-        \\        
-        \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white,
-            title={\textbf{Ev-2}}, 
-            fonttitle=\color{black}
-        ]
-        Generar matriz de confusión.
-        \end{tcolorbox}  &
-        
-        &
-        \\
-        \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white,
-            title={\textbf{IM-1}}, 
-            fonttitle=\color{black}
-        ]
-        Preparar presentación final.
-        \end{tcolorbox} & & \\
-    
-    \end{tabular}}
-    \end{center}
+            \renewcommand{\arraystretch}{0.2} % Reduce la separación entre filas
+            \setlength{\tabcolsep}{8pt} % Reduce la separación entre columnas
+            \resizebox{\textwidth}{!}{ % Ajusta la tabla al 95% del ancho del texto
+            \begin{tabular}{m{4cm} m{4cm} m{4cm} m{4cm} m{4cm}}
+            \begin{center}
+            {\Fontauri \huge \emph{to do}}
+            \end{center}
+            & \begin{center}
+            {\Fontauri \huge \emph{to do}} 
+            \end{center}
+            & \begin{center}
+            {\Fontauri \huge \emph{to do}} 
+            \end{center}
+            & \begin{center}
+            {\Fontauri \huge \emph{in progress}} 
+            \end{center} 
+            & \begin{center}
+            {\Fontauri \huge \emph{done}} 
+            \end{center} \\
+            
+            \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black, title={\textbf{PD-1}}, fonttitle=\color{black}]
+            Normalizar y codificar variables.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black, title={\textbf{PD-2}}, fonttitle=\color{black}]
+            Manejar valores atípicos y nulos.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black, title={\textbf{PD-3}}, fonttitle=\color{black}]
+            Definir proporción de separación de datos.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white, title={\textbf{CD-3}}, fonttitle=\color{black}]
+            Evaluar insuficiencia, sesgo o desbalanceo en los datos.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-1}}, fonttitle=\color{black}]
+            Redactar introducción.
+            \end{tcolorbox}
+            \\
 
-\end{tcolorbox}
+            \begin{tcolorbox}[colback=green!50!white, colframe=green!80!black, title={\textbf{PD-4}}, fonttitle=\color{black}]
+            Verificar balanceo de clases.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red, title={\textbf{M-1}}, fonttitle=\color{black}]
+            Entrenar el VAE.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red, title={\textbf{M-2}}, fonttitle=\color{black}]
+            Evaluar rendimiento inicial.
+            \end{tcolorbox} &
+            &
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-2}}, fonttitle=\color{black}]
+            Definir objetivos generales y específicos.
+            \end{tcolorbox}
+            \\
+            
+            \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red, title={\textbf{M-3}}, fonttitle=\color{black}]
+            Extraer los primeros resultados.
+            \end{tcolorbox} & 
+            \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red, title={\textbf{M-4}}, fonttitle=\color{black}]
+            Implementar y entrenar el modelo GAN-Transformer.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=pink!60!red, colframe=pink!40!red, title={\textbf{M-5}}, fonttitle=\color{black}]
+            Comparar modelos con métricas clave.
+            \end{tcolorbox} &
+            & 
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-3}}, fonttitle=\color{black}]
+            Entender y tomar notas sobre el alcance del proyecto.
+            \end{tcolorbox} 
+            \\
+
+            \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white, title={\textbf{EV-1}}, fonttitle=\color{black}]
+            Analizar interpretabilidad de los resultados.
+            \end{tcolorbox} & 
+            \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white, title={\textbf{EV-2}}, fonttitle=\color{black}]
+            Calcular precisión, recall y F1-score.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white, title={\textbf{EV-3}}, fonttitle=\color{black}]
+            Generar matriz de confusión.
+            \end{tcolorbox} &
+            &
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-4}}, fonttitle=\color{black}]
+            Buscar y analizar artículos y publicaciones relevantes.
+            \end{tcolorbox}    
+            \\
+    
+            
+            \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white, title={\textbf{EV-4}}, fonttitle=\color{black}]
+            Comparar modelos.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=orange!70!white, colframe=orange!90!white, title={\textbf{EV-5}}, fonttitle=\color{black}]
+            Ajustar hiperparámetros y arquitectura.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white, title={\textbf{IM-1}}, fonttitle=\color{black}]
+            Documentar pruebas de los modelos.
+            \end{tcolorbox} &
+            &
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-5}}, fonttitle=\color{black}]
+            Extraer ideas clave.
+            \end{tcolorbox} 
+            \\
+            
+            \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white, title={\textbf{IM-2}}, fonttitle=\color{black}]
+            Preparar informe técnico.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white, title={\textbf{IM-3}}, fonttitle=\color{black}]
+            Diseñar diapositivas con gráficos y métricas.
+            \end{tcolorbox} &
+            \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white, title={\textbf{IM-4}}, fonttitle=\color{black}]
+            Exponer conclusiones.
+            \end{tcolorbox} &
+            &
+            \begin{tcolorbox}[colback=yellow!70!white, colframe=yellow!90!white, title={\textbf{CN-6}}, fonttitle=\color{black}]
+            Identificar tendencias en el estado del arte.
+            \end{tcolorbox} 
+            \\
+    
+            \begin{tcolorbox}[colback=blue!30!white, colframe=blue!40!white, title={\textbf{IM-5}}, fonttitle=\color{black}]
+            Practicar la presentación.
+            \end{tcolorbox} &
+            &&&
+            \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white, title={\textbf{CD-1}}, fonttitle=\color{black}]
+            Encontrar fuentes con datasets adecuados.
+            \end{tcolorbox}
+            \\
+    
+            
+            &&&&
+            \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white, title={\textbf{CD-2}}, fonttitle=\color{black}]
+            Revisar estructura y tipos de datos.
+            \end{tcolorbox} 
+            \\
+
+            &&&&
+            \begin{tcolorbox}[colback=purple!30!white, colframe=purple!40!white, title={\textbf{CD-4}}, fonttitle=\color{black}]
+            Escribir la metodología detallada.
+            \end{tcolorbox} 
+            \\
+        \end{tabular}}
+        \end{center}
+    
+    \end{tcolorbox}
+    

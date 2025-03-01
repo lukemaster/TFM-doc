@@ -182,6 +182,13 @@ Cada una de estas tres herramientas aporta valor a cada uno de los pasos que se 
 
 \subsection{CRISP-ML(Q)}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/crisp-ml-process.jpg}
+    \caption{Diagrama de flujo usado en el desarrollo. Tomado de \cite{crispml}.}
+    \label{fig:crispml-q-diagram}
+  \end{figure}
+
 \emph{CRISP-ML(Q)} conforma un marco estructurado para el desarrollo de proyectos de Machine Learning. Se compone de seis fases:
 
 \begin{enumerate}
@@ -192,13 +199,6 @@ Cada una de estas tres herramientas aporta valor a cada uno de los pasos que se 
     \item \textbf{Evaluación}: Validación de métricas y análisis del rendimiento.
     \item \textbf{Implementación y monitoreo}: Despliegue del modelo y seguimiento en producción.
 \end{enumerate}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\textwidth]{images/crisp-ml-process.jpg}
-  \caption{Diagrama de flujo usado en el desarrollo. Tomado de \cite{crispml}.}
-  \label{fig:crispml-q-diagram}
-\end{figure}
 
 En la imagen\ref{fig:crispml-q-diagram} se puede ver cómo será el diagrama de flujo del desarrollo a seguir con este método.
 
@@ -216,7 +216,7 @@ En la imagen\ref{fig:crispml-q-diagram} se puede ver cómo será el diagrama de 
 
 A continuación, se detalla la planificación del TFM en base a estos marcos metodológicos.
 
-\subsection{Product Backlog}
+\subsection{Product Backlog (Pila de producto)}
 
 Las tareas que se han de llevar a cabo para completar el TFM, incluidos desarrollo de la documentación, software y evaluación y mantenimiento, se han organizado en el siguiente \emph{backlog}:
 
@@ -225,11 +225,16 @@ Las tareas que se han de llevar a cabo para completar el TFM, incluidos desarrol
 \clearpage
 \input{tablas/table-pila-producto}
 \clearpage
-\input{tablas/table-backlog}
-\newpage
+% \input{tablas/table-sprint}
+Estableciendo las ``rondas'' iterables de progreso en \emph{sprints} de Scrum, el siguiente \emph{kanban} ilustra el estado ``actual'' del progreso de este trabajo:
 \input{tablas/table-kanban}
 %\input{tablas/table-kanban-sprints}
+\clearpage
+Como se puede apreciar, al haber un sólo desarrollador para el proyecto, no se han establecido y etiquetado asignaciones de tareas a recursos.
 
+Además, dado el predominante carácter didáctico y explorativo del trabajo, no se ha querido (ni podido, pues una sola persona no debería estimar esfuerzos de tareas) llevar a cabo una estimación de coste o esfuerzo en cada una de las tareas.
+
+Esto podría dar lugar a sprints desbalanceados, pero siendo francos y dada la necesidad imporiosa de conciliación familiar, laboral y estudiantil, marcar sprints rígidos a cumplir sería una toda osadía.
 
 \subsection{Planificación del TFM}
 

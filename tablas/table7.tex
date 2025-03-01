@@ -1,22 +1,106 @@
+% \begin{table}[h]
+%     \centering
+    
+%     \resizebox{\textwidth}{!}{
+%     \begin{tabular}{|c|c|p{8cm}|c|}
+%         \hline
+%         \textbf{Épica} & \textbf{Historia de Usuario} & \textbf{Tareas} & \textbf{Prioridad} \\
+%         \hline
+%         Comprensión del negocio & Definir el problema & Redactar introducción, revisar 10 artículos, definir impacto y KPIs & Alta \\
+%         \hline
+%         Comprensión de los datos & Analizar calidad de los datos & Inspeccionar valores nulos, outliers, generar gráficos EDA & Alta \\
+%         \hline
+%         Preparación de los datos & Preprocesamiento de datos & Normalizar, codificar variables, dividir en train/test & Media \\
+%         \hline
+%         Modelado & Entrenar modelos de ML & Implementar baseline, probar algoritmos, ajustar hiperparámetros & Alta \\
+%         \hline
+%         Evaluación & Validar rendimiento del modelo & Comparar métricas, generar reportes de resultados & Alta \\
+%         \hline
+%         Implementación y monitoreo & Redactar el TFM & Documentar metodología, resultados, preparar presentación & Alta \\
+%         \hline
+%     \end{tabular}}
+% \end{table}
+
 \begin{table}[h]
     \centering
-    \caption{Backlog del TFM basado en CRISP-ML(Q) y Scrum}
-    \resizebox{\textwidth}{!}{
-    \begin{tabular}{|c|c|p{8cm}|c|}
+    \caption{Product Backlog (Pila de producto) del TFM basado en CRISP-ML(Q) y Scrum}
+    \resizebox{0.8\textwidth}{!}{
+    \begin{tabular}{|c|p{8cm}|p{8cm}|}
         \hline
-        \textbf{Épica} & \textbf{Historia de Usuario} & \textbf{Tareas} & \textbf{Prioridad} \\
+        \textbf{Épica (Fase CRISP-ML(Q))} & \textbf{Historia de Usuario} & \textbf{Tareas} \\
         \hline
-        Comprensión del negocio & Definir el problema & Redactar introducción, revisar 10 artículos, definir impacto y KPIs & Alta \\
+        Comprensión del negocio &  Como estudiante, quiero comprender bien el problema para entender el alcance del proyecto. & 
+        \begin{itemize}
+            \item Redactar introducción.
+            \item Definir objetivos generales y específicos.
+            \item Entender y tomar notas sobre el alcance del proyecto.
+        \end{itemize} \\
         \hline
-        Comprensión de los datos & Analizar calidad de los datos & Inspeccionar valores nulos, outliers, generar gráficos EDA & Alta \\
+        Comprensión del negocio & Como estudiante, en mi labor de investigación, quiero revisar literatura existente en torno al problema.  &
+        \begin{itemize}
+            \item Buscar y analizar artículos y publicaciones relevantes. 
+            \item Extraer ideas clave.
+            \item Identificar tendencias en el estado del arte.
+        \end{itemize} \\
         \hline
-        Preparación de los datos & Preprocesamiento de datos & Normalizar, codificar variables, dividir en train/test & Media \\
+        Comprensión de los datos & Como estudiante, emulando a un científico de datos, quiero inspeccionar los datos disponibles para evaluar su calidad. & 
+        \begin{itemize}
+            \item Encontrar fuentes con datasets adecuados.
+            \item Revisar estructura y tipos de datos.
+            \item Evaluar insuficiencia, sesgo o desbalanceo en los datos.
+            \item Escribir la metodología detallada.
+        \end{itemize} \\
         \hline
-        Modelado & Entrenar modelos de ML & Implementar baseline, probar algoritmos, ajustar hiperparámetros & Alta \\
+        Preparación de los datos & Como estudiante y desarrollador, quiero limpiar y transformar los datos para que sean aptos para el modelo. & 
+        \begin{itemize}
+            \item Normalizar y codificar variables.
+            \item Manejar valores atípicos y nulos.
+        \end{itemize} \\
         \hline
-        Evaluación & Validar rendimiento del modelo & Comparar métricas, generar reportes de resultados & Alta \\
+        Preparación de los datos & Como estudiante y desarrollador, quiero dividir los datos en conjuntos de entrenamiento, validación y prueba. & 
+        \begin{itemize}
+            \item Definir proporción de separación de datos.
+            \item Verificar balanceo de clases.
+        \end{itemize} \\
         \hline
-        Implementación y monitoreo & Redactar el TFM & Documentar metodología, resultados, preparar presentación & Alta \\
+        Modelado & Como estudiante, emulando a un científico de datos, quiero entrenar un modelo base para establecer un punto de comparación. & 
+        \begin{itemize}
+            \item Entrenar el VAE.
+            \item Evaluar rendimiento inicial.
+            \item Extraer los primeros resultados.
+        \end{itemize} \\
+        \hline
+        Modelado & Como estudiante, emulando a un científico de datos, quiero entrenar un modelo basado en GAN-Transformer y evaluar su precisión. & 
+        \begin{itemize}
+            \item Implementar y entrenar el modelo GAN-Transformer.
+            \item Comparar modelos con métricas clave.
+        \end{itemize} \\
+        \hline
+        Evaluación & Como estudiante e investigador, quiero evaluar el rendimiento del modelo para justificar su efectividad. &
+        \begin{itemize}
+            \item Calcular precisión, recall y F1-score.
+            \item Generar matriz de confusión.
+            \item Comparar modelos.
+        \end{itemize} \\
+        \hline
+        Evaluación & Como estudiante e investigador, quiero establecer métricas comparativas entre los enfoques y mejorar la red GAN. & 
+        \begin{itemize}
+            \item Analizar interpretabilidad de los resultados.
+            \item Ajustar hiperparámetros y arquitectura.
+        \end{itemize} \\
+        \hline
+        Implementación y monitoreo & Como estudiante, quiero documentar la metodología utilizada para su presentación y evaluación. & 
+        \begin{itemize}
+            \item Documentar pruebas de los modelos.
+            \item Preparar informe técnico.
+        \end{itemize} \\
+        \hline
+        Implementación y monitoreo & Como estudiante, quiero preparar una presentación clara y concisa para la defensa del TFM. & 
+        \begin{itemize}
+            \item Diseñar diapositivas con gráficos y métricas.
+            \item Exponer conclusiones.
+            \item Practicar la presentación.
+        \end{itemize} \\
         \hline
     \end{tabular}}
 \end{table}
