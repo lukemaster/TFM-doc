@@ -119,10 +119,14 @@ Los recursos de tipo \emph{Software} utilizados son:
     \item Draw.io. Editor de diagramas UML.
     \item reMarkable for MacOS. Versión 3.17.0 (906). Software de sincronización del dispositivo reMarkable 2.
     \item Mozilla Firefox. Versión 135.0.1 (64-bit). Explorador de Internet utilizado para el acceso a Jupyter Lab.
-    \item TODO: ubuntu
-    \item TODO: JUPITER LAB DEL WINDOWS
-    \item TODO: python, vesión y Pytorch
-    \item TODO: CUDA Y VERSIONES DE CUDA, ETC.
+    \item Ubuntu 24.04.2 LTS.
+    \item Jupyter (Notebook and Lab). Versión 7.2.2.
+    \item Python Version: 3.12.7 (major=3, minor=12, micro=7, releaselevel='final', serial=0) | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]
+    \item Librería de Ptyhon \emph{Torch}. Version: 2.6.0+cu124. En el apéndice \ref{apendice-a:paquetes} se pude consultar la lista de todos los paquetes y versiones disponibles para el desarrollo.
+    \item CUDA Version: 12.4
+    \item cuDNN Version: 90100
+    \item NVIDIA Driver Version: 550.127.08
+    \item NCCL Version: (2, 21, 5)
 \end{itemize}
 
 \subsection{Hardware}
@@ -150,7 +154,7 @@ El hardware usado para el desarrollo de este TFM ha sido:
 
 Dada la filia y el vicio de uso con el sistema operativo de Apple, se ha utilizado un Apple MacBook Pro para todo el proceso de escritura de documentación y como terminal de programación, siendo usado como interfaz con el otro ordenador ASUS, usado como nodo de procesamiento para el entrenamiento de los modelos de Inteligencia Artificial.
 
-En las referencias \cite{geeksforgeeks2025jupyter} y \cite{vscode2025jupyter} se puede consultar cómo se ha configurado el ``servidor de procesamiento'' basado en \emph{Jupyter Lab}, instalado en la máquina ASUS\ref{ASUS}, en un Sistema Operativo Ubuntu 24.04.1 LTS.
+En las referencias \cite{geeksforgeeks2025jupyter} y \cite{vscode2025jupyter} se puede consultar cómo se ha configurado el ``servidor de procesamiento'' basado en \emph{Jupyter Lab}, instalado en la máquina ASUS\ref{ASUS}, en un Sistema Operativo Ubuntu 24.04.2 LTS.
 
 En la imagen \ref{fig:jupyter-diagram} se pude ver un diagrama de cuáles son los accesos posible que brinda el servidor Jupyter para poder ejecutar el código Python de un situado en un ordenador, desde otro; o para poder directamente ejecutar el código Python situado en un ordenador (MacBook), en otra máquina distinta (ASUS), instanciando el entorno Python de esta otra máquina, a través del puerto configurado.
 
@@ -280,7 +284,7 @@ Se implementa un pipeline de procesamiento de audio que incluye las siguientes e
 \begin{itemize}
     \item Conversión de los archivos MP3 en espectrogramas.
     \item Normalización de amplitudes y ajuste de la frecuencia de muestreo para uniformizar los datos.
-    \item TODO: PROBAR CON VENTANAS DE 10-15-40 ms SEGÚN COMPORTAMIENTO, RAM, ETC.
+    \item Se probarán ventanas de \emph{sample} de audios de entre 10 - 25 y 40 milisegundos (se atenderá al criterio de calidad de generación obtenida y al consumo de recursos, capacidad y estabilidad del hardware disponible).
 \end{itemize}
 
 Estos pasos aseguran que el modelo aprenda patrones relevantes sin sesgos introducidos por diferencias en la calidad de grabación o características técnicas de los archivos de audio.
