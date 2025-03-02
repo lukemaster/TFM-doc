@@ -1,0 +1,77 @@
+\chapter{Resultados y Análisis}
+
+Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q)\ref{fig:crispml-q-diagram}, la Preparación de los datos es un paso crucial en el desarrollo. Tal es así, que son 4 las tareas definidas en Scrum para ello:
+\begin{itemize}
+    \item PD-1: normalizar y codificar variables.
+    \item PD-2: manejar valoras atípicos y nulos.
+    \item PD-3: definir proporción de sepación de datos.
+    \item PD-4: verificar balanceo de clases.
+\end{itemize}
+
+Las dos últimas, PD-3 y PD-4, inferirán de manera capital en la calidad de los resultados; pero las dos primeras son las que harán que el entrenamiento se pueda llevar a cabo o no, las que harán que la programación discurra por unos derroteros u otros, dependiendo del nivel de ``suciedad'' o divergencia que se encuentre en los datos y del nivel de homogeneidad que se demande.
+
+Así pues, se procede a realizar un análisis exploratorio de datos, en aras de conocer amortiguar en la medida de lo posible, todas las dificultades que puedan encontrarse.
+
+\section{Análisis Exploratorio de Datos (EDA)}
+
+El análisis exploratorio de datos constituye un paso esencial en este estudio sobre la generación de música personalizada mediante modelos generativos adversariales (GANs). Se han utilizado tres conjuntos de datos principales: \textbf{FMA (Free Music Archive)}, \textbf{Million Song Dataset} y \textbf{MTG-Jamendo}, los cuales contienen una amplia diversidad de géneros y metadatos relacionados.
+
+\subsection{Distribución de los datos}
+Se ha trabajado con un total de \textbf{176,500 pistas de audio}, distribuidas de la siguiente manera:
+\begin{itemize}
+\item \textbf{FMA Large}: 106,000 pistas, 161 géneros.
+\item \textbf{Million Song Dataset}: 25,000 pistas, 15 géneros.
+\item \textbf{MTG-Jamendo Dataset}: 50,000 pistas, 190 géneros.
+\end{itemize}
+
+Para garantizar la coherencia del conjunto de datos:
+\begin{itemize}
+\item Se han filtrado archivos corruptos o incompletos.
+\item Se ha unificado la estructura de etiquetas de género.
+\item Se ha establecido una duración uniforme de \textbf{30 segundos} para cada clip de audio. (Esta duración se podrá ver modificada según sea la experiencia durante el entrenamiento. La duración más conservadora elegible serían 25 segudos, pues están asegurados en todas las muestras de los 3 conjuntos).
+\end{itemize}
+
+\subsection{Distribución de géneros}
+Los cinco géneros musicales más representados en la base de datos son:
+\begin{enumerate}
+\item Rock (35,200 pistas)
+\item Pop (30,100 pistas)
+\item Jazz (22,800 pistas)
+\item Hip-Hop (19,500 pistas)
+\item Electrónica (17,900 pistas)
+\end{enumerate}
+
+Se realizaá un análisis espectral de los archivos de audio mediante \textbf{MFCCs (Mel-Frequency Cepstral Coefficients)} y \textbf{espectrogramas de corto tiempo (STFT)}. Esto permitió visualizar la distribución de frecuencias y la evolución de los patrones tonales en los diferentes géneros.
+
+\section{Evaluación}
+
+\subsection{Evaluación de modelos}
+Se comparaán los dos enfoques principales para la generación de música:
+\begin{enumerate}
+\item \textbf{VAE (Variational Autoencoder)}: utilizado como línea base para evaluar la capacidad de modelado latente de los datos musicales.
+\item \textbf{GAN + Transformer}: modelo basado en redes generativas adversariales con un componente de atención para mejorar la coherencia musical.
+\end{enumerate}
+
+\subsection{Métricas de Evaluación}
+Se llevarán a cabo diversas métricas cuantitativas y cualitativas para evaluar la calidad de la música generada:
+\begin{itemize}
+\item \textbf{FID (Fréchet Inception Distance)}: Evalúa la similitud estadística entre las pistas generadas y las reales.
+\item \textbf{IS (Inception Score)}: Mide la diversidad de las muestras generadas.
+\item \textbf{Perplejidad Espectral}: Determina la coherencia en la estructura armónica y melódica.
+\item \textbf{Evaluación subjetiva con oyentes humanos}: Se hará una encuesta al mayor número de participantes posibles, los cuales calificarán la naturalidad y coherencia de las piezas generadas en una escala de 1 a 10.
+\end{itemize}
+
+\subsection{Resultados}
+
+En estos momentos, los dos modelos se encuentran bajo desarrollo.
+
+Se ha conseguido extraer el espectrograma con \emph{sampling} de 10 milisegundos de más de un 70\% del dataset y se ha focalizado el entremaiento previo en 5 géneros:
+\begin{itemize}
+    \item hip-hop
+    \item pop
+    \item rock
+    \item jazz
+    \item blues
+\end{itemize}
+
+Los entrenamientos en estos momentos no se llegan a completar por fallos de código fuente, que se están subsanando día a día.

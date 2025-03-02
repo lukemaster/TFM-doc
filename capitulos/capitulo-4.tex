@@ -169,10 +169,6 @@ Jupyter Lab estará esperando detrás del puerto 8888 de la máquina ASUS, la cu
 
 De esta manera se consigue usar toda la potencia de una máquina, desde la comodidad de uso y cercanía que brinda la otra.
 
-\subsection{Modelos}
-
-
-
 \section{Metodología}
 
 Para el desarrollo de este TFM y del software que lo culminará, se han barajado 3 maneras, \emph{frameworks} o métodos de emprender y encaminar esta labor, de manera rigurosa, estructurada y ordenada. Los nombres que se han manejado han sido:
@@ -287,11 +283,45 @@ Se implementa un pipeline de procesamiento de audio que incluye las siguientes e
     \item Se probarán ventanas de \emph{sample} de audios de entre 10 - 25 y 40 milisegundos (se atenderá al criterio de calidad de generación obtenida y al consumo de recursos, capacidad y estabilidad del hardware disponible).
 \end{itemize}
 
+Además de esto, es conocido que por muy bueno que pueda llegar a ser un conjunto de datos, \emph{no es oro todo lo que reluce}. Se presupone que se encontrarán piezas con duración dispar (de entre 29.5 y 30 segundos), que habrán de acotarse para que el tamaño del \emph{input} sea homogéneo.
+
+También se prevee encontrar ficheros corruptos, bien por estar mal de origen, problemas en la descarga, descompresión de datos, copia, etc., y ficheros que no se encuentren y que estén descritos en los metadatos. Todo esto será controlado en aras de obtener una alimentación lo más favorable y exenta de errores posible.
+
+Conocidos los problemas de tratar con un set de datos, ahora sume la siguiente discrepancia. Tómese el siguiente ejemplo:
+
+\begin{itemize}
+    \item Género rock
+    \begin{itemize}
+        \item dataset A: etiqueta \emph{Rock} con identificador \textbf{1}
+        \item dataset B: etiqueta \emph{rock} con identificador \textbf{26}
+        \item dataset C: etiqueta \emph{ROCK} con identificador \textbf{39}
+    \end{itemize}
+    \item Género pop
+    \begin{itemize}
+        \item dataset A: etiqueta \emph{Pop} con identificador \textbf{2}
+        \item dataset B: etiqueta \emph{pop} con identificador \textbf{15}
+        \item dataset C: etiqueta \emph{PoP} con identificador \textbf{8}
+    \end{itemize}
+    \item ...
+\end{itemize}
+
+La idea queda clara: es necesario homogeneizar las etiquetas, tanto en título, como en idenfiticador y establecer un formato común de dupla \emph{título} \textbf{\#id}. Se usará la funcion \emph{lower} para obtener el texto en minúsuculas y se hará un nuevo mapa de idenficiadores y un traductor de identificador del sistema, a cada uno de los dataset.
+
 Estos pasos aseguran que el modelo aprenda patrones relevantes sin sesgos introducidos por diferencias en la calidad de grabación o características técnicas de los archivos de audio.
 
 \subsubsection{Modelado}
 
-El modelo propuesto se basa en una arquitectura de redes generativas adversariales (GANs) adaptadas a la generación de secuencias de audio en formato MP3. Se diseñan los siguientes componentes:
+Es práctica habitual en todos los ámbitos de la vida en que se asume un riesgo desconocido, en algo importante, que se tengan a mano diversas soluciones posibles, candidatas a resolver el problema.
+
+Pero si además, esas soluciones se configuran de manera que sean capaces de retroalimentarse y de servir de soporte entre ellas, supondría estar, desde el momento ``0'' del desarrollo, trabajando en una solución y mejorando o dando pie a otra, empleando el mismo esfuerzo.
+
+Pues eso es lo que se pretende. Los modelos a entrenar serán:
+\begin{itemize}
+    \item VAE: mucho más estable y fácil de entrenar, el VAE marcará el preludio de toda la limpieza, adaptación y carga de datos para su entrenamiento, sirviendo de trampolín para el siguiente modelo.
+    \item GAN - Transformer: inestable, costoso de entrenar y difícil de programar, partirá de los \emph{dataset} ya limpios y listos para ser tratados en entrenamiento, que usó el VAE y además la cadlidad de las piezas generadas, será medida con este modelo anterior, sirviendo esta métrica para evaluar la evolución de este nuevo y más potente modelo.
+\end{itemize}
+
+El modelo generador propuesto se basa en una arquitectura de redes generativas adversariales (GANs) adaptadas a la generación de secuencias de audio en formato MP3. Se diseñan los siguientes componentes:
 \begin{itemize}
     \item \textbf{Generador:} Recibe una entrada aleatoria y genera espectrogramas sintéticos, que luego son convertidos en archivos de audio mediante un vocoder neuronal.
     \item \textbf{Discriminador:} Evalúa la autenticidad de los espectrogramas generados, comparándolos con fragmentos reales del dataset.
