@@ -67,6 +67,11 @@ Española, R.~A. (2023).
 \newblock Aprender.
 \newblock Consultado el 10 de febrero de 2025.
 
+\bibitem[\protect\astroncite{Fowler}{1999}]{UMLgotaAgota}
+Fowler, M. y~Scott, K. (1999).
+\newblock {\em UML Gota a Got}.
+\newblock Pearson Education. México.
+
 \bibitem[\protect\astroncite{GeeksforGeeks}{2025}]{geeksforgeeks2025jupyter}
 GeeksforGeeks (2025).
 \newblock How to connect a local jupyterlab to a remote kernel?
