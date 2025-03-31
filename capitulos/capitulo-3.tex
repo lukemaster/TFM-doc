@@ -591,40 +591,90 @@ Este proceso de ``pedir una muestra'', de un género dado, no es baladí. Durant
 
 La generación de contenido musical puede ajustarse a géneros específicos debido al ``etiquetado'' (de género en este caso) durante el entrenamiento de los modelos. Estas etiquetas permiten que el modelo aprenda las características particulares de cada estilo musical (\textit{Jazz}, \textit{Pop}, \textit{Rock}...) y \textbf{estructure el espacio latente en regiones asociadas a estos géneros}.
 
+Poniendo el foco en la generación de música a través de espectrogramas, los VAE presentan especificidades como:
 
-\subsubsection{Generación Condicional}
-Una vez entrenado el modelo, la generación puede ajustarse mediante \textit{condiciones explícitas}, agregando un vector de etiqueta al espacio latente durante la generación.
-
-\subsubsection{Representación del Espacio Latente}
-El espacio latente puede representarse como una nube de puntos, donde cada punto representa una combinación única de género y características estilísticas:
-\[
-\text{Lo-Fi} \longrightarrow \text{Jazz} \longrightarrow \text{Clásico} \longrightarrow \text{Electrónica} \longrightarrow \text{Pop}
-\]
-
-La adyacencia y cercanía entre géneros, podría abrir la puerta a generación de híbridos, explorando regiones de transición:
 \begin{itemize}
-  \item \textbf{Lo-Fi-Jazz híbrido:} ideal para piezas relajadas con improvisación armónica.
-  \item \textbf{Pop-Electrónica:} combina estructura rítmica marcada con texturas sintéticas.
+  \item \textbf{Representación}: Se utilizan espectrogramas STFT de magnitud, que conservan información directa sobre la energía de las frecuencias a lo largo del tiempo. La forma típica es $F \times T$, donde $F$ son las bandas de frecuencia lineal y $T$ los pasos temporales (e.g. $F=1025$, $T=501$).
+  \item \textbf{Estructura}: El encoder está formado por una pila de capas convolucionales en 2 dimensiones, con posibilidad de incluir un bloque LSTM al final. El decoder invierte la operación mediante capas deconvolucionales o de transposición de convolución.
+  \item \textbf{Condicionamiento por género}: El embedding del género se concatena al vector latente tras la codificación y se incorpora en el decoder, modulando la generación.
+  Una vez entrenado el modelo, la generación puede ajustarse mediante \textit{condiciones explícitas}, concatenando un vector de etiqueta al espacio latente, con ruido aleatorio, durante la generación.
+  \item \textbf{Espacio latente}: Resume atributos musicales como la textura espectral, el ritmo y la articulación. Permite interpolación entre estilos o estructuras latentes.
+  El espacio latente puede verse como una nube de puntos, donde cada punto representa una combinación única de género y características estilísticas:
+    \[
+    \text{Lo-Fi} \longrightarrow \text{Jazz} \longrightarrow \text{Clásico} \longrightarrow \text{Electrónica} \longrightarrow \text{Pop}
+    \]
+    Aunque no es el objetivo de este trabajo el generar música de género híbrido, no se ha querido pasar por alto la mención a la posibilidad que brinda este modelo.
+    La adyacencia y cercanía entre géneros, podría abrir la puerta a generación de híbridos, explorando regiones de transición:
+    \begin{itemize}
+        \item \textbf{Lo-Fi-Jazz híbrido:} ideal para piezas relajadas con improvisación armónica.
+        \item \textbf{Pop-Electrónica:} combina estructura rítmica marcada con texturas sintéticas.
+    \end{itemize}
+  \item \textbf{Función de pérdida}: Se utiliza una combinación de pérdida de reconstrucción y divergencia KL:
+    \[
+    \mathcal{L} = \|x - \hat{x}\|_1 + \beta \cdot D_{KL}(q(z|x) \| p(z))
+    \]
+    donde $x$ y $\hat{x}$ son los espectrogramas STFT original y reconstruido, y $\beta$ controla el peso de regularización latente.
+  \item \textbf{Ventajas}: Facilita tareas de reconstrucción, manipulación controlada y análisis latente. Su entrenamiento es estable y permite visualización directa de la estructura espectral.
+  \item \textbf{Limitaciones}: La reconstrucción en el dominio STFT requiere algoritmos inversos (e.g. Griffin-Lim) y puede perder fase, afectando la calidad del audio reconstruido.
 \end{itemize}
-
-Aunque no es el objetivo de este trabajo el generar música de género híbrido, no se ha querido pasar por alto la mención a la posibilidad que brinda este modelo.
-
 
 \subsection{GANs - Transformers}
 
-La GAN ``condicionada'' que se ha entrenado, permite seleccionar la generación a partir de una etiqueta de género, como \textit{Rock}, \textit{Jazz} o \textit{Pop}. El generador recibe como entrada un vector de ruido \( z \) y una etiqueta condicional \( y \):
+La GAN ``condicionada'' que se ha pensado, permite seleccionar la generación a partir de una etiqueta de género, como \textit{Rock}, \textit{Jazz} o \textit{Pop}. El generador recibe como entrada un vector de ruido \( z \) y una etiqueta condicional \( y \):
 \[
 G(z, y) \rightarrow x
 \]
 donde \( x \) es la secuencia musical generada. 
 
-La etiqueta de género se introduce al inicio de la secuencia, y el modelo predice directamente la siguiente nota basándose en las notas previas y la etiqueta de género.
-
-\[
-\text{Input} = [\text{Etiqueta de género}, \text{Nota}_1, \text{Nota}_2, \ldots, \text{Nota}_n]
-\]
+Hágase hincapié en los siguientes aspectos específicos cuando se usa para esta arquitectura para la generación musical:
 
 \begin{itemize}
-  \item \textbf{Ventaja:} coherencia a largo plazo y mayor control del estilo.
-  \item \textbf{Ejemplo:} generar melodías ``Jazz'' directamente desde tokens de género.
+  \item \textbf{Representación}: Los espectrogramas STFT generados representan la magnitud espectral en escala lineal. Se genera una matriz $F \times T$ desde ruido + género, donde $F$ representa bandas frecuenciales (e.g. $F=1025$) y $T$ la dimensión temporal (e.g. $T=501$).
+  \item \textbf{Condicionamiento por género}: El embedding de género se incluye como primer token en la secuencia de entrada al generador, afectando toda la generación desde su origen.
+  La etiqueta de género se introduce al inicio de la secuencia, y el modelo predice directamente la siguiente nota basándose en las notas previas y la etiqueta de género.
+    \[
+    \text{Input} = [\text{Etiqueta de género}, \text{Nota}_1, \text{Nota}_2, \ldots, \text{Nota}_n]
+    \]
+  \item \textbf{Generador}: Compuesto por una etapa de proyección inicial seguida de múltiples bloques Transformer Encoder. El Transformer se coloca después de mapear el ruido a una secuencia inicial, actuando como núcleo generativo.
+  \item \textbf{Discriminador}: Recibe espectrogramas STFT (reales o generados) y evalúa su autenticidad y correspondencia estilística. Está basado en convoluciones 2D con normalización espectral.
+  \item \textbf{Atención temporal}: El uso de self-attention permite capturar dependencias de largo alcance entre regiones del espectrograma, cruciales para la coherencia musical.
+  \item \textbf{Función de pérdida}: Se combinan pérdidas adversariales y de regularización estructural:
+    \[
+    \mathcal{L}_G = -\mathbb{E}_{z}[D(G(z))] + \lambda \cdot \mathcal{L}_{\text{consistencia}}
+    \]
+    \[
+    \mathcal{L}_D = \mathbb{E}_{x}[D(x)] - \mathbb{E}_{z}[D(G(z))] + \text{Penalización Gradiente}
+    \]
+    donde $\mathcal{L}_{\text{consistencia}}$ puede incluir métricas armónicas o de continuidad espectral.
+  \item \textbf{Ventajas}: Alta expresividad y realismo musical. Capacidad de generar estructuras complejas desde ruido puro, capturando variaciones tímbricas y rítmicas. Mejor coherencia a largo plazo y mayor control del estilo
+  \item \textbf{Limitaciones}: El entrenamiento es sensible a hiperparámetros. El paso de espectrograma STFT a audio requiere reconstrucción de fase, que puede limitar la fidelidad sonora final. La generación de melodías se hace directamente desde tokens de género.
 \end{itemize}
+
+\subsection{Comparativa VAE - GANs+Transformers para la generación musical desde espectrogramas}
+\begin{table}[H]
+    \centering
+    \caption{Comparativa entre VAE y GAN+Transformer en la generación musical con espectrogramas STFT}
+    \begin{tabular}{|p{4.2cm}|p{5.5cm}|p{5.5cm}|}
+    \hline
+    \textbf{Característica clave} & \textbf{VAE Condicionado (STFT)} & \textbf{GAN + Transformer (STFT)} \\
+    \hline
+    Tipo de generación & Reconstrucción / transformación desde datos reales & Composición desde ruido puro \\
+    \hline
+    Representación usada & Espectrograma STFT de entrada + género & Ruido + género → espectrograma STFT generado \\
+    \hline
+    Condicionamiento por género & Concatenado al vector latente y al decoder & Embedding insertado como primer token de entrada \\
+    \hline
+    Latente / secuencia & Espacio continuo estructurado, interpretable & Implícito, distribuido en la atención secuencial \\
+    \hline
+    Dependencia temporal & Local vía convolución + opcional LSTM & Global vía self-attention Transformer \\
+    \hline
+    Pérdida principal & L1 + KL divergence & Adversarial + penalización espectral \\
+    \hline
+    Reconstrucción audio & Griffin-Lim desde magnitud STFT & Griffin-Lim desde STFT generado \\
+    \hline
+    Ventaja clave & Control semántico e interpolación latente & Expresividad y riqueza creativa desde cero \\
+    \hline
+    Limitación clave & Posible sobregeneración, calidad moderada & Inestabilidad, pérdida de fase en la reconstrucción \\
+    \hline
+    \end{tabular}
+\end{table}    
