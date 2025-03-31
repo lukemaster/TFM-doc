@@ -169,6 +169,8 @@ En las referencias \cite{geeksforgeeks2025jupyter} y \cite{vscode2025jupyter} se
 
 En la imagen \ref{fig:jupyter-diagram} se pude ver un diagrama de cuáles son los accesos posible que brinda el servidor Jupyter para poder ejecutar el código Python de un situado en un ordenador, desde otro; o para poder directamente ejecutar el código Python situado en un ordenador (MacBook), en otra máquina distinta (ASUS), instanciando el entorno Python de esta otra máquina, a través del puerto configurado.
 
+Para que el contexto de ejcución de Python encuentre en el PC ASUS los ficheros de código fuente alojados y editables en el MacBook Pro, se utiliza el sistem de archivos \emph{Secure SHell FileSystem (SSHFS)}.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{images/jupyter-diagram.png}
