@@ -138,7 +138,7 @@
 \makeglossaries
 \input{secciones/glosario.tex}
 
-\bibliographystyle{apa}
+\bibliographystyle{unsrt}
 
 \usepackage[authoryear,sort&compress]{natbib}
 \usepackage{hypernat}
@@ -179,12 +179,15 @@
 
 \graphicspath{{../}}
 \begin{document}
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]}
+\makeatother
 
 \input{secciones/portada.tex}
-%\input{secciones/frase-favorita.tex}
+\input{secciones/frase-favorita.tex}
 
 \pagenumbering{gobble}
-%\input{secciones/agradecimientos.tex}
+\input{secciones/agradecimientos.tex}
 \cleardoublepage
 
 \newpage
@@ -217,7 +220,8 @@
 \setcounter{page}{1}
 
 
-%\input{secciones/resumen.tex}
+\input{secciones/resumen.tex}
+\input{secciones/abstract.tex}
 %\input{secciones/introduccion.tex}
 %\input{secciones/objetivos.tex}
 %\input{secciones/metodologia.tex}
@@ -246,7 +250,7 @@
 \begin{twocolumn}
 \nocite{*}
 \bibdata{bibliografia}
-\bibliographystyle{apa}
+
 \bibliography{bibliografia}
 \addcontentsline{toc}{chapter}{Bibliografía}
 \end{twocolumn}
