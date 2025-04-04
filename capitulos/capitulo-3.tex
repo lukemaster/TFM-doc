@@ -98,8 +98,8 @@ El oído humano es más sensible a ciertos rangos de frecuencia, lo que signific
 
 \parbox{\textwidth}{\textbf{Ejemplos de percepción de cambios de amplitud, intensidad y ambos}}
 \begin{itemize}
-    \item \emph{Cambio de amplitud}: golpear un tambor con más fuerza produce un sonido más fuerte sin cambiar su tonalidad (se mantiene la frecuencia).
-    \item \emph{Cambio de intensidad}: Aumentar el volumen de una radio mantiene la misma música pero a un nivel sonoro más alto.
+    \item \emph{Cambio de amplitud}: golpear un tambor con más fuerza produce un sonido más fuerte, sin cambiar su tonalidad (se mantiene la frecuencia).
+    \item \emph{Cambio de intensidad}: Aumentar el volumen de una radio, mantiene la misma música pero a un nivel sonoro más alto.
     \item \emph{Cambio de ambos}: un grito, que comienza como un susurro y termina en un grito fuerte, no solo varía en amplitud, sino que también cambia en intensidad progresivamente.
 \end{itemize}
 
@@ -201,7 +201,7 @@ Después de la digitalización, el sonido debe convertirse nuevamente en una se�
 
 \section{MP3: un formato reducido}
 
-El formato MP3 marcó un antes y un después en la digitalización del sonido. Fue el vehículo que revolucionó el consumo de música, popularizando el formato de audio digital, combinando eficiencia de compresión y facilidad de reproducción con \emph{códecs}. Dio nombre a pequeños aparatos que durante la primera década de los años 2000 inundaron bolsillos, dando la posibilidad de tener varios discos de música en el mismo espacio que un llavero. Fue, sin saberlo, el vehículo que abrió la puerta a la piratería y a la compartición ilícita de ficheros.
+El formato MP3 marcó un antes y un después en la digitalización del sonido. Fue el vehículo que revolucionó el consumo de música, popularizando el formato de audio digital, combinando eficiencia de compresión y facilidad de reproducción con \emph{códecs}. Dio nombre a pequeños aparatos, que durante la primera década de los años 2000 inundaron bolsillos, dando la posibilidad de tener varios discos de música en el mismo espacio que un llavero. Fue, sin saberlo, el vehículo que abrió la puerta a la piratería y a la compartición ilícita de ficheros.
 
 \subsection{Codificación y formatos de audio}
 
@@ -323,7 +323,7 @@ Asi pues, los 3 datasets propuestos son:
     \item \textbf{MTG-Jamendo Dataset}
        Cuenta con más de 50,000 pistas y 190 géneros, distribuidos en ficheros \emph{MP3}. Los metadatos están descritos en etiquetas de géneros musicales, instrumentos, emociones y temas.
 \end{itemize}
-En la sección \textbf{Materiales - Datos}\ref{materiales-datos} del siguiente capítulo, se puede consultar información mucho más detallada de cada una de estas tres fuentes de datos que se van a utilizar.
+En la sección \textbf{Materiales - Datos} del siguiente capítulo, se puede consultar información mucho más detallada de cada una de estas tres fuentes de datos que se van a utilizar.
 
 \subsection{Aprendiendo sobre géneros musicales}
 
@@ -335,13 +335,13 @@ Este tipo de aprendizaje permite a los modelos identificar patrones ocultos y ap
 
 Una de las formas de realizar este análisis es el uso de redes neuronales convolucionales (\emph{Convolutional Neural Networks}, CNN) junto con algún mecanismo que implemente \emph{memoria recurrente} para dicha red, como por ejemplo los (\emph{Long Short-Term Memory}, LSTM). Basadas en el reconocimiento de imágnenes, este tipo de redes han supuesto un antes y un después en la visión (y aprehensión visual) por computadora. Una de las características más llamativas de este tipo de redes es la arquitectura \emph{hardware} sobre la que se suele apoyar: usa la \emph{GPU} en vez del procesador central de la máquina, dada la naturaleza matricial de la representación de los datos en imágenes.
 
-Pero si la música es sonido, ¿cómo puede una \emph{CNN} analizar audio?: extrayendo la representación espectral del sonido o espectrograma y analizando una imagen del mismo; a su vez, las LSTM manejarían secuencias temporales de datos musicales, permitiendo modelar la continuidad y dependencia entre las notas.
+Pero si la música es sonido, ¿cómo puede una \emph{CNN} analizar audio?, extrayendo la representación espectral del sonido o espectrograma y analizando una imagen del mismo; a su vez, las LSTM manejarían secuencias temporales de datos musicales, permitiendo modelar la continuidad y dependencia entre las notas.
 
 En este trabajo se van a abordar dos maneras equivalente de hacer esto, teniendo en cuenta las últimas tendencias en Inteligencia Artificial.
 
 \subsection{Variational Autoencoders (VAE)}
 
-Los \textbf{Autoencoders} son redes neuronales diseñadas para aprender una representación codificada y ``comprimida'' de los datos de entrada, con el fin de ser reconstruidos cometiendo el menor error posible. Esto es, en definitiva, \textbf{aprender las características esenciales de los datos} y cofificarlas \textbf{en un espacio de menor dimensión.}
+Los \textbf{Autoencoders} son redes neuronales diseñadas para aprender una representación codificada y ``comprimida'' de los datos de entrada, con el fin de ser reconstruidos cometiendo el menor error posible. Esto es, en definitiva, \textbf{aprender las características esenciales de los datos} y codificarlas \textbf{en un espacio de menor dimensión.}
 
 La figura \ref{fig:vae} ilustra cómo sería la arquitectura base.
 
@@ -440,7 +440,7 @@ Las \textbf{GANs (Generative Adversarial Networks)} son unos modelos basados en 
   \label{fig:gan}
 \end{figure}
 
-La figura \ref{fig:gan} muestra la estructura interna básica de este tipo de modelos, los cuáles se componen de dos elementos básicos:
+La figura \ref{fig:gan} muestra la estructura interna básica de este tipo de modelos, los cuales se componen de dos elementos básicos:
 
 \begin{itemize}
     \item \textbf{Discriminador (D):} tiene como cometido diferenciar entre datos reales y generados.
@@ -449,7 +449,7 @@ La figura \ref{fig:gan} muestra la estructura interna básica de este tipo de mo
 
 El entrenamiento de estas dos redes es muy distinto:
 \begin{enumerate}
-    \item Se entrena el discriminador a parte, con datos reales, los cuáles será capaz de reconocer con un error mínimo.
+    \item Se entrena el discriminador a parte, con datos reales, que será capaz de reconocer con un error mínimo.
     \item El generador se entrena produciendo datos a partir de ruido aleatorio. Parte de de una red en principio sin entrenar, que irá variando sus pesos internos, con la diferencia que el discriminador devuelva de comparar (con respecto a la realidad que él sí conoce, dada por la \emph{función de pérdida}) entre cada muestra generada y los datos reales. De esta manera, el discriminador irá haciendo de ``crítico'' en la evaluación de la generación, hasta que el generador consiga engañarlo.
 \end{enumerate}
 

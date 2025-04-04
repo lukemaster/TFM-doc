@@ -106,19 +106,19 @@ Sin querer, ni poder, entrar en una profunda y correcta disertación sobre los r
 
 Hay dos ideas fundamentales a las que atender, en este ámbito:
 \begin{itemize}
-    \item \textbf{Autoría y uso de fragmentos originales:} los fragmentos de audio contenidos en los datasets, evidentemente, han sido creados por alguna o varias, personas; además de la autoría, su propiedad pueda estar ligada a ella o no y establecerse un uso privativo o acotado del contenido, o no hacerse.
+    \item \textbf{Autoría y uso de fragmentos originales:} los fragmentos de audio contenidos en los datasets, evidentemente, han sido creados por alguna o varias, personas; además de la autoría, su propiedad pueda estar ligada a ella o no y establecerse un uso privativo o acotado del contenido o no hacerse.
     \item \textbf{Generación de música a partir de datos creados previamente:} no es tanto el problema de \emph{quién es el propietario o autor de la obra}, sino en qué medida eso que se ha creado nuevo, se parece a algo que ya existiera antes y en qué grado podría ser atribuible al autor primigenio de la obra u obras antecedentes, observadas en el dataset.
 \end{itemize}
 
 En la legislación europea, una obra creada exclusivamente por una máquina no tiene autor protegido por \emph{copyright}, al no haber intervención humana creativa. Pero: ¿y si hubiera intervención artística explícita, programada en el proceso? ¿Podría ser acaso, el desarrollador del software, el autor de la obra? ¿podría serlo el equipo de desarrollo o la compañía?
 ... ¿Y dónde ha quedado la autoría de los fragmentos originales del dataset? ¿Se podría ``generar'' un derecho de autor privativo a partir de fragmentos de obras cedidas libremente?
-Esto último ya ocurre con el uso de \emph{software libre}, que es tomado como base, modificado y vendido como software privativo... ¿Acaso la música generada por Inteligencia Artificial tiene, debido a su ente creador, características de software...?
+Esto último ya ocurre con el uso de \emph{software libre}, que es tomado como base, modificado y vendido como software privativo... ¿Acaso la música generada por Inteligencia Artificial tiene, debido a su ente creador, características de software?
 
 Son más las preguntas que las respuestas en un debate tan interesante como la propia generación de audio.
 
 \subsection{Software}
 
-Para el desarrollo de este trabajo se han utilizado múltiples y diversos programas, desde el momento en que se inició este mismo document, hasta que se produzca la ``puesta en producción'' de la aplicación de usuario que permita el uso del modelo de Inteligencia Artificial.
+Para el desarrollo de este trabajo se han utilizado múltiples y diversos programas, desde el momento en que se inició este mismo documento, hasta que se produzca la ``puesta en producción'' de la aplicación de usuario que permita el uso del modelo de Inteligencia Artificial.
 
 Los recursos de tipo \emph{Software} utilizados son:
 
@@ -168,7 +168,7 @@ Dada la filia con el sistema operativo de Apple, se ha utilizado un Apple MacBoo
 
 En las referencias \cite{geeksforgeeks2025jupyter} y \cite{vscode2025jupyter} se puede consultar cómo se ha configurado el ``servidor de procesamiento'' basado en \emph{Jupyter Lab}, instalado en la máquina ASUS\ref{ASUS}, en un Sistema Operativo Ubuntu 24.04.2 LTS.
 
-En la imagen \ref{fig:jupyter-diagram} se pude ver un diagrama de cuáles son los accesos posible que brinda el servidor Jupyter para poder ejecutar el código Python de un situado en un ordenador, desde otro; o para poder directamente ejecutar el código Python situado en un ordenador (MacBook), en otra máquina distinta (ASUS), instanciando el entorno Python de esta otra máquina, a través del puerto configurado.
+En la imagen \ref{fig:jupyter-diagram} se pude ver un diagrama de cuáles son los accesos posibles que brinda el servidor Jupyter para poder ejecutar el código Python de un situado en un ordenador, desde otro; o para poder directamente ejecutar el código Python situado en un ordenador (MacBook), en otra máquina distinta (ASUS), instanciando el entorno Python de esta otra máquina, a través del puerto configurado.
 
 Para que el contexto de ejcución de Python encuentre en el PC ASUS los ficheros de código fuente alojados y editables en el MacBook Pro, se utiliza el sistem de archivos \emph{Secure SHell FileSystem (SSHFS)}.
 
@@ -214,7 +214,7 @@ Cada una de estas tres herramientas aporta valor a cada uno de los pasos que se 
     \item \textbf{Implementación y monitoreo}: Despliegue del modelo y seguimiento en producción.
 \end{enumerate}
 
-En la imagen\ref{fig:crispml-q-diagram} se puede ver cómo será el diagrama de flujo del desarrollo a seguir con este método.
+En la imagen \ref{fig:crispml-q-diagram} se puede ver cómo será el diagrama de flujo del desarrollo a seguir con este método.
 
 \subsection{Scrum}
 
@@ -319,7 +319,7 @@ Conocidos los problemas de tratar con un set de datos, ahora sume la siguiente d
     \item ...
 \end{itemize}
 
-La idea queda clara: es necesario homogeneizar las etiquetas, tanto en título, como en identificador y establecer un formato común de dupla \emph{título} \textbf{\#id}. Se usará la funcion \emph{lower} para obtener el texto en minúsuculas y se hará un nuevo mapa de idenficiadores y un traductor de identificador del sistema, a cada uno de los dataset.
+La idea queda clara: es necesario homogeneizar las etiquetas, tanto en título, como en identificador y establecer un formato común de dupla \emph{título} \textbf{\#id}. Se usará la funcion \emph{lower} para obtener el texto en minúsuculas y se hará un nuevo mapa de identificadores y un traductor de identificador del sistema, a cada uno de los dataset.
 
 Estos pasos aseguran que el modelo aprenda patrones relevantes sin sesgos introducidos por diferencias en la calidad de grabación o características técnicas de los archivos de audio.
 

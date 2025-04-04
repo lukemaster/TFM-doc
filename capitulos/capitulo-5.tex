@@ -322,22 +322,20 @@ Los siguientes hiperparámetros han sido definidos en el archivo \texttt{.env} p
     \item \textbf{N\_FFT}: 2048 \emph{\# Número de puntos de FFT para la STFT}.
     \item \textbf{HOP\_LENGTH}: 440 \emph{\# Desplazamiento entre ventanas en la STFT}.
     \item \textbf{TOTAL\_DURATION}: 25 \emph{\# Duración total de los archivos de audio (segundos)}.
-    \item \textbf{SEGMENT\_DURATION}: 5 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
-    \item \textbf{NUM\_MELS}: 128 \emph{\# Número de bandas mel o bins espectrales en el espectrograma}.
+    \item \textbf{SEGMENT\_DURATION}: 25 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
     \item \textbf{NUM\_GENRES}: 5 \emph{\# Número de géneros musicales distintos}.
-    \item \textbf{KIND\_OF\_SPECTROGRAM}: STFT \emph{\# Tipo de espectrograma utilizado, pudiendo ser MEL}.
   \end{itemize}
 
   \item \textbf{Entrenamiento:}
   \begin{itemize}
-    \item \textbf{TRAIN\_BATCH\_SIZE}: 2 \emph{\# Tamaño de batch durante el entrenamiento}.
-    \item \textbf{TRAIN\_EPOCHS}: 30 \emph{\# Número total de épocas de entrenamiento}.
-    \item \textbf{LIMIT\_FILES}: 1000 \emph{\# Número máximo de archivos usados (modo prueba)}.
+    \item \textbf{TRAIN\_BATCH\_SIZE}: 1 \emph{\# Tamaño de batch durante el entrenamiento}.
+    \item \textbf{TRAIN\_EPOCHS}: 20 \emph{\# Número total de épocas de entrenamiento}.
+    \item \textbf{LIMIT\_FILES}: 500 \emph{\# Número máximo de archivos usados (modo prueba)}.
   \end{itemize}
 
   \item \textbf{VAE:}
   \begin{itemize}
-    \item \textbf{LATENT\_DIM}: 1024 \emph{\# Dimensión del espacio latente $z$}.
+    \item \textbf{LATENT\_DIM}: 1536 \emph{\# Dimensión del espacio latente $z$}.
     \item \textbf{BETA\_MAX}: 4.0 \emph{\# Valor máximo del coeficiente $\beta$ en la pérdida del VAE}.
     \item \textbf{BETA\_WARMUP\_EPOCHS}: 20 \emph{\# Número de épocas de \textit{warm-up} progresivo para $\beta$}.
   \end{itemize}
@@ -387,17 +385,15 @@ De manera análoga al modelo anterior, los hiperparámetros configurados en el f
     \item \textbf{N\_FFT}: 2048 \emph{\# Número de puntos de FFT para la STFT}.
     \item \textbf{HOP\_LENGTH}: 440 \emph{\# Desplazamiento entre ventanas en la STFT}.
     \item \textbf{TOTAL\_DURATION}: 25 \emph{\# Duración total de los archivos de audio (segundos)}.
-    \item \textbf{SEGMENT\_DURATION}: 5 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
-    \item \textbf{NUM\_MELS}: 128 \emph{\# Número de bandas mel o bins espectrales en el espectrograma}.
+    \item \textbf{SEGMENT\_DURATION}: 10 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
     \item \textbf{NUM\_GENRES}: 5 \emph{\# Número de géneros musicales distintos}.
-    \item \textbf{KIND\_OF\_SPECTROGRAM}: STFT \emph{\# Tipo de espectrograma utilizado, pudiendo ser MEL}.
   \end{itemize}
 
   \item \textbf{Entrenamiento:}
   \begin{itemize}
-    \item \textbf{TRAIN\_BATCH\_SIZE}: 4 \emph{\# Tamaño de batch durante el entrenamiento}.
-    \item \textbf{TRAIN\_EPOCHS}: 50 \emph{\# Número total de épocas de entrenamiento}.
-    \item \textbf{LIMIT\_FILES}: 1000 \emph{\# Número máximo de archivos usados (modo prueba)}.
+    \item \textbf{TRAIN\_BATCH\_SIZE}: 4 \emph{\# Tamaño de batch durante el entrenamiento}.TODO: REVISAR
+    \item \textbf{TRAIN\_EPOCHS}: 25 \emph{\# Número total de épocas de entrenamiento}.TODO: REVISAR
+    \item \textbf{LIMIT\_FILES}: 500 \emph{\# Número máximo de archivos usados (modo prueba)}.
   \end{itemize}
 
   \item \textbf{GAN + Transformer:}
@@ -408,6 +404,8 @@ De manera análoga al modelo anterior, los hiperparámetros configurados en el f
     \item \textbf{GEN\_NUM\_HEADS}: 4 \emph{\# Número de cabezas de atención en cada capa del Transformer}.
     \item \textbf{GAN\_PRETRAIN\_EPOCHS\_D}: 5 \emph{\# Épocas de preentrenamiento del discriminador}.
     \item \textbf{GAN\_PRETRAIN\_EPOCHS\_G}: 5 \emph{\# Épocas de preentrenamiento del generador}.
+    \item \textbf{GAN\_BETA\_MIN}: 0.5 \emph{\# Valor mínimo de los coeficientes utilizados para calcular promedios móviles del gradiente y su cuadrado}.
+    \item \textbf{GAN\_BETA\_MAX}: 0.999 \emph{\# Valor mínimo de los coeficientes utilizados para calcular promedios móviles del gradiente y su cuadrado}.
   \end{itemize}
 \end{itemize}
 

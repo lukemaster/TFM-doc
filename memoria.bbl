@@ -1,11 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{crispml}
-{\textit{ML-Ops Community (2025)}}.
-\newblock \textit{CRISP-ML: Cross Industry Standard Process for Machine
-  Learning}.
-\newblock \textit{Recuperado de \url{{https://ml-ops.org/content/crisp-ml}}}.
-
 \bibitem{marketers}
 \textit{La IA y su impacto en la industria del entretenimiento y los medios.
   (2023)}.
@@ -108,6 +102,12 @@
 {Data Science PM, (2025)}.
 \newblock Team data science process overview.
 \newblock de \url{https://www.datascience-pm.com/tdsp/}.
+
+\bibitem{crispml}
+{\textit{ML-Ops Community (2025)}}.
+\newblock \textit{CRISP-ML: Cross Industry Standard Process for Machine
+  Learning}.
+\newblock \textit{Recuperado de \url{{https://ml-ops.org/content/crisp-ml}}}.
 
 \bibitem{wikipedia2025numeracion}
 {Numeración de las artes}.
