@@ -1,6 +1,6 @@
 \chapter{Resultados y Análisis}
 
-Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q)\ref{fig:crispml-q-diagram}, la Preparación de los datos es un paso crucial en el desarrollo. Tal es así, que son 4 las tareas definidas en Scrum para ello:
+Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q)\ref{fig:crispml-q-diagram}, la preparación de los datos es un paso muy importante en el desarrollo. Tal es así, que son 4 las tareas definidas en Scrum para ello:
 \begin{itemize}
     \item PD-1: normalizar y codificar variables.
     \item PD-2: manejar valores atípicos y nulos.
@@ -10,7 +10,7 @@ Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q)\ref{fig:cris
 
 Las dos últimas, PD-3 y PD-4, inferirán de manera capital en la calidad de los resultados; pero las dos primeras son las que harán que el entrenamiento se pueda llevar a cabo o no, las que harán que la programación discurra por unos derroteros u otros, dependiendo del nivel de ``suciedad'' o divergencia que se encuentre en los datos y del nivel de homogeneidad que se demande.
 
-Así pues, se procede a realizar un análisis exploratorio de datos, en aras de conocer amortiguar en la medida de lo posible, todas las dificultades que puedan encontrarse.
+Así pues, se procede a realizar un análisis exploratorio de datos, en aras de conocer en la medida de lo posible, todas las dificultades que puedan encontrarse.
 
 \section{Análisis Exploratorio de Datos (EDA)}
 
@@ -116,7 +116,7 @@ Durante la fase principal del entrenamiento, ambos modelos se optimizan mediante
     En esta etapa sólo se utilizan muestras reales, por lo que $y = 1$ en todos los casos. Es decir, se le entrena a clasificar correctamente datos auténticos como verdaderos.
 \end{itemize}
 
-Este procedimiento busca estabilizar la formación de las dos redes antes de introducir la dinámica adversarial completa.
+Este procedimiento busca estabilizar la formación de las dos redes, antes de introducir la dinámica adversarial completa.
 
 
 \subsubsection*{Estrategia de validación}
@@ -139,7 +139,7 @@ La validación se ejecuta al final de cada época, registrando las mismas métri
     \item \textbf{Pérdida de reconstrucción (VAE)}: error cuadrático medio entre espectrogramas reales y reconstruidos.
     \item \textbf{Divergencia KL (VAE)}: regularización del espacio latente respecto a una distribución normal.
     \item \textbf{Pérdida adversarial (GAN)}: pérdida binaria cruzada tanto para el generador como para el discriminador.
-    \item \textbf{Consistencia temporal (opcional)}: medida no entrenada que evalúa la diferencia espectral entre marcos adyacentes.
+    \item \textbf{Consistencia temporal (opcional)}: medida no entrenada, que evalúa la diferencia espectral entre marcos adyacentes.
 \end{itemize}
 
 \subsubsection*{Métricas cualitativas}
@@ -438,4 +438,14 @@ El entrenamiento de la arquitectura GAN se realiza con dos optimizadores separad
 \end{itemize}
 
 \noindent Esta configuración se ajusta a las recomendaciones clásicas de \textit{Deep Convolutional GANs (DCGAN)} y proporciona una base estable para el entrenamiento adversarial sobre espectrogramas condicionados por género.
+
+\subsection{Test}
+
+Para facilitar el testeo subjetivo por parte de los posibles usuarios, se ha desarrollado un \emph{prompt web}, afín a los diseños de interfaz que se expusieron en el capítulo anterior. Ésta permite solicitar un fichero de audio en formato \emph{MP3}, dado un género musical, seleccionado previamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/euterpe-screenshot.png}
+    \caption{Captura de pantalla de Euterpe.}
+\end{figure}
 
