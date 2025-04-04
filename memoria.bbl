@@ -1,203 +1,241 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 
-\bibitem[\protect\astroncite{AI}{2025}]{xenonstack2025}
-AI, X. (2025).
-\newblock The complete guide to generative ai architecture.
+\bibitem{crispml}
+{\textit{ML-Ops Community (2025)}}.
+\newblock \textit{CRISP-ML: Cross Industry Standard Process for Machine
+  Learning}.
+\newblock \textit{Recuperado de \url{{https://ml-ops.org/content/crisp-ml}}}.
 
-\bibitem[\protect\astroncite{BotPenguin}{2025}]{botpenguin2025}
-BotPenguin (2025).
-\newblock Transformer architecture.
+\bibitem{marketers}
+\textit{La IA y su impacto en la industria del entretenimiento y los medios.
+  (2023)}.
+\newblock \textit{Recuperado de
+  \url{{https://www.marketersbyadlatina.com/articulo/11122_la-ia-y-su-impacto-en-la-industria-del-entretenimiento-y-los-medios}}}.
 
-\bibitem[\protect\astroncite{CJFV}{2025a}]{musicalecer2025formatosaudio}
-CJFV (2025a).
-\newblock Formatos de audio digital.
+\bibitem{jukebox}
+\textit{{Jukebox by OpenAI. (2020)}}.
+\newblock \textit{Recuperado de \url{{https://openai.com/index/jukebox}}}.
 
-\bibitem[\protect\astroncite{CJFV}{2025b}]{musicalecer2025digitalizacion}
-CJFV (2025b).
-\newblock La digitalización del sonido.
+\bibitem{elpais}
+{\textit{Tommaso Koch. El País.} (2024, Diciembre)}.
+\newblock \textit{La IA recortará los ingresos de la música y el sector
+  audiovisual en más de un 20\% en 2028, según un informe internacional}.
+\newblock \textit{Recuperado de
+  \url{{https://elpais.com/cultura/2024-12-04/la-ia-recortara-los-ingresos-de-la-musica-y-el-sector-audiovisual-en-mas-de-un-20-en-2028-segun-un-informe-internacional.html}}}.
 
-\bibitem[\protect\astroncite{Code}{2025}]{vscode2025jupyter}
-Code, V.~S. (2025).
-\newblock Jupyter kernel management - python environments.
+\bibitem{linkedin}
+\textit{El impacto de la IA en entretenimiento}. (2023~Marzo).
+\newblock \textit{Recuperado de
+  \url{{https://es.linkedin.com/pulse/el-impacto-de-la-ia-en-entretenimiento}}}.
 
-\bibitem[\protect\astroncite{Community}{2025}]{crispml}
-Community, M.-O. (2025).
-\newblock Crisp-ml: Cross industry standard process for machine learning.
+\bibitem{iaespana}
+\textit{{IA en los medios y el entretenimiento: casos de uso. (2020)}}.
+\newblock \textit{Recuperado de
+  \url{{https://www.ia-espana.es/ia-en-los-medios-y-el-entretenimiento-casos-de-uso}}}.
 
-\bibitem[\protect\astroncite{Cortés}{2018}]{05MIARlibro}
-Cortés, G.~A. (2018).
-\newblock {\em Aprendizaje Supervisado}.
-\newblock Universidad Internacional de Valencia.
-\newblock Material de estudio para el Máster Universitario en Inteligencia
-  Artificial.
+\bibitem{learningheroes}
+\textit{{Beneficios de la IA en la industria del entretenimiento} (2023)}.
+\newblock \textit{Recuperado de
+  \url{{https://www.learningheroes.com/aprende-inteligencia-artificial/beneficios-de-la-ia-en-la-industria-del-entretenimiento}}}.
 
-\bibitem[\protect\astroncite{Cruces}{2025}]{sibetrans2025coherencia}
-Cruces, F. (2025).
-\newblock Niveles de coherencia musical: la aportación de la música a la
-  construcción de mundos.
-\newblock {\em TRANS-Revista Transcultural de Música}.
+\bibitem{kingma2013vae}
+{Kingma, Diederik P. and Welling, Max}.
+\newblock Auto-encoding variational bayes.
+\newblock {\em arXiv preprint arXiv:1312.6114}, 2013.
 
-\bibitem[\protect\astroncite{de~Madrid}{2023}]{upm2023music}
-de~Madrid, U.~P. (2023).
-\newblock Modelo de red neuronal convolucional para la generación de música
-  "lo-fi".
+\bibitem{roberts2018musicvae}
+{Roberts, A. and Engel, J. and Raffel, C. and Hawthorne, C. and Eck, D.}
+\newblock A hierarchical latent vector model for learning long-term structure
+  in music.
+\newblock {\em arXiv preprint arXiv:1803.05428}, 2019, Noviembre.
 
-\bibitem[\protect\astroncite{desconocidos}{2023}]{arxiv2023ganmusic}
-desconocidos, A. (2023).
-\newblock Music generation based on generative adversarial networks with
-  transformer.
+\bibitem{goodfellow2014gan}
+{Goodfellow, I and Pouget-Abadie, J. and Mirza, M. and Xu, B. and Warde-Farley,
+  D. and Ozair, S. and Courville, A. and Bengio, Y.}
+\newblock Generative adversarial networks.
+\newblock {\em arXiv preprint arXiv:1406.2661}, 2014.
 
-\bibitem[\protect\astroncite{Dhariwal et~al.}{2020a}]{jukebox2020}
-Dhariwal, P., Jun, H., Kim, J.~W., Radford, A., y Sutskever, I. (2020a).
-\newblock Jukebox: A generative model for music.
+\bibitem{sibetrans2025coherencia}
+{\textit{Cruces, F. (2022, Junio)}}.
+\newblock \textit{Niveles de coherencia musical: la aportación de la música a
+  la construcción de mundos}.
+\newblock \textit{Recuperado de
+  \url{{https://www.sibetrans.com/trans/articulo/225/niveles-de-coherencia-musical-la-aportacion-de-la-musica-a-la-construccion-de-mundos}}}.
 
-\bibitem[\protect\astroncite{Dhariwal et~al.}{2020b}]{dhariwal2020jukebox}
-Dhariwal, P., Jun, H., Payne, C., et~al. (2020b).
-\newblock Jukebox: A generative model for music.
-\newblock {\em OpenAI}.
+\bibitem{jin2022transformer}
+{Jin, C. and Wang, T. and Li, X. and Tie, Y. and Liu, S. and Yan, M. and Li, Y.
+  and Wang, J. and Huang, S. (2022)}.
+\newblock \textit{A Transformer Generative Adversarial Network for
+  Multi‐Track Music Generation}.
+\newblock DOI: \url{{https://doi.org/10.1049/cit2.12065}}.
 
-\bibitem[\protect\astroncite{Dong et~al.}{2018}]{dong2018musegan}
-Dong, H.-W., Hsiao, W.-Y., Yang, L.-C., y Yang, Y.-H. (2018).
+\bibitem{state_of_the_art2023}
+{\textit{Santiago, F. and García Fronti, J. (s.f.)}}.
+\newblock \textit{Estado del arte en modelos generativos}.
+\newblock \textit{Recuperado de
+  \url{{https://m72109.readthedocs.io/es/latest/vision/state-of-the-art.html}}}.
+
+\bibitem{dong2018musegan}
+{Dong, H. and Hsiao, W. and Yang, L. and Yang, Y.}
 \newblock Musegan: Multi-track sequential generative adversarial networks for
   symbolic music generation and accompaniment.
-\newblock {\em arXiv preprint arXiv:1709.06298}.
+\newblock {\em arXiv preprint arXiv:1709.06298}, 2017, Noviembre.
 
-\bibitem[\protect\astroncite{Española}{2023}]{rae_aprender}
-Española, R.~A. (2023).
-\newblock Aprender.
-\newblock Consultado el 10 de febrero de 2025.
+\bibitem{rae_aprender}
+{Real Academia Española (2025).}
+\newblock \textit{Diccionario de la lengua española}.
+\newblock de \url{{https://dle.rae.es/aprender}}.
 
-\bibitem[\protect\astroncite{Fowler}{1999}]{UMLgotaAgota}
-Fowler, M. y~Scott, K. (1999).
-\newblock {\em UML Gota a Got}.
-\newblock Pearson Education. México.
+\bibitem{botpenguin2025}
+{\textit{BotPenguin. (2025)}}.
+\newblock \textit{Transformer Architecture}.
+\newblock \textit{Recuperado de
+  \url{{https://botpenguin.com/glossary/transformer-architecture}}}.
 
-\bibitem[\protect\astroncite{GeeksforGeeks}{2025}]{geeksforgeeks2025jupyter}
-GeeksforGeeks (2025).
-\newblock How to connect a local jupyterlab to a remote kernel?
+\bibitem{geeksforgeeks2025jupyter}
+{\textit{GeeksforGeeks (2025)}}.
+\newblock \textit{How to Connect a Local JupyterLab to a Remote Kernel}.
+\newblock \textit{Recuperado de
+  \url{{https://www.geeksforgeeks.org/how-to-connect-a-local-jupyterlab-to-a-remote-kernel/}}}.
 
-\bibitem[\protect\astroncite{Goodfellow et~al.}{2014}]{goodfellow2014gan}
-Goodfellow, I., Pouget-Abadie, J., Mirza, M., Xu, B., Warde-Farley, D., Ozair,
-  S., Courville, A., y Bengio, Y. (2014).
-\newblock Generative adversarial networks.
-\newblock {\em arXiv preprint arXiv:1406.2661}.
+\bibitem{vscode2025jupyter}
+{(2025)}.
+\newblock \textit{Jupyter Kernel Management - Python Environments}.
+\newblock \textit{Recuperado de
+  \url{https://code.visualstudio.com/docs/datascience/jupyter-kernel-management\#_python-environments}}.
 
-\bibitem[\protect\astroncite{Huang et~al.}{2018}]{huang2018musictransformer}
-Huang, C.-Z.~A., Simon, I., Dinculescu, S., et~al. (2018).
-\newblock Music transformer: Generating music with long-term structure.
-\newblock {\em Magenta: Google AI}.
-
-\bibitem[\protect\astroncite{Jin et~al.}{2022}]{jin2022transformer}
-Jin, C., Wang, T., Li, X., Tie, Y., Liu, S., Yan, M., Li, Y., Wang, J., y
-  Huang, S. (2022).
-\newblock A transformer generative adversarial network for multi‐track music
-  generation.
-\newblock {\em CAAI Transactions on Intelligence Technology}, 7(3):369--380.
-
-\bibitem[\protect\astroncite{Kingma y Welling}{2013}]{kingma2013vae}
-Kingma, D.~P. y Welling, M. (2013).
-\newblock Auto-encoding variational bayes.
-\newblock {\em arXiv preprint arXiv:1312.6114}.
-
-\bibitem[\protect\astroncite{Microsoft}{2025}]{TDSP}
-Microsoft (2025).
-\newblock Team data science process.
-\newblock Accessed: 2025-02-20.
-
-\bibitem[\protect\astroncite{Nave}{2025}]{hyperphysics_transducers}
-Nave, C.~R. (2025).
-\newblock Transducers and transduction.
-\newblock \url{http://hyperphysics.phy-astr.gsu.edu/hbasees/Sound/tralon.html}.
-
-\bibitem[\protect\astroncite{of~Saience}{2025}]{art_of_science_vae}
-of~Saience, A. (2025).
-\newblock From art thief to ai artist: The variational autoencoder.
-
-\bibitem[\protect\astroncite{Palacio y Ruata}{2011}]{palacio2011scrum}
-Palacio, J. y Ruata, C. (2011).
-\newblock {\em Scrum Manager Gestión de Proyectos}.
-\newblock Scrum Manager, 1.4.0 edition.
-\newblock Revisión 1.4.0 - Enero 2011.
-
-\bibitem[\protect\astroncite{Paszke et~al.}{2019}]{paszke2019pytorch}
-Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen,
-  T., Lin, Z., Gimelshein, N., y Antiga, L. (2019).
-\newblock Pytorch: An imperative style, high-performance deep learning library.
-\newblock {\em arXiv preprint arXiv:1912.01703}.
-
-\bibitem[\protect\astroncite{PM}{2025}]{TDSP-PM}
-PM, D.~S. (2025).
+\bibitem{TDSP-PM}
+{Data Science PM, (2025)}.
 \newblock Team data science process overview.
-\newblock Accessed: 2025-02-20.
+\newblock de \url{https://www.datascience-pm.com/tdsp/}.
 
-\bibitem[\protect\astroncite{Roberts et~al.}{2018a}]{roberts2018musicvae}
-Roberts, A., Engel, J., Raffel, C., Hawthorne, C., y Eck, D. (2018a).
-\newblock A hierarchical latent vector model for learning long-term structure
-  in music.
-\newblock {\em arXiv preprint arXiv:1803.05428}.
+\bibitem{wikipedia2025numeracion}
+{Numeración de las artes}.
+\newblock \textit{[En Wikipedia]}.
+\newblock Recuperado (2025, Enero 9) de
+  \url{https://es.wikipedia.org/wiki/Numeraci%C3%B3n_de_las_artes}.
 
-\bibitem[\protect\astroncite{Roberts et~al.}{2018b}]{roberts2018hierarchical}
-Roberts, A., Engel, J., Raffel, C., Hawthorne, C., y Eck, D. (2018b).
-\newblock A hierarchical latent vector model for learning long-term structure
-  in music.
-\newblock {\em arXiv preprint arXiv:1803.05428}.
+\bibitem{wikipedia2025mfcc}
+{MFCC}.
+\newblock \textit{[En Wikipedia]}.
+\newblock Recuperado (2025, Enero 10) de
+  \url{https://es.wikipedia.org/wiki/MFCC}.
 
-\bibitem[\protect\astroncite{Santiago y
-  Garcia~Fronti}{2023}]{state_of_the_art2023}
-Santiago, F. y Garcia~Fronti, J. (2023).
-\newblock Estado del arte en modelos generativos.
+\bibitem{wikipedia2025espectrograma}
+{Espectrograma}.
+\newblock \textit{[En Wikipedia]}.
+\newblock Recuperado (2025, Enero 9) de
+  \url{https://es.wikipedia.org/wiki/Espectrograma}.
 
-\bibitem[\protect\astroncite{Studer et~al.}{2021}]{studer2021crispmlq}
-Studer, S., Bui, T.~B., Drescher, C., Hanuschkin, A., Winkler, L., Peters, S.,
-  y Müller, K.-R. (2021).
-\newblock Towards crisp-ml(q): A machine learning process model with quality
-  assurance methodology.
-\newblock {\em Machine Learning and Knowledge Extraction}, 3(2):392--413.
-\newblock Publicado el 22 de abril de 2021, bajo licencia CC BY 4.0.
-
-\bibitem[\protect\astroncite{Tech}{2023}]{telefonica2023music}
-Tech, T. (2023).
-\newblock Inteligencia artificial generativa en la creación musical.
-
-\bibitem[\protect\astroncite{Technologies}{2016}]{aiva}
-Technologies, A. (2016).
-\newblock Aiva: The artificial intelligence composing emotional soundtrack
-  music.
-
-\bibitem[\protect\astroncite{V.}{2023a}]{sathish2023crispmlq}
-V., S. (2023a).
-\newblock Crisp-ml(q): A methodical approach to quality assurance and machine
-  learning development.
-\newblock {\em Medium}.
-\newblock Accessed: 2025-02-20.
-
-\bibitem[\protect\astroncite{V.}{2023b}]{Sathish2023}
-V., S. (2023b).
-\newblock Crisp-ml(q): A methodical approach to quality assurance and machine
-  learning development.
-\newblock {\em Medium}.
-\newblock Accessed: 2025-02-20.
-
-\bibitem[\protect\astroncite{Vaswani et~al.}{2017}]{vaswani2017transformers}
-Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
-  Kaiser, L., y Polosukhin, I. (2017).
+\bibitem{vaswani2017transformers}
+{Vaswani, A. and Shazeer, N. and Parmar, N. and Uszkoreit, J. and Jones, L. and
+  Gomez, A. and Kaiser, L. and Polosukhin, I.}
 \newblock Attention is all you need.
-\newblock {\em arXiv preprint arXiv:1706.03762}.
+\newblock {\em arXiv preprint arXiv:1706.03762}, 2017.
 
-\bibitem[\protect\astroncite{Vidhya}{2023}]{vidhya2023generativeAI}
-Vidhya, A. (2023).
-\newblock Unleashing generative ai with vaes, gans, and transformers.
+\bibitem{upm2023music}
+{\textit{Carpintero Castilla, A. (2023, Junio)}}.
+\newblock \textit{Modelo de red neuronal convolucional para la generación de
+  música "Lo-Fi"}.
+\newblock \textit{Recuperado de \url{{https://oa.upm.es/75007}}}.
 
-\bibitem[\protect\astroncite{{Wikipedia}}{2025a}]{wikipedia2025espectrograma}
-{Wikipedia} (2025a).
-\newblock Espectrograma.
+\bibitem{telefonica2023music}
+\textit{Telefónica Tech. (2023)}.
+\newblock \textit{Recuperado de
+  \url{{https://telefonicatech.com/blog/ai-of-things-vi-inteligencia-artificial-generativa-g
+  enerar-musica}}}.
 
-\bibitem[\protect\astroncite{{Wikipedia}}{2025b}]{wikipedia2025mfcc}
-{Wikipedia} (2025b).
-\newblock Mfcc.
+\bibitem{vidhya2023generativeAI}
+{\textit{Banjara, B. (2023, Agosto)}}.
+\newblock \textit{Unleashing Generative AI with VAEs, GANs, and Transformers}.
+\newblock \textit{Recuperado de
+  \url{{https://www.analyticsvidhya.com/blog/2023/07/generative-ai-with-vaes-gans-transformers}}}.
 
-\bibitem[\protect\astroncite{{Wikipedia}}{2025c}]{wikipedia2025numeracion}
-{Wikipedia} (2025c).
-\newblock Numeración de las artes.
+\bibitem{arxiv2023ganmusic}
+{Ziyi, J. and Ruoxue, W. and Zhenghan, C. and Xiaoxuan, L. (2023, Octubre)}.
+\newblock Music generation based on generative adversarial networks with
+  transformer.
+\newblock \textit{Recuperado de \url{{https://arxiv.org/abs/2309.09075}}}.
+
+\bibitem{musicalecer2025digitalizacion}
+{\textit{CJFV. (2025)}}.
+\newblock \textit{La digitalización del sonido}.
+\newblock \textit{Recuperado de
+  \url{{https://musicalecer.com/el-sonido-digital/la-digitalizacion-del-sonido/}}}.
+
+\bibitem{musicalecer2025formatosaudio}
+{\textit{CJFV. (2025)}}.
+\newblock \textit{La digitalización del sonido}.
+\newblock \textit{Recuperado de
+  \url{{https://musicalecer.com/el-sonido-digital/formatos-de-audio-digital/}}}.
+
+\bibitem{huang2018musictransformer}
+{Huang, C. and Simon, I. and Dinculescu, S. and others}.
+\newblock Music transformer: Generating music with long-term structure.
+\newblock {\em Magenta: Google AI}, 2018.
+
+\bibitem{dhariwal2020jukebox}
+{Dhariwal, P. and Jun, H. and Payne, C.;x others}.
+\newblock Jukebox: A generative model for music.
+\newblock {\em OpenAI}, 2020.
+
+\bibitem{paszke2019pytorch}
+{Paszke, A. and Gross, S. and Massa, F. and Lerer, A. and Bradbury, J. and
+  Chanan, G. and Killeen, T. and Lin, Z. and Gimelshein, N. and Antiga, L.}
+\newblock Pytorch: An imperative style, high-performance deep learning library.
+\newblock {\em arXiv preprint arXiv:1912.01703}, 2019.
+
+\bibitem{jukebox2020}
+{Dhariwal, P. and Jun, H. and Kim, J. and Radford, A. and Sutskever, I.}
+\newblock Jukebox: A generative model for music, 2020.
+
+\bibitem{art_of_science_vae}
+{Art of Saience}.
+\newblock From art thief to ai artist: The variational autoencoder, 2025.
+
+\bibitem{xenonstack2025}
+{\textit{Sairam Sundaresan. (2023, Abril)}}.
+\newblock \textit{The Complete Guide to Generative AI Architecture}.
+\newblock \textit{Recuperado de
+  \url{{https://medium.com/xenonstack-ai/the-complete-guide-to-generative-ai-architecture-5a579da59c40}}}.
+
+\bibitem{hyperphysics_transducers}
+{Nave, Carl R. (2025)}.
+\newblock Transducers and transduction.
+\newblock de
+  \url{http://hyperphysics.phy-astr.gsu.edu/hbasees/Sound/tralon.html}.
+
+\bibitem{sathish2023crispmlq}
+{Sathish V.}
+\newblock Crisp-ml(q): A methodical approach to quality assurance and machine
+  learning development.
+\newblock {\em Medium}, 2023.
+
+\bibitem{TDSP}
+{Microsoft, (2025)}.
+\newblock Team data science process.
+\newblock de \url{https://github.com/Azure/Microsoft-TDSP}.
+
+\bibitem{palacio2011scrum}
+{\textit{Palacio, J. and Ruata, C. (2011)}}.
+\newblock \textit{Scrum Manager Gestión de Proyectos}.
+\newblock España: Scrum Manager.
+
+\bibitem{05MIARlibro}
+{\textit{Cortés, G (2018)}}.
+\newblock \textit{Aprendizaje Supervisado. Máster Universitario en
+  Inteligencia Artificial - Módulo de Aprendizaje Automático}.
+\newblock España: Universidad Internacional de Valencia.
+
+\bibitem{studer2021crispmlq}
+{Stefan S. and Thanh B. and Christian D. and Alexander H. and Ludwig W. and
+  Steven P. and Klaus-Robert M. (2022)}.
+\newblock \textit{Towards CRISP-ML(Q): A Machine Learning Process Model with
+  Quality Assurance Methodology}.
+\newblock DOI: \url{{https://doi.org/10.3390/make3020020}}.
+
+\bibitem{UMLgotaAgota}
+{\textit{Fowler, M. and Scott, K. (1999)}}.
+\newblock \textit{UML Gota a Gota}.
 
 \end{thebibliography}

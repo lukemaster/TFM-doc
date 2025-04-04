@@ -4,7 +4,7 @@
 
 \chapter{Marco teórico}
 
-En este capítulo se va a profundizar en la teoría que sustenta la generación de contenidos y dentro de ello, la generación musical. Para que el lector no tenga que dar nada por sentado, se va a hacer un repaso desde la generación del sonido, captación, transformación, codificación y guardado, hasta la aprehensión de conocimiento por parte de un sistema de Inteligencia Artificial y la posterior generación de nuevo conocimiento, completando así el círculo que se dejó abierto en los pasos previos de codificación, donde se tenían datos, hasta llegar transformarlos y obtener información a partir de ellos, para después poder generar nuevas piezas musicales.
+En este capítulo se va a profundizar en la teoría que sustenta la generación de contenidos y dentro de ello, la generación musical. Para no dar nada por sentado, se va a hacer un repaso desde la generación del sonido, captación, transformación, codificación y guardado, hasta la aprehensión de conocimiento por parte de un sistema de Inteligencia Artificial y la posterior generación de nuevo conocimiento, completando así el círculo que se dejó abierto en los pasos previos de codificación, donde se tenían datos, hasta llegar transformarlos y obtener información a partir de ellos, para después poder generar nuevas piezas musicales.
 
 \section{Del sonido a los bytes: proceso de captación, transformación y discretización}
 
@@ -105,7 +105,7 @@ El oído humano es más sensible a ciertos rangos de frecuencia, lo que signific
 
 Los cambios en amplitud pueden detectarse más fácilmente en sonidos de corta duración o con transiciones bruscas, como golpes de tambor o explosiones, mientras que cambios en intensidad pueden ser más notorios en sonidos sostenidos.
 
-Este comportamiento explica por qué los ajustes de volumen en dispositivos de audio son exponenciales en lugar de lineales.
+Este comportamiento explica por qué los ajustes de volumen en dispositivos de audio son exponenciales, en lugar de lineales.
 \end{tcolorbox}
 
 \subsubsection{Timbre}
@@ -310,7 +310,7 @@ Para ello, es necesario tratarlos, guardarlos, manejarlos correctamente, transfo
 \subsection{Tratamiento de los datos}
 \label{tratamiento-datos}
 
-Para el entrenamiento de los modelos basados en Inteligencia Artificial que se plantearán para cumplir los objetivos, se van a utilizar 3 extensos datasets, cuyo tamaño y diversidad de géneros musicales contenidos abran posibilidad de poder obtener una herramienta que tenga un desempeño a la altura de lo que se podría esperar.
+Para el entrenamiento de los modelos basados en Inteligencia Artificial que se plantearán para cumplir los objetivos, se van a utilizar 3 extensos datasets, cuyo tamaño y diversidad de géneros musicales contenidos, abran posibilidad de poder obtener una herramienta que tenga un desempeño a la altura de lo que se podría esperar.
 
 Asi pues, los 3 datasets propuestos son:
 
@@ -321,7 +321,7 @@ Asi pues, los 3 datasets propuestos son:
     \item \textbf{Million Song Dataset}
         Contiene 1500 ficheros en formato \emph{MP3}, distribuidos en 15 categorías de género. Es un dataset que se puede nutrir de servicios como Spotify y Last.fm.
     \item \textbf{MTG-Jamendo Dataset}
-       Cuenta con más de 50,000 pistas y 190 géneros, distribuidos en ficheros \emph{MP3}. Los metaadatos están descritos en etiquetas de géneros musicales, instrumentos, emociones y temas.
+       Cuenta con más de 50,000 pistas y 190 géneros, distribuidos en ficheros \emph{MP3}. Los metadatos están descritos en etiquetas de géneros musicales, instrumentos, emociones y temas.
 \end{itemize}
 En la sección \textbf{Materiales - Datos}\ref{materiales-datos} del siguiente capítulo, se puede consultar información mucho más detallada de cada una de estas tres fuentes de datos que se van a utilizar.
 
@@ -363,7 +363,7 @@ La figura \ref{fig:vae} ilustra cómo sería la arquitectura base.
 
 Haciendo un símil, al igual que cuando una persona cuenta un chiste y otra lo escucha para poder volverlo a contar, el receptor no retiene todos los detalles de la historia, sólo necesita recordar \textbf{la esencia de la gracia}, para volver a \emph{contar el chiste} de nuevo.
 
-El entrenamiento de estas redes busca minimizar una \textbf{función de pérdida de reconstrucción}, que marcará la la diferencia entre la entrada original y la reconstrucción: entrada y salida del autoencoder; se puede utilizar, por ejemplo, el \emph{Mean Square Error} (MSE):
+El entrenamiento de estas redes busca minimizar una \textbf{función de pérdida de reconstrucción}, que marcará la diferencia entre la entrada original y la reconstrucción: entrada y salida del autoencoder; se puede utilizar, por ejemplo, el \emph{Mean Square Error} (MSE):
 
 \begin{equation}
     L(x, \hat{x}) = \| x - \hat{x} \|^2
@@ -417,7 +417,7 @@ El camino a seguir desde el fichero de audio hasta convertirse en datos en el es
     El espectrograma se normaliza para que sus valores estén en un rango definido y se pasa como entrada al VAE. El \emph{codificador} del VAE ``aprenderá'' a comprimir y guardar esta representación en el \emph{espacio latente probabilístico}, asignando cada dato a una distribución Gaussiana multivariante.
 
     \item \textbf{Representación Latente} \\
-    La representación latente captura las \emph{características principales} de la señal de audio: tono, textura del sonido, dinámica temporal... en un espacio mucho más reducido y estructurado, donde será posible \emph{muestrear y obtener nuevas variaciones del sonido}.
+    La representación latente captura las \emph{características principales} de la señal de audio: tono, textura del sonido, dinámica temporal en un espacio mucho más reducido y estructurado, donde será posible \emph{muestrear y obtener nuevas variaciones del sonido}.
 \end{enumerate}
 
 Este tipo de autoencoders también podrían utilizarse para:
@@ -503,7 +503,7 @@ Y ahí puede venir el problema de la coherencia, incluso para los silbadores má
 
 De eso se encargaría el Transformer, de que las notas sucesivamente, una tras otra, sean cocherentes y tengan sentido.
 
-Seguro que ha escuchado alguna vez y/o conoce y recuerda el tema principal de la banda sonora ``La muerte tiene un precio'', un \emph{Western} clásico protagonizado por \emph{Clint EastWood}. Este podría ser un ejemplo de cómo algo sencillo y mundano, como un silbido, aunque no lo parezca, requiere destreza, entrenamiento, rigos musical y coherencia, resultando ser algo mucho más laborioso de lo que en principio pudo parecer.
+Seguro que ha escuchado alguna vez y/o conoce y recuerda el tema principal de la banda sonora ``La muerte tiene un precio'', un \emph{Western} clásico protagonizado por \emph{Clint EastWood}. Este podría ser un ejemplo de cómo algo sencillo y mundano, como un silbido, aunque no lo parezca, requiere destreza, entrenamiento, rigor musical y coherencia, resultando ser algo mucho más laborioso de lo que en principio pudo parecer.
 
 \end{tcolorbox}
 
@@ -521,12 +521,12 @@ El tratamiento previo de las pistas \emph{MP3} será el mismo que se ha descrito
 
 \paragraph{2º.- Preentrenamiento de la GAN. El Discriminador.} 
 
-Este proceso puede comenzar por el entrenamiento del Discriminador con muestras reales. Si bien no se trata de un paso obligatorio puede reportar beneficios a corto plazo durante el entrenamiento del Generador, como:
+Este proceso puede comenzar por el entrenamiento del Discriminador con muestras reales. Si bien no se trata de un paso obligatorio, puede reportar beneficios a corto plazo durante el entrenamiento del Generador, como:
 
 \begin{itemize}
     \item El generador al principio produce muestras de ruido aleatorio puro, lo que puede confundir al discriminador. De esta manera, se minimizaría.
-    \item Proporciona una base sólida para que el discriminador entienda las características reales de los datos antes de enfrentarse a las muestras del generador.
-    \item Ayuda a evitar que el discriminador tome decisiones arbitrarias cuando las muestras generadas son puro ruido.
+    \item Proporciona una base sólida para que el discriminador entienda las características reales de los datos, antes de enfrentarse a las muestras del generador.
+    \item Ayuda a evitar que el discriminador tome decisiones arbitrarias, cuando las muestras generadas son puro ruido.
 \end{itemize}
 
 Las pautas a seguir serían:
@@ -626,18 +626,18 @@ G(z, y) \rightarrow x
 \]
 donde \( x \) es la secuencia musical generada. 
 
-Hágase hincapié en los siguientes aspectos específicos cuando se usa para esta arquitectura para la generación musical:
+Hágase hincapié en los siguientes aspectos específicos, cuando se usa para esta arquitectura para la generación musical:
 
 \begin{itemize}
   \item \textbf{Representación}: Los espectrogramas STFT generados representan la magnitud espectral en escala lineal. Se genera una matriz $F \times T$ desde ruido + género, donde $F$ representa bandas frecuenciales (e.g. $F=1025$) y $T$ la dimensión temporal (e.g. $T=501$).
   \item \textbf{Condicionamiento por género}: El embedding de género se incluye como primer token en la secuencia de entrada al generador, afectando toda la generación desde su origen.
-  La etiqueta de género se introduce al inicio de la secuencia, y el modelo predice directamente la siguiente nota basándose en las notas previas y la etiqueta de género.
+  La etiqueta de género se introduce al inicio de la secuencia y el modelo predice directamente la siguiente nota basándose en las notas previas y la etiqueta de género.
     \[
     \text{Input} = [\text{Etiqueta de género}, \text{Nota}_1, \text{Nota}_2, \ldots, \text{Nota}_n]
     \]
   \item \textbf{Generador}: Compuesto por una etapa de proyección inicial seguida de múltiples bloques Transformer Encoder. El Transformer se coloca después de mapear el ruido a una secuencia inicial, actuando como núcleo generativo.
   \item \textbf{Discriminador}: Recibe espectrogramas STFT (reales o generados) y evalúa su autenticidad y correspondencia estilística. Está basado en convoluciones 2D con normalización espectral.
-  \item \textbf{Atención temporal}: El uso de self-attention permite capturar dependencias de largo alcance entre regiones del espectrograma, cruciales para la coherencia musical.
+  \item \textbf{Atención temporal}: El uso de self-attention permite capturar dependencias de largo alcance entre regiones del espectrograma, necesarias para la coherencia musical.
   \item \textbf{Función de pérdida}: Se combinan pérdidas adversariales y de regularización estructural:
     \[
     \mathcal{L}_G = -\mathbb{E}_{z}[D(G(z))] + \lambda \cdot \mathcal{L}_{\text{consistencia}}
