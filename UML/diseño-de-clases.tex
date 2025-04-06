@@ -3,27 +3,27 @@
 \label{diseño-clases}
 \subsubsection{Diseño de clases}
 
-Esta sección hace una visión más profunda y detallada del modelo de clases presentado en la sección \emph{Especificación del modelo de }clases\ref{especificacion-modelo-clases}.
+Esta sección hace una visión más profunda y detallada del modelo de clases presentado en la sección \emph{Especificación del modelo de clases} \ref{especificacion-modelo-clases}.
 
-El diseño de clases da una visión más refinada de las mismas clases que se extrajeron en el análisis. En este modelo se pueden ver no sólo los métodos que utilizan las clases para comunicarse entre ellas, sino también qué estructuras de datos se usan, y cómo se guarda la información dentro de cada clase.
+El diseño de clases da una visión más refinada de las mismas clases que se extrajeron en el análisis. En este modelo se pueden ver no solo los métodos que utilizan las clases para comunicarse entre ellas, sino también qué estructuras de datos se usan y cómo se guarda la información dentro de cada clase.
 
 Las clases que conforman el sistema son las siguientes:
 
 \begin{itemize}
     \item Diagrama del sistema general.
     \begin{itemize}
-        \item Sistema.
-        \item Ayuda.
-        \item EvaluadorPiezaGenerada.
-        \item SelectorGéneroMusical.
-        \item PiezaMusical.
-        \item PiezaMusicalEtiquetada.
-        \item ScriptEntrenamiento.
-        \item CargadorMP3.
-        \item ModeloGeneradorIA.
-        \item VAE.
-        \item GAN.
-        \item Transformer.
+        \item Sistema
+        \item Ayuda
+        \item EvaluadorPiezaGenerada
+        \item SelectorGéneroMusical
+        \item PiezaMusical
+        \item PiezaMusicalEtiquetada
+        \item ScriptEntrenamiento
+        \item CargadorMP3
+        \item ModeloGeneradorIA
+        \item VAE
+        \item GAN
+        \item Transformer
     \end{itemize}
 \end{itemize}
 
@@ -35,7 +35,7 @@ Las clases que conforman el sistema son las siguientes:
   Los métodos de la clase son:
 
   \begin{itemize}
-      \item init: inicia la aplicación informática.
+      \item init: inicia la aplicación informática
   \end{itemize}
 
   \begin{figure}[H]
@@ -52,7 +52,7 @@ Las clases que conforman el sistema son las siguientes:
   Esta clase cuenta con el siguiente método:
 
   \begin{itemize}
-      \item motrarAyuda: muestra la ayuda de la aplicación.
+      \item motrarAyuda: muestra la ayuda de la aplicación
   \end{itemize}
 
   \begin{figure}[H]
@@ -166,7 +166,7 @@ Las clases que conforman el sistema son las siguientes:
       \end{itemize}
       \item entrenarModelo: inicia el entrenamiento del modelo de Inteligencia Artificial. Devuelve una lista de cadenas de texto con información sobre el entrenamiento (o errores). Recibe un parámetro compuesto:
       \begin{itemize}
-          \item l-hyperparámetros: lista de hyperparámetros del entrenamiento.
+          \item l-hiperparámetros: lista de hiperparámetros del entrenamiento.
       \end{itemize}
   \end{itemize}
 
@@ -272,7 +272,7 @@ Las clases que conforman el sistema son las siguientes:
     \caption{Relación PiezaMusical- GAN.}
   \end{figure}
 
-  Las siguiente relaciones se dan dentro de la abstracción contenida en la clase GAN, la cual explica la arquitectura interna del modelo de Inteligencia Artificial.
+  Las siguientes relaciones se dan dentro de la abstracción contenida en la clase GAN, la cual explica la arquitectura interna del modelo de Inteligencia Artificial.
 
   \item \textbf{VAE - ModeloGeneradorIA}
 
@@ -296,7 +296,7 @@ Las clases que conforman el sistema son las siguientes:
 
   \item \textbf{Transformer - GAN}
 
-  El elemento Transformer pertenece a un único elemento GAN. Un modelo GAN contiene uno y sólo un elemento Transformer, que será su elemento generador.
+  El elemento Transformer pertenece a un único elemento GAN. Un modelo GAN contiene uno y solo un elemento Transformer, que será su elemento generador.
 
   \begin{figure}[H]
     \centering

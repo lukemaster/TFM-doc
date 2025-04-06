@@ -1,6 +1,6 @@
 \chapter{Resultados y Análisis}
 
-Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q)\ref{fig:crispml-q-diagram}, la preparación de los datos es un paso muy importante en el desarrollo. Tal es así, que son 4 las tareas definidas en Scrum para ello:
+Tal y como se puede apreciar en el diagrama de flujo de CRISP-ML(Q) \ref{fig:crispml-q-diagram}, la preparación de los datos es un paso muy importante en el desarrollo. Tal es así, que son 4 las tareas definidas en Scrum para ello:
 \begin{itemize}
     \item PD-1: normalizar y codificar variables.
     \item PD-2: manejar valores atípicos y nulos.
@@ -28,7 +28,7 @@ Para garantizar la coherencia del conjunto de datos:
 \begin{itemize}
 \item Se han filtrado archivos corruptos o incompletos.
 \item Se ha unificado la estructura de etiquetas de género.
-\item Se ha establecido una duración uniforme de \textbf{30 segundos} para cada clip de audio. (Esta duración se podrá ver modificada según sea la experiencia durante el entrenamiento. La duración más conservadora elegible serían 25 segundos, pues están asegurados en todas las muestras de los 3 conjuntos).
+\item Se ha establecido una duración uniforme de \textbf{30 segundos} para cada clip de audio. Esta duración se podrá ver modificada según sea la experiencia durante el entrenamiento. La duración más conservadora elegible serían 25 segundos, pues están asegurados en todas las muestras de los 3 conjuntos.
 \end{itemize}
 
 \subsection{Distribución de géneros}
@@ -139,7 +139,6 @@ La validación se ejecuta al final de cada época, registrando las mismas métri
     \item \textbf{Pérdida de reconstrucción (VAE)}: error cuadrático medio entre espectrogramas reales y reconstruidos.
     \item \textbf{Divergencia KL (VAE)}: regularización del espacio latente respecto a una distribución normal.
     \item \textbf{Pérdida adversarial (GAN)}: pérdida binaria cruzada tanto para el generador como para el discriminador.
-    \item \textbf{Consistencia temporal (opcional)}: medida no entrenada, que evalúa la diferencia espectral entre marcos adyacentes.
 \end{itemize}
 
 \subsubsection*{Métricas cualitativas}
@@ -164,278 +163,195 @@ Durante el entrenamiento se han registrado, por batch y por época:
 
 Los valores son utilizados tanto para análisis posterior como para implementar estrategias de parada temprana (\textit{early stopping}) y selección de checkpoints.
 
-
-
 \subsection{Modelos evaluados}
 
-En este apartado se describen las arquitecturas reales desarrolladas para la generación de música basada en espectrogramas STFT. Se detallan las decisiones estructurales, el flujo de datos y las funciones de pérdida utilizadas en cada caso, basándose directamente en el código fuente implementado en PyTorch Lightning y parametrizado por variables del entorno (.env).
+Este apartado presenta un análisis detallado de los cuatro modelos principales desarrollados en este trabajo, diferenciando tanto por arquitectura (VAE o GAN) como por tipo de espectrograma (MEL o STFT). Para cada uno se indican las características técnicas, métricas obtenidas durante el entrenamiento, y una evaluación cualitativa de los resultados generados.
 
-\subsubsection*{5.3.1 VAE convolucional con decoder LSTM}
+En el apéndice B \ref{appendix-b}, se pueden consultar más datos recabados durante el entrenamiento y consultar la arquitectura completa de cada modelo.
 
-El modelo VAE implementado combina un encoder convolucional con un decoder que incorpora una capa LSTM, con condicionamiento explícito por género en ambas etapas.
+\subsection{VAE con espectrogramas MEL}
 
-\paragraph{Encoder:} el encoder aplica tres bloques \texttt{Conv2d + BatchNorm + ReLU + MaxPool2d} sobre la entrada, que es un espectrograma de dimensiones $(1, 128, T)$ concatenado con un embedding de género expandido a la misma resolución espacial. Tras la convolución, se aplana el resultado y se proyecta a dos vectores: $\mu \in \mathbb{R}^{d}$ y $\log\sigma^2 \in \mathbb{R}^{d}$ mediante capas lineales:
+Este modelo constituye la arquitectura base del sistema propuesto, combinando un encoder convolucional con un decoder LSTM. El encoder extrae una representación latente compacta de 32 canales a partir de espectrogramas MEL de 256 bandas, calculados sobre segmentos de 25 segundos de audio. La información de género se introduce mediante un embedding de 8 dimensiones que se concatena a la representación antes de ser decodificada.
 
-\[
-z \sim \mathcal{N}(\mu, \sigma^2) \quad \text{mediante reparametrización:} \quad z = \mu + \sigma \cdot \epsilon
-\]
-
-\paragraph{Decoder:} el decoder concatena $z$ con el embedding de género, lo proyecta a un tensor de tamaño $C \times H \times W$ mediante una capa lineal, y lo rearma como tensor convolucional. Posteriormente:
-
-\begin{itemize}
-    \item Se aplica una LSTM sobre la dimensión temporal (transformando $B \times C \times H \times W$ en secuencias de $W$ pasos).
-    \item Se reconstruye el espectrograma mediante tres capas \texttt{ConvTranspose2d}.
-    \item Se recorta o rellena a $T$ pasos temporales y se normaliza en decibelios.
-\end{itemize}
-
-\paragraph{Pérdida:} se emplea una pérdida compuesta:
-
-\[
-\mathcal{L}_{\text{VAE}} = \underbrace{\|x - \hat{x}\|^2}_{\text{Reconstrucción}} + \beta \cdot \underbrace{D_{\text{KL}}(\mathcal{N}(\mu, \sigma^2) \parallel \mathcal{N}(0, I))}_{\text{Regularización latente}}
-\]
-
-El parámetro $\beta$ se incrementa progresivamente mediante una función sigmoide durante el \textit{warm-up}, parametrizado por \texttt{BETA\_WARMUP\_EPOCHS} y \texttt{BETA\_MAX}.
-
-\paragraph{Monitorización adicional:} el modelo almacena la media y desviación típica de entrada $x$, registra métricas por batch y época, actualizando también los límites de decibelios por género en un archivo JSON persistente, que se usará como límites de decibelios en la generación.
-
-\vspace{1em}
-
-\subsubsection*{5.3.2 GAN con generador TransformerEncoder}
-
-La arquitectura GAN consta de dos componentes diferenciados: un generador con Transformer y un discriminador convolucional.
-
-\paragraph{Generador:}
-\begin{itemize}
-    \item La entrada es un vector de ruido $z \in \mathbb{R}^{d}$ concatenado con el embedding del género.
-    \item Se proyecta a una secuencia de $T$ tokens de dimensión $d_{\text{model}}$ mediante una capa lineal.
-    \item Se aplica un bloque \texttt{TransformerEncoder} con $L$ capas, $h$ cabezas y \texttt{dim\_feedforward}, definidos en \texttt{.env}.
-    \item La salida se transforma en un espectrograma de dimensiones $(1, 128, T)$ mediante dos capas \texttt{Conv1d} y activación \texttt{Tanh}.
-\end{itemize}
-
-\paragraph{Discriminador:}
-\begin{itemize}
-    \item Concatenación del espectrograma $(1, 128, T)$ con el embedding de género expandido espacialmente.
-    \item Tres bloques convolucionales seguidos de \texttt{BatchNorm}, \texttt{ReLU} y \texttt{MaxPool2d}.
-    \item Aplanado y paso por una capa lineal que produce un único logit: probabilidad de real/falso.
-\end{itemize}
-
-\paragraph{Preentrenamiento:} se realizan dos fases iniciales:
-
-\begin{align*}
-\text{Generador:} \quad & \mathcal{L}^{\text{pretrain}}_G = \| G(z, y) - x_{\text{real}} \|^2 \\
-\text{Discriminador:} \quad & \mathcal{L}^{\text{pretrain}}_D = -\log D(x_{\text{real}}, y)
-\end{align*}
-
-\paragraph{Fase adversarial:} durante el entrenamiento completo, se utilizan pérdidas de tipo BCE:
-
-\begin{align*}
-\mathcal{L}_D &= -\frac{1}{2} \left[ \log D(x_{\text{real}}, y) + \log(1 - D(G(z, y), y)) \right] \\
-\mathcal{L}_G &= -\log D(G(z, y), y)
-\end{align*}
-
-\paragraph{Estrategia de entrenamiento:} se entrena alternativamente el discriminador y el generador, con optimización manual mediante \texttt{self.manual\_backward()} y uso de dos optimizadores separados tipo Adam.
-
-\vspace{1em}
-
-\subsubsection*{Comparativa}
-
-\begin{itemize}
-    \item \textbf{VAE}: destaca en reconstrucción precisa y codificación interpretativa. Su decoder con LSTM permite una mayor coherencia temporal local.
-    \item \textbf{GAN}: genera muestras completamente nuevas desde ruido, con mayor capacidad creativa. El uso del Transformer permite capturar dependencias de largo alcance en el tiempo.
-\end{itemize}
-
-Ambos modelos están condicionados por género, parametrizados mediante `.env` y adaptados para espectrogramas de tamaño $(128, T)$ derivados de audio a 44.1 kHz.
-
-\subsection{Resultados}
-
-El entrenamiento se lleva a cabo con fragmentos de audio que han de cumplir:
-\begin{itemize}
-    \item que sean accesibles (que exista el fichero declarado en los metadatos del dataset).
-    \item al menos \textbf{30 segundos de duración}.
-    \item que no estén corruptos.
-    \item \emph{\# sample rate} de al menos \textbf{44100 Hz} (si es mayor, se efectúa un \emph{\# downsampling}).
-\end{itemize}
-
-Una vez hecho esto, para asegurar que no existan problemas al final de la pista (algunas pistas fallaban en el tratamiento final o contenían sonidos extraños), se hace un corte a \textbf{25 segundos}.
-
-Tasadas las piezas en 25 segundos, se toman muestras de audio de 5 en 5 segundos, que será la cantidad de sonido por pista que procesen de una vez.
+Durante el entrenamiento, se utiliza una función de pérdida compuesta por el error de reconstrucción y la divergencia KL, ponderada dinámicamente mediante un parámetro $\beta$. Las curvas de pérdida muestran una rápida convergencia, con un mínimo de Recon Loss de 0.0265 alcanzado en la segunda época. La divergencia KL se mantiene en torno a 228, lo que indica un buen compromiso entre compresión y regularización del espacio latente.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/spect_window_1.png}
-    \caption{Primera ventana de espectrograma. De 0 a 5 segundos}
+    \includegraphics[width=0.8\textwidth]{images/vae_mel_kl_plot.png}
+    \caption{VAE MEL. Divergencia KL.}
 \end{figure}
+
 \begin{figure}[H]
-\centering
-\resizebox{0.7\textwidth}{!}{
-    \begin{minipage}{\textwidth}
     \centering
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/spect_window_2.png}
-        \caption{Segunda ventana de espectrograma. De 5 a 10 segundos}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/spect_window_3.png}
-        \caption{Tercera ventana de espectrograma. De 10 a 15 segundos}
-    \end{subfigure}
-    \end{minipage}
-}
-\caption{Segunda y tercera ventana de espectrograma.}
-\label{fig:diseno-paneles}
+    \includegraphics[width=0.8\textwidth]{images/vae_mel_recon_loss_plot.png}
+    \caption{VAE MEL. Recon loss.}
 \end{figure}
+
+A nivel cualitativo, las reconstrucciones generadas preservan correctamente la forma general de las frases musicales, siendo especialmente precisas en géneros con estructuras rítmicas marcadas como el hip hop y la música electrónica. El decoder LSTM permite mantener coherencia temporal, aunque se observan ligeras pérdidas de energía en los extremos de las frecuencias.
+
+\begin{itemize}
+  \item \textbf{Modelo:} VAE
+  \item \textbf{Espectrograma:} MEL
+  \item \textbf{Segmento (s):} 25
+  \item \textbf{Input shape:} 1 x 256 x 2153
+  \item \textbf{N\_FFT:} 2048
+  \item \textbf{HOP\_LENGTH:} 512
+  \item \textbf{SPEC\_ROWS:} 256
+  \item \textbf{SPEC\_COLS:} 2153
+  \item \textbf{Emb. género:} Embedding(5, 8)
+  \item \textbf{Latente (z):} 32 canales
+  \item \textbf{Encoder:}
+  \begin{itemize}
+    \item 3x Conv2d
+    \item BN
+    \item ReLU, conv_mu, conv_logvar
+  \end{itemize}
+  \item \textbf{Decoder:}
+  \begin{itemize}
+    \item LSTM(2 capas, 2048)
+    \item fc
+    \item 3x ConvTranspose2d
+  \end{itemize}
+  \item \textbf{Época final:} 9
+  \item \textbf{Recon Loss (última):} 0.0301
+  \item \textbf{KL (última):} 228.3475
+  \item \textbf{Recon Loss (mínima):} 0.0265
+  \item \textbf{KL (mínima):} 228.3475
+  \item \textbf{Época con mejor Recon Loss:} 1
+\end{itemize}
+
+\subsection{VAE con espectrogramas STFT}
+
+El segundo modelo mantiene la arquitectura general del anterior, sustituyendo únicamente la representación de entrada por espectrogramas STFT. Este cambio permite trabajar con una mayor resolución espectral (1025 bandas), captando con más detalle los armónicos y las variaciones tímbricas.
+
+Aunque la estructura general del modelo es la misma, se observan diferencias notables en las métricas. La Recon Loss mínima desciende ligeramente hasta 0.0255, lo que sugiere una mejor capacidad de ajuste. No obstante, la divergencia KL aumenta significativamente, alcanzando un valor de 338, lo que puede reflejar una mayor complejidad del espacio latente debido al mayor tamaño de la entrada.
+
 \begin{figure}[H]
     \centering
-    \resizebox{0.7\textwidth}{!}{
-        \begin{minipage}{\textwidth}
-        \centering
-        \begin{subfigure}[t]{0.48\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/spect_window_4.png}
-            \caption{Cuarta ventana de espectrograma. De 15 a 20 segundos}
-        \end{subfigure}
-        \hfill
-        \begin{subfigure}[t]{0.48\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/spect_window_5.png}
-            \caption{Quinta ventana de espectrograma. De 20 a 25 segundos}
-        \end{subfigure}
-        \end{minipage}
-    }
-    \caption{Cuarta y quinta ventana de espectrograma.}
-    \label{fig:diseno-paneles}
-    \end{figure}
+    \includegraphics[width=0.8\textwidth]{images/vae_stft_recon_loss_plot.png}
+    \caption{VAE STFT. Recon loss.}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/vae_stft_kl_plot.png}
+    \caption{VAE STFT. Divergencia KL.}
+\end{figure}
 
-\subsubsection{Conditional VAE. Otro método de orientación al error}
-
-\subsection*{Hiperparámetros utilizados}
-
-Los siguientes hiperparámetros han sido definidos en el archivo \texttt{.env} para configurar el preprocesamiento de datos, el entrenamiento y la arquitectura de los modelos.
+En términos cualitativos, este modelo produce reconstrucciones más ricas a nivel espectral, especialmente en instrumentos sostenidos como cuerdas o voces. Sin embargo, en algunos géneros se detecta cierta difuminación de las transiciones temporales, lo que sugiere que el decoder LSTM tiene más dificultad para gestionar la granularidad de la STFT.
 
 \begin{itemize}
-  \item \textbf{Parámetros generales:}
-  \begin{itemize}
-    \item \textbf{SAMPLE\_RATE}: 44100 \emph{\# Frecuencia de muestreo del audio (Hz)}.
-    \item \textbf{N\_FFT}: 2048 \emph{\# Número de puntos de FFT para la STFT}.
-    \item \textbf{HOP\_LENGTH}: 440 \emph{\# Desplazamiento entre ventanas en la STFT}.
-    \item \textbf{TOTAL\_DURATION}: 25 \emph{\# Duración total de los archivos de audio (segundos)}.
-    \item \textbf{SEGMENT\_DURATION}: 25 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
-    \item \textbf{NUM\_GENRES}: 5 \emph{\# Número de géneros musicales distintos}.
-  \end{itemize}
-
-  \item \textbf{Entrenamiento:}
-  \begin{itemize}
-    \item \textbf{TRAIN\_BATCH\_SIZE}: 1 \emph{\# Tamaño de batch durante el entrenamiento}.
-    \item \textbf{TRAIN\_EPOCHS}: 20 \emph{\# Número total de épocas de entrenamiento}.
-    \item \textbf{LIMIT\_FILES}: 500 \emph{\# Número máximo de archivos usados (modo prueba)}.
-  \end{itemize}
-
-  \item \textbf{VAE:}
-  \begin{itemize}
-    \item \textbf{LATENT\_DIM}: 1536 \emph{\# Dimensión del espacio latente $z$}.
-    \item \textbf{BETA\_MAX}: 4.0 \emph{\# Valor máximo del coeficiente $\beta$ en la pérdida del VAE}.
-    \item \textbf{BETA\_WARMUP\_EPOCHS}: 20 \emph{\# Número de épocas de \textit{warm-up} progresivo para $\beta$}.
-  \end{itemize}
-
+  \item \textbf{Modelo:} GAN
+  \item \textbf{Espectrograma:} STFT
+  \item \textbf{Segmento (s):} 25
+  \item \textbf{Input shape:} 1 x 1025 x 2153
+  \item \textbf{N\_FFT:} 2048
+  \item \textbf{HOP\_LENGTH:} 512
+  \item \textbf{SPEC\_ROWS:} 1025
+  \item \textbf{SPEC\_COLS:} 2153
+  \item \textbf{Emb. género:} Embedding(5, 8)
+  \item \textbf{Latente (z):} ~4104
+  \item \textbf{Generador:} 2 capas TransformerEncoder + fc + 3x ConvTranspose2d
+  \item \textbf{Discriminador:} 3x Conv2d + BatchNorm + MaxPool2d + Flatten
+  \item \textbf{Época final:} 9
+  \item \textbf{Val G Loss (última):} nan
+  \item \textbf{Val D Loss (última):} nan
+  \item \textbf{Val G Loss (mínima):} 0.7209
+  \item \textbf{Val D Loss (mínima):} 0.7191
+  \item \textbf{Época con mejor Val G Loss:} 7
+  \item \textbf{Recon Loss (última):} 0.0275
+  \item \textbf{KL (última):} 338.2404
+  \item \textbf{Recon Loss (mínima):} 0.0255
+  \item \textbf{KL (mínima):} 338.2404
+  \item \textbf{Época con mejor Recon Loss:} 7
 \end{itemize}
 
-\subsubsection*{Optimizador utilizado en el VAE}
+\subsection{GAN con espectrogramas MEL}
 
-El modelo VAE se entrena utilizando el optimizador \textbf{Adam}, complementado con un \textbf{\emph{scheduler} de reducción por meseta} para ajustar dinámicamente la tasa de aprendizaje en función del rendimiento del modelo en validación.
+En contraste con los modelos autoencoder, los modelos GAN no operan directamente con datos reales como referencia, sino que aprenden a generar nuevas muestras que deben ser indistinguibles de las originales para un discriminador. En este caso, el generador se compone de un bloque Transformer que proyecta ruido latente y embeddings de género a través de capas \texttt{fc} y convoluciones transpuestas, mientras que el discriminador sigue una arquitectura basada en capas \texttt{Conv2d} con \texttt{BatchNorm}.
+
+El uso de espectrogramas MEL permite mantener un tamaño razonable de entrada/salida, facilitando la convergencia. Las pérdidas del generador y el discriminador se estabilizan en torno a la época 7, con valores mínimos de 0.72 y 0.71 respectivamente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/gan_mel_loss_plot.png}
+    \caption{GAN MEL. Loss.}
+\end{figure}
+
+Visualmente, las muestras generadas presentan buena continuidad y estructura, aunque se detecta cierta homogeneidad entre géneros. En particular, se observa que los patrones de percusión tienden a ser similares, y los timbres carecen de variabilidad natural. No obstante, el modelo demuestra una buena capacidad de síntesis temporal, probablemente gracias al uso del bloque Transformer.
 
 \begin{itemize}
-    \item \textbf{Optimizador:} \texttt{torch.optim.Adam}
-    \item \textbf{Tasa de aprendizaje} (\texttt{lr}): \textit{1e-3}
-    \begin{itemize}
-        \item Este valor es adecuado para redes convolucionales profundas con funciones de pérdida suavizadas como MSE + KL.
-        \item Un valor mayor podría producir oscilaciones en la KL o en la salida del decoder, mientras que un valor menor ralentizaría la convergencia.
-    \end{itemize}
-
-    \item \textbf{Política de ajuste (scheduler):} \texttt{torch.optim.lr\_scheduler.ReduceLROnPlateau}
-    \item \textbf{Criterio de reducción:}
-    \begin{itemize}
-        \item \textbf{Monitor}: \texttt{val\_loss} — se observa la pérdida en validación.
-        \item \textbf{Modo}: \texttt{"min"} — se reduce la tasa de aprendizaje cuando la pérdida deja de disminuir.
-        \item \textbf{Paciencia}: \textit{5} — número de épocas consecutivas sin mejora antes de activar la reducción.
-        \item \textbf{Factor}: \textit{0.5} — la tasa de aprendizaje se multiplica por este factor (reducción al 50\%).
-        \item \textbf{Frecuencia}: \textit{1} — el control se realiza al final de cada época.
-    \end{itemize}
-
-    \item \textbf{Justificación:}
-    \begin{itemize}
-        \item El uso del scheduler evita que el modelo quede estancado si no encuentra una dirección de mejora.
-        \item La combinación de Adam con reducción adaptativa mejora la estabilidad durante el balance entre la pérdida de reconstrucción y la divergencia KL.
-    \end{itemize}
+  \item \textbf{Modelo:} GAN
+  \item \textbf{Espectrograma:} STFT
+  \item \textbf{Segmento (s):} 25
+  \item \textbf{Input shape:} 1 x 1025 x 2153
+  \item \textbf{N\_FFT:} 2048
+  \item \textbf{HOP\_LENGTH:} 512
+  \item \textbf{SPEC\_ROWS:} 1025
+  \item \textbf{SPEC\_COLS:} 2153
+  \item \textbf{Emb. género:} Embedding(5, 8)
+  \item \textbf{Latente (z):} ~4104
+  \item \textbf{Generador:}
+  \begin{itemize}
+    \item 2 capas TransformerEncoder
+    \item fc
+    \item 3x ConvTranspose2d
+  \end{itemize}
+  \item \textbf{Discriminador:}
+  \begin{itemize}
+    \item 3x Conv2d
+    \item BatchNorm
+    \item MaxPool2d
+    \item Flatten
+  \end{itemize}
+  \item \textbf{Época final:} 9
+  \item \textbf{Val G Loss (última):} nan
+  \item \textbf{Val D Loss (última):} nan
+  \item \textbf{Val G Loss (mínima):} 0.7209
+  \item \textbf{Val D Loss (mínima):} 0.7191
+  \item \textbf{Época con mejor Val G Loss:} 7
 \end{itemize}
 
-\noindent Esta configuración permite un entrenamiento eficiente, reduciendo automáticamente la tasa de aprendizaje cuando el modelo ha dejado de mejorar, sin necesidad de una programación manual de la misma.
+\subsection{GAN con espectrogramas STFT}
 
+Este modelo representa la versión más compleja del sistema propuesto, tanto en términos de entrada como de arquitectura. La combinación de STFT (1025 x 2153) con un espacio latente de $\sim$4104 dimensiones supone un reto significativo de memoria y estabilidad. Aun así, el modelo fue capaz de converger sin colapsar, mostrando valores mínimos de pérdida similares a los otros modelos GAN.
 
-\subsubsection{GAN \emph{from scratch}}
+Desde el punto de vista de las muestras generadas, se aprecian diferencias significativas respecto al modelo MEL. En este caso, las formas espectrales son más variadas y expresivas, con cambios dinámicos que imitan con más realismo el comportamiento de señales musicales reales. Se observa también una mayor sensibilidad al género, especialmente en las frecuencias medias.
 
-De manera análoga al modelo anterior, los hiperparámetros configurados en el fichero \texttt{.env} son:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/gan_stft_loss_plot.png}
+    \caption{GAN STFT. Loss.}
+\end{figure}
+
+No obstante, este modelo es también el más sensible a pequeñas variaciones en el ruido de entrada, y tiende a introducir artefactos si no se encuentra bien regularizado. Se considera que es el modelo con mayor potencial creativo, pero también el más exigente en cuanto a tuning y recursos.
 
 \begin{itemize}
-  \item \textbf{Parámetros generales:}
+  \item \textbf{Modelo:} GAN
+  \item \textbf{Espectrograma:} STFT
+  \item \textbf{Segmento:} 25 segundos
+  \item \textbf{Forma de entrada:} $1 \times 1025 \times 2153$
+  \item \textbf{N\_FFT:} 2048
+  \item \textbf{HOP\_LENGTH:} 512
+  \item \textbf{SPEC\_ROWS:} 1025
+  \item \textbf{SPEC\_COLS:} 2153
+  \item \textbf{Vector latente:} $\sim4104$
+  \item \textbf{Embedding de género:} Embedding(5, 8)
+  \item \textbf{Generador:}
   \begin{itemize}
-    \item \textbf{SAMPLE\_RATE}: 44100 \emph{\# Frecuencia de muestreo del audio (Hz)}.
-    \item \textbf{N\_FFT}: 2048 \emph{\# Número de puntos de FFT para la STFT}.
-    \item \textbf{HOP\_LENGTH}: 440 \emph{\# Desplazamiento entre ventanas en la STFT}.
-    \item \textbf{TOTAL\_DURATION}: 25 \emph{\# Duración total de los archivos de audio (segundos)}.
-    \item \textbf{SEGMENT\_DURATION}: 10 \emph{\# Duración de cada segmento de entrada al modelo (segundos)}.
-    \item \textbf{NUM\_GENRES}: 5 \emph{\# Número de géneros musicales distintos}.
+    \item 2 capas \texttt{TransformerEncoderLayer}
+    \item \texttt{fc\_out: Linear(4104, 4096)}
+    \item 3 capas \texttt{ConvTranspose2d} con \texttt{LeakyReLU} y \texttt{Tanh} final
   \end{itemize}
-
-  \item \textbf{Entrenamiento:}
+  \item \textbf{Discriminador:}
   \begin{itemize}
-    \item \textbf{TRAIN\_BATCH\_SIZE}: 4 \emph{\# Tamaño de batch durante el entrenamiento}.TODO: REVISAR
-    \item \textbf{TRAIN\_EPOCHS}: 25 \emph{\# Número total de épocas de entrenamiento}.TODO: REVISAR
-    \item \textbf{LIMIT\_FILES}: 500 \emph{\# Número máximo de archivos usados (modo prueba)}.
+    \item 3 capas \texttt{Conv2d} con \texttt{BatchNorm2d}
+    \item \texttt{MaxPool2d} y \texttt{Flatten}
   \end{itemize}
-
-  \item \textbf{GAN + Transformer:}
-  \begin{itemize}
-    \item \textbf{GENRE\_EMBED\_DIM}: 32 \emph{\# Dimensión del embedding de género}.
-    \item \textbf{GEN\_MODEL\_DIM}: 128 \emph{\# Dimensión interna del generador Transformer}.
-    \item \textbf{GEN\_NUM\_LAYERS}: 2 \emph{\# Número de capas en el \texttt{TransformerEncoder}}.
-    \item \textbf{GEN\_NUM\_HEADS}: 4 \emph{\# Número de cabezas de atención en cada capa del Transformer}.
-    \item \textbf{GAN\_PRETRAIN\_EPOCHS\_D}: 5 \emph{\# Épocas de preentrenamiento del discriminador}.
-    \item \textbf{GAN\_PRETRAIN\_EPOCHS\_G}: 5 \emph{\# Épocas de preentrenamiento del generador}.
-    \item \textbf{GAN\_BETA\_MIN}: 0.5 \emph{\# Valor mínimo de los coeficientes utilizados para calcular promedios móviles del gradiente y su cuadrado}.
-    \item \textbf{GAN\_BETA\_MAX}: 0.999 \emph{\# Valor mínimo de los coeficientes utilizados para calcular promedios móviles del gradiente y su cuadrado}.
-  \end{itemize}
+  \item \textbf{Mejor época (mínima G Loss validación):} 9
+  \item \textbf{Val G Loss mínima:} 0.8597
+  \item \textbf{Val D Loss mínima:} 0.7803
 \end{itemize}
-
-El entrenamiento de la arquitectura GAN se realiza con dos optimizadores separados, uno para el generador y otro para el discriminador. Ambos utilizan el algoritmo \textbf{Adam}, una técnica de optimización basada en gradientes adaptativos ampliamente utilizada en el entrenamiento de redes profundas.
-
-\begin{itemize}
-    \item \textbf{Optimizador:} \texttt{torch.optim.Adam}
-    \item \textbf{Tasa de aprendizaje} (\texttt{lr}): \textit{2e-4}
-    \begin{itemize}
-        \item Este valor es típico en arquitecturas GAN, ya que una tasa más alta puede provocar inestabilidad, y una demasiado baja puede ralentizar la convergencia.
-    \end{itemize}
-    \item \textbf{Parámetros \texttt{betas}}: $(0.5,\ 0.999)$
-    \begin{itemize}
-        \item $\beta_1 = 0.5$: controla el promedio móvil del primer momento (media de gradientes).
-        \item $\beta_2 = 0.999$: controla el segundo momento (varianza de gradientes).
-        \item El valor reducido de $\beta_1$ con respecto al valor por defecto (0.9) se emplea comúnmente en GANs para evitar oscilaciones rápidas e inestabilidad en el entrenamiento adversarial.
-    \end{itemize}
-    \item \textbf{Separación de optimizadores:}
-    \begin{itemize}
-        \item Se instancian dos optimizadores distintos:
-        \[
-        \text{opt\_g} = \text{Adam}(G.\text{parameters()}, \text{lr}, \text{betas})
-        \qquad
-        \text{opt\_d} = \text{Adam}(D.\text{parameters()}, \text{lr}, \text{betas})
-        \]
-        \item Esto permite actualizar el generador y el discriminador de manera independiente, alternando sus pasos en cada iteración según la lógica de entrenamiento definida manualmente con \texttt{self.manual\_backward()}.
-    \end{itemize}
-\end{itemize}
-
-\noindent Esta configuración se ajusta a las recomendaciones clásicas de \textit{Deep Convolutional GANs (DCGAN)} y proporciona una base estable para el entrenamiento adversarial sobre espectrogramas condicionados por género.
 
 \subsection{Test}
 
@@ -446,4 +362,6 @@ Para facilitar el testeo subjetivo por parte de los posibles usuarios, se ha des
     \includegraphics[width=0.8\textwidth]{images/euterpe-screenshot.png}
     \caption{Captura de pantalla de Euterpe.}
 \end{figure}
+
+
 

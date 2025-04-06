@@ -1,0 +1,55 @@
+\chapter{Conclusiones}
+
+Este Trabajo de Fin de Máster ha permitido explorar en profundidad el uso de modelos generativos adversariales (GAN) y autoencoders variacionales (VAE) para la generación de música personalizada, prestando especial atención al condicionamiento por género musical y al uso de espectrogramas STFT y MEL como representación intermedia. La combinación de enfoques basados en redes convolucionales, redes LSTM y mecanismos de atención, ha facilitado la generación de fragmentos sonoros que no solo presentan coherencia estructural, sino que también pueden adaptarse a características estilísticas específicas.
+
+A continuación se resumen las principales aportaciones:
+
+\begin{itemize}
+    \item \textbf{Diseño modular y flexible del sistema de generación musical} \\
+    Se ha construido un sistema capaz de adaptarse a distintos géneros musicales mediante embeddings y condicionamiento explícito. Esta estructura modular permite incorporar fácilmente nuevas clases de género o modificar el \textit{pipeline} para futuros experimentos, garantizando escalabilidad y reutilización del código.
+
+    \item \textbf{Validación funcional de la arquitectura CNN + LSTM en el entorno VAE} \\
+    Se ha comprobado que una arquitectura basada en codificadores convolucionales y decodificadores recurrentes (LSTM) mejora la coherencia temporal de las reconstrucciones, respetando la dinámica del sonido musical a lo largo del tiempo. Este enfoque ha superado los problemas detectados en versiones previas del modelo, como el colapso del espacio latente o la pérdida de información contextual. Aún así, necesitaría más ajustes  muchas horas de entrenamiento para poder obtener mejores resultados.
+
+    \item \textbf{Implementación exitosa del control estilístico mediante condicionamiento por género} \\
+    El uso de embeddings ha demostrado ser eficaz para orientar la generación hacia géneros específicos. Esta capacidad de control es clave para aplicaciones como la generación de música a medida.
+
+    \item \textbf{Normalización del espacio latente} \\
+    El entrenamiento del modelo ha mostrado una evolución clara hacia la normalización del espacio latente, estabilizando la media de \texttt{mu} y reduciendo la dispersión de \texttt{logvar}, aunque no en los valores teóricos deseados, para la generación de muestras desde ruido.
+
+    \item \textbf{Evaluación exhaustiva de las métricas clave} \\
+    Se ha incorporado un sistema de \textit{logging} detallado para el seguimiento de métricas relevantes durante el entrenamiento (KL, reconstrucción, dispersión de \texttt{mu}, uso del espacio latente), lo que ha permitido detectar puntos de mejora y tomar decisiones fundamentadas sobre ajustes de arquitectura e hiperparámetros.
+
+    \item \textbf{Sistema GAN+Transformer} \\
+    La introducción de un generador basado en Transformer, entrenado en paralelo con un discriminador convolucional, brinda una alternativa potente al mecanismo de presevación de coherencia de los módulos LSTM. La ``autoatención'' brindada por el módulo Transformer es, sin duda, un avance en este ámbito, en la inteligencia artificial.
+\end{itemize}
+
+También es necesario, para poder extraer conclusiones del trabajo realizado, revisar los objetivos previamente planteados en la sección \ref{objetivo-principal}.
+
+Se puede llegar a la conclusión de que se ha realizado un profundo trabajo de recabado de \emph{datasets} con piezas musicales representativas de distintos géneros, todas ellas etiquetadas.
+
+Además, se ha llevado a cabo un riguroso tratamiento de estos fragmentos de audio, para que todos cumplieran unos mínimos ``estándares de calidad''.
+
+Han sido dos los modelos de Inteligencia Artificial diseñados, orientados a ser capaces de hacer la mejor distinción posible de género musical, llegando a:
+\begin{itemize}
+    \item hacer distinción de género musical.
+    \item modular un ruido aleatorio de entrada en la red, a patrones específicos de género (sobre todo en cuanto a tono se refiere).
+\end{itemize}
+
+Si bien los espectrogramas generados se asemejan entre sí, agrupados por géneros, el sonido extraído no es quizá el que se hubiera esperado extraer.
+
+En este aspecto, se ha de recalcar que ha sido durante la confección de este trabajo, cuando se ha tomado real conocimiento de todo lo que implica la ``generación'', como tal, de música, a parte del tratamiento de datos, entrenamiento del modelo, etc.
+
+Aún si se contara con el modelo más fidedigno entrenado, en cuanto a la generación musical se refiere, serían cruciales la generación del espectrograma y la interpretación del mismo, por parte de alguna librería de sonido, para generar un medio audible a partir de él.
+
+Es decir: la interpretación de la información que se extrae del modelo de Inteligencia Artificial es de una importancia vital en todo el proceso, pudiendo llegar a convertirse en una parte clave del proceso.
+
+Ha habido un objetivo además de todo esto, que es el aprendizaje y puesta en práctica de los conocimientos adquiridos. Es aquí cuando paso a hablar en primera persona.
+
+Durante el curso, mis compañeros y yo hemos aprendido infinidad de métricas, fórmulas, mecanismos de medición, librerías (aunque no PyTorch), trucos y maneras, con los que hacer pequeños modelos de Inteligencia Artificial que clasificaran, hicieran alguna tarea específica, llegaran a alguna conclusión con algún grado de certeza, etc.
+
+Pero no es hasta llegar aquí, cuando al enfrentarte de primera mano, a un problema mucho más general en el que además has de ser tú mismo el que busques y encuentres documentación, antecedentes, juegos de datos, librerías, etc.; y te toque tomar decisiones cruciales de diseño, que tendrán repercusiones futuras, cuando afloran los conocimientos, los libros, las guías, los apuntes y las notas al margen.
+
+Es entonces, cuando uno se da cuenta de que ha adquirido un cierto instinto de cómo modelar hiperparámetros o de cuántas y qué parámetros han de tener, las capas convolucionales que se añadan.
+
+En conclusión, se puede decir que se han cumplido los objetivos y que además, se ha cumplido un objetivo más, que no estaba en la lista: aprender.
