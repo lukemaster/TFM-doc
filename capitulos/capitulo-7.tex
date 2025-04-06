@@ -1,0 +1,29 @@
+\chapter{Limitaciones y perspectivas a futuro}
+\section{Limitaciones del sistema}
+\begin{enumerate}
+    \item \textbf{Representación exclusiva mediante espectrogramas STFT o MEL.} \\
+    El sistema utiliza espectrogramas STFT o MEL, pero la imposibilidad de un uso combinado de los dos (se llegó a explorar en una rama de código a parte), hace que cuando los sistemas de aprendizaje se focalizan en aprender frecuencias, pierdan información melódica básica para reconstruccinones. Una posible \textbf{futura mejora} sería la combinación de varios encoders, en el caso del sistema VAE y varios discriminadores, en caso de la GAN, en paralelo, que sean capaces de tratar estos dos tipos de espectrogramas a la vez.
+
+    \item \textbf{Reconstrucción basada en métodos aproximados (Griffin-Lim).} \\
+    Como ya se ha mencionado en el capítulo anterior, la reconstrucción del audio ha sido un punto clave en el proceso. Dicho proceso, se realiza mediante el algoritmo Griffin-Lim, lo cual introduce artefactos perceptibles en el resultado final y depende del ``buen hacer'' a la hora de elegir el número de iteraciones a realizar. Como \textbf{futura mejora}, la integración de un codificador de audio basado en redes neuronales, podría solucionar este problema y mejorar enormemente la fidelidad del audio generado.
+
+    \item \textbf{Dependencia del ruido como única fuente de entrada latente.} \\
+    El sistema genera música a partir de ruido gaussiano combinado con un vector de género. Esta combinación no permite controlar otros aspectos musicales como tempo, tono, instrumentación o emoción, restringiendo la personalización real de la pieza generada.
+
+    \item \textbf{Limitación del condicionamiento por género.} \\
+    Aunque se incorpora un \textit{embedding} de género, el sistema no garantiza que las muestras generadas mantengan rasgos musicales claros y diferenciables para cada clase. No se ha implementado una verificación que asegure la correspondencia entre el género solicitado y el resultado. Una más que razonable \textbf{futura mejora}, podría consistir en hacer una métrica basada en rasgos de género.
+
+    \item \textbf{Dependencia de normalización específica por género, ¿es beneficiosa?} \\
+    Para mejorar la calidad de las reconstrucciones, se podrían aplicar límites en decibelios distintos por género. Esta feature llegó a estar implementada, en rama principal, pero este enfoque, aunque eficaz, nunca llegó a hacerse efectivo de manera completa. Sólo se utilizó para las generaciones finales, con el modelo ya entrenado, pues no se ha podido llegar a recabar la suficiente información, sobre si los distintos géneros musicales se atienen a un patrón de decibelios, que sirva como criterio a tener en cuenta a la hora de hacer distinciones. Esta podría ser una \textbf{futura mejora} muy interesante de aplicar.
+
+\end{enumerate}
+
+\section{Perspectivas a futuro}
+
+La generación de audio personalizado ha venido para quedarse. Atrás quedan los años en los que algunos teléfonos móviles daban la oportunidad de crear tu propio tono, añadiendo notas, pulsando las teclas del propio teléfono.
+
+Hoy en día, en un mundo en que los teléfonos casi han dejado de serlo y la pantalla es el mismo dispositivo que el teclado, la generación musical pasa por expandirse y llegar a todas partes, incluidos los bolsillos de las personas que, como entrentenimiento, como necesidad de proyectos empresariales o personales, como prueba de conpecto de alguna idea, necesitan un fragmento de audio que sea capaz de evocar características de un género específico y que no tenga ``problemas'' legales a la hora de ser usado en cualquier ámbito.
+
+La combinación de la generación de música con Inteligencia Artificial como base a la composición instrumental, abre otro mundo completamente nuevo y ``libre'' para todos aquellos músicos locales que, en casa, necesitan de una base rítmica instrumental para trabajar o incluso para componer y añadir finalmente, a una nueva obra.
+
+Habrán de ser grandes las reformas que se hagan en cuanto a ética y legislación, una, la primera, educando a la población sobre el valor del trabajo que hay detrás de cada pieza musical que se escucha, ya haya sido compuesta o generada por Inteligencia Artificial; otro debate, habrá de ser el de la propiedad, abordándose los tan complicados temas sobre autoría, retribuciones dinerarias, \emph{copyrigh}, o por qué no, la más absoluta desvinculación de cualquier obligación legal.
